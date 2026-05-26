@@ -1,0 +1,25 @@
+.footer {
+  border-top: 1px solid var(--border2);
+  padding: 28px 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.copy {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .footer { padding: 28px 24px; }
+}

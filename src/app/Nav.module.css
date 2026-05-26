@@ -1,0 +1,117 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 96px;
+  height: 52px;
+}
+
+.logo {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navItem {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.navItem:hover { color: var(--ink2); }
+.navItem.active { color: var(--ink); }
+
+.chevron {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.chevronOpen { transform: rotate(180deg); }
+
+.dropdownWrap {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px -4px rgba(0,0,0,0.12), 0 1px 0 rgba(0,0,0,0.02);
+  min-width: 220px;
+  overflow: hidden;
+  z-index: 200;
+}
+
+.dropdownItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 18px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border2);
+  transition: background 0.1s;
+}
+.dropdownItem:last-child { border-bottom: none; }
+.dropdownItem:hover { background: var(--border2); }
+
+.dropdownLabel {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.dropdownSub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+  font-weight: 200;
+  letter-spacing: 0.04em;
+}
+
+.navCta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--ink);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: opacity 0.15s;
+}
+.navCta:hover { opacity: 0.85; }
+
+@media (max-width: 900px) {
+  .nav { padding: 0 24px; }
+  .navCta { display: none; }
+}
