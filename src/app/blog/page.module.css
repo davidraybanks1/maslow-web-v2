@@ -1,8 +1,15 @@
 .wrap {
-  padding: 96px 96px 120px;
-  max-width: 720px;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 96px 120px;
 }
+
+.header {
+  padding: 96px 0 80px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 0;
+}
+
 .eyebrow {
   font-family: var(--mono);
   font-size: 10px;
@@ -11,6 +18,7 @@
   color: var(--ink3);
   margin-bottom: 24px;
 }
+
 .headline {
   font-family: var(--sans);
   font-size: clamp(40px, 5vw, 64px);
@@ -18,16 +26,88 @@
   letter-spacing: -0.02em;
   line-height: 1.0;
   color: var(--ink);
-  margin-bottom: 32px;
 }
-.body {
+.headline em { font-style: italic; }
+
+.empty {
+  padding: 80px 0;
+}
+.emptyText {
   font-family: var(--mono);
   font-size: 14px;
-  line-height: 1.8;
-  color: var(--ink2);
+  color: var(--ink3);
   font-weight: 200;
 }
 
+.postList {
+  display: flex;
+  flex-direction: column;
+}
+
+.postItem {
+  display: block;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border2);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.postItem:hover { opacity: 0.7; }
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.postDate {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+}
+
+.postCategory {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--border2);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.postTitle {
+  font-family: var(--sans);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.postExcerpt {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink2);
+  font-weight: 200;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.postRead {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+}
+
 @media (max-width: 900px) {
-  .wrap { padding: 48px 24px 80px; }
+  .wrap { padding: 0 24px 80px; }
+  .header { padding: 48px 0 48px; }
 }

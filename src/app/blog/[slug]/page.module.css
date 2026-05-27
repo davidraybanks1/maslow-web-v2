@@ -1,0 +1,129 @@
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 48px 120px;
+}
+
+.header {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border2);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+}
+
+.author {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  letter-spacing: 0.06em;
+}
+
+.title {
+  font-family: var(--sans);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.excerpt {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink2);
+  font-weight: 200;
+}
+
+/* Body */
+.body { }
+
+.bodyP {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink2);
+  font-weight: 200;
+  margin-bottom: 28px;
+}
+
+.bodyH2 {
+  font-family: var(--sans);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: 56px;
+  margin-bottom: 20px;
+}
+
+.bodyH3 {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.bodyQuote {
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+  margin: 32px 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink3);
+  font-weight: 200;
+  font-style: italic;
+}
+
+.strong { font-weight: 500; color: var(--ink); }
+
+.link {
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.link:hover { border-color: var(--ink); }
+
+.bodyUl, .bodyOl {
+  margin-bottom: 28px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.bodyLi {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink2);
+  font-weight: 200;
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+.bodyLi::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--ink4);
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 48px 24px 80px; }
+}
