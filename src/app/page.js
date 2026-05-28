@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './page.module.css'
+import CanvasAnimation from './components/CanvasAnimation'
 
 const NEEDS = [
   { id: 'movement',   name: 'Movement',   mode: 'purpose',      pip: '#1B3A2D', num: '01', desc: 'Your body needs to be used — not optimized, not tracked, just moved.' },
@@ -160,38 +161,7 @@ export default function Home() {
         </div>
         <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
         <p className={styles.canvasBody}>Your canvas brings it all together. It makes it easy to see the space available for anxiety. When you meet the needs important to you in a way that makes sense to you, you become more of yourself.</p>
-        <div className={styles.canvasFrame}>
-          <div className={styles.canvasFrameHeader}>
-            <div className={styles.canvasFrameTitle}>your maslow</div>
-            <div className={styles.canvasFrameSub}>a composed canvas</div>
-          </div>
-          <div className={styles.canvasMockRows}>
-            <div className={styles.canvasMockRowFull} style={{ background: '#1B3A2D', height: 80 }}>
-              <span className={styles.canvasMockLabel} style={{ color: '#ffffff80' }}>Movement</span>
-              <span className={styles.canvasMockMode} style={{ color: '#ffffff60' }}>purpose</span>
-            </div>
-            <div className={styles.canvasMockRowHalf}>
-              <div className={styles.canvasMockCell} style={{ background: '#F2F5F3', height: 64 }}>
-                <span className={styles.canvasMockLabel}>Community</span>
-                <span className={styles.canvasMockMode} style={{ color: '#4A6860' }}>appreciation</span>
-              </div>
-              <div className={styles.canvasMockCell} style={{ background: '#F2F5F3', height: 64 }}>
-                <span className={styles.canvasMockLabel}>Reflection</span>
-                <span className={styles.canvasMockMode} style={{ color: '#4A6860' }}>appreciation</span>
-              </div>
-            </div>
-            <div className={styles.canvasMockRowHalf}>
-              <div className={styles.canvasMockCell} style={{ background: '#FFF9E0', height: 52 }}>
-                <span className={styles.canvasMockLabel}>Rest</span>
-                <span className={styles.canvasMockMode} style={{ color: '#8A6A00' }}>nourishment</span>
-              </div>
-              <div className={styles.canvasMockCell} style={{ background: '#FFF9E0', height: 52 }}>
-                <span className={styles.canvasMockLabel}>Beauty</span>
-                <span className={styles.canvasMockMode} style={{ color: '#8A6A00' }}>nourishment</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CanvasAnimation />
       </section>
 
       {/* How it works */}
