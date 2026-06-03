@@ -2,6 +2,86 @@ import Link from 'next/link'
 import styles from './page.module.css'
 import CanvasAnimation from './components/CanvasAnimation'
 
+const NEED_ICONS = {
+  movement: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <path d="M26 42 C26 42 10 32 10 20 C10 13 17 8 26 12 C35 8 42 13 42 20 C42 32 26 42 26 42Z" stroke="#2D6A4F" strokeWidth="1.5" fill="#D8F3DC"/>
+      <path d="M26 14 L26 30" stroke="#2D6A4F" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M19 23 L26 19 L33 23" stroke="#2D6A4F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  community: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <circle cx="19" cy="25" r="8" stroke="#5C7AEA" strokeWidth="1.5" fill="#EEF2FF"/>
+      <circle cx="33" cy="25" r="8" stroke="#5C7AEA" strokeWidth="1.5" fill="#EEF2FF"/>
+      <circle cx="26" cy="16" r="7" stroke="#5C7AEA" strokeWidth="1.5" fill="#EEF2FF"/>
+    </svg>
+  ),
+  reflection: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="22" r="10" stroke="#7B5EA7" strokeWidth="1.5" fill="#F3EEFF"/>
+      <line x1="10" y1="36" x2="42" y2="36" stroke="#7B5EA7" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="14" y1="40" x2="38" y2="40" stroke="#7B5EA7" strokeWidth="0.75" strokeLinecap="round" opacity="0.4"/>
+    </svg>
+  ),
+  nutrition: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <path d="M16 36 C16 36 14 30 14 26 C14 20 18 16 22 16 C22 16 22 20 26 20 C30 20 30 16 30 16 C34 16 38 20 38 26 C38 30 36 36 36 36 Z" stroke="#C0572B" strokeWidth="1.5" fill="#FDEBD0" strokeLinejoin="round"/>
+      <path d="M16 36 Q26 40 36 36" stroke="#C0572B" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <line x1="26" y1="20" x2="26" y2="30" stroke="#C0572B" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
+      <line x1="20" y1="26" x2="32" y2="26" stroke="#C0572B" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
+    </svg>
+  ),
+  rest: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <path d="M14 28 Q26 14 38 28" stroke="#4A90B8" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M10 34 Q26 16 42 34" stroke="#4A90B8" strokeWidth="0.75" fill="none" strokeLinecap="round" opacity="0.4"/>
+      <line x1="26" y1="28" x2="26" y2="38" stroke="#4A90B8" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  ),
+  beauty: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="26" r="4" fill="#E8B81F"/>
+      <line x1="26" y1="10" x2="26" y2="16" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="26" y1="36" x2="26" y2="42" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="10" y1="26" x2="16" y2="26" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="36" y1="26" x2="42" y2="26" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="15" y1="15" x2="19" y2="19" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="33" y1="33" x2="37" y2="37" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="37" y1="15" x2="33" y2="19" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="15" y1="37" x2="19" y2="33" stroke="#8A6A00" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  ),
+  money: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <rect x="14" y="20" width="24" height="16" rx="3" stroke="#3A7D44" strokeWidth="1.5" fill="#E9F5EC"/>
+      <path d="M20 20 L20 17 C20 14 32 14 32 17 L32 20" stroke="#3A7D44" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+      <circle cx="26" cy="28" r="3" stroke="#3A7D44" strokeWidth="1.5" fill="none"/>
+      <line x1="26" y1="31" x2="26" y2="34" stroke="#3A7D44" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  ),
+  dwelling: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <path d="M14 38 L14 24 C14 18 18 14 26 14 C34 14 38 18 38 24 L38 38 Z" stroke="#888" strokeWidth="1.5" fill="#F5F5F5" strokeLinejoin="round"/>
+      <line x1="10" y1="38" x2="42" y2="38" stroke="#888" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  ),
+  intimacy: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <ellipse cx="20" cy="26" rx="7" ry="11" stroke="#C0596E" strokeWidth="1.5" fill="#FDEEF1"/>
+      <ellipse cx="32" cy="26" rx="7" ry="11" stroke="#C0596E" strokeWidth="1.5" fill="#FDEEF1"/>
+    </svg>
+  ),
+  play: (
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+      <circle cx="26" cy="30" r="8" stroke="#D4872A" strokeWidth="1.5" fill="#FEF3E2"/>
+      <line x1="26" y1="10" x2="26" y2="20" stroke="#D4872A" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M20 22 C20 22 16 18 14 20 C12 22 16 26 20 24" stroke="#D4872A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+      <path d="M32 22 C32 22 36 18 38 20 C40 22 36 26 32 24" stroke="#D4872A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+    </svg>
+  ),
+}
+
 const NEEDS = [
   { id: 'movement',   name: 'Movement',   mode: 'purpose',      pip: '#1B3A2D', num: '01', desc: 'Your body needs to be used — not optimized, not tracked, just moved.' },
   { id: 'community',  name: 'Community',  mode: 'nourishment',  pip: '#E8B81F', num: '02', desc: 'You need people who know you, not followers who see you.' },
@@ -78,11 +158,10 @@ export default function Home() {
               <div className={styles.needCardFront}>
                 <div className={styles.needCardTop}>
                   <span className={styles.needCardNum}>{need.num}</span>
-                  <span className={styles.needCardPip} style={{ background: need.pip }} />
+                  {NEED_ICONS[need.id]}
                 </div>
                 <div>
                   <div className={styles.needCardName}>{need.name}</div>
-                  <div className={styles.needCardMode}>{need.mode}</div>
                 </div>
               </div>
               <div className={styles.needCardBack}>
