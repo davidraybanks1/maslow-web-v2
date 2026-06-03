@@ -5,6 +5,13 @@ import Footer from './components/Footer'
 export const metadata = {
   title: 'Maslow — practice becoming yourself',
   description: 'Anxiety fills the space your unmet needs leave behind. Maslow helps you fill that space first.',
+  icons: {
+    icon: [
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
+    ],
+  },
 }
 
 export default function RootLayout({ children }) {
