@@ -79,7 +79,7 @@ export default function Home() {
               <div className={styles.needCardFront}>
                 <div className={styles.needCardTop}>
                   <span className={styles.needCardNum}>{need.num}</span>
-                  <span className={styles.needCardPip} />
+                  <span className={styles.needCardPip} style={{ background: need.pip }} />
                 </div>
                 <div>
                   <div className={styles.needCardName}>{need.name}</div>
