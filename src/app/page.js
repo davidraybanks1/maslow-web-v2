@@ -7,7 +7,7 @@ const NEEDS = [
   { id: 'movement',   name: 'Movement',   mode: 'purpose',      pip: '#1B3A2D', num: '01', desc: 'Your body needs to be used — not optimized, not tracked, just moved.' },
   { id: 'community',  name: 'Community',  mode: 'nourishment',  pip: '#E8B81F', num: '02', desc: 'You need people who know you, not followers who see you.' },
   { id: 'reflection', name: 'Reflection', mode: 'appreciation', pip: '#B8C3B1', num: '03', desc: 'Without time to process your own experience, life just happens to you.' },
-  { id: 'nutrition',  name: 'Nutrition',  mode: 'survival',     pip: '#D93B1C', num: '04', desc: 'Not just food — your relationship with food, and whether you\'re present for it.' },
+  { id: 'nutrition',  name: 'Nutrition',  mode: 'survival',     pip: '#D93B1C', num: '04', desc: 'Not just food, but your relationship to eating and being nourished.' },
   { id: 'rest',       name: 'Rest',       mode: 'purpose',      pip: '#1B3A2D', num: '05', desc: 'The nervous system needs to recover — not just through sleep, but through stillness.' },
   { id: 'beauty',     name: 'Beauty',     mode: 'nourishment',  pip: '#E8B81F', num: '06', desc: 'You need contact with things that move you — art, nature, music, something made with care.' },
   { id: 'money',      name: 'Money',      mode: 'appreciation', pip: '#B8C3B1', num: '07', desc: 'Whether money feels like a tool or a threat determines how much of your mind it occupies.' },
@@ -17,10 +17,10 @@ const NEEDS = [
 ]
 
 const MODES = [
-  { name: 'survival',     color: '#D93B1C', desc: 'Keeping this need alive. Nothing more — but you\'ve chosen to let it take a back seat so something else can have the space it deserves.' },
-  { name: 'nourishment',  color: '#E8B81F', desc: 'Meeting this need in a way that genuinely sustains you. Steady. The foundation everything else is built on.' },
-  { name: 'appreciation', color: '#B8C3B1', desc: 'This need brings you real joy. You\'re present for it. It gives back more than the minimum.' },
-  { name: 'purpose',      color: '#1B3A2D', desc: 'This need has become part of who you are. Time spent here doesn\'t feel like effort. This is your ground.' },
+  { name: 'survival',     color: '#D93B1C', desc: 'In survival mode, you are literally doing the bear minimum to meet this need. And that\'s not always a bad thing. That may be out of necessity or because you have chosen to deprioritize a need to give another more attention.' },
+  { name: 'nourishment',  color: '#E8B81F', desc: 'In nourishment mode, you are meeting a need intentionally, in a way that gives you energy rather than depletes it.' },
+  { name: 'appreciation', color: '#B8C3B1', desc: 'In appreciation mode, you create space to enjoy meeting a need by being present, invested, and in flow.' },
+  { name: 'purpose',      color: '#1B3A2D', desc: 'In purpose mode, you are focusing on the one need that is core to who you are and through which you create that which others can appreciate and be nourished by.' },
 ]
 
 export default function Home() {
@@ -31,9 +31,7 @@ export default function Home() {
         <h1 className={styles.heroHeadline}>
           anxiety isn't who you are.<br />it's who you <em>aren't.</em>
         </h1>
-        <p className={styles.heroBody}>Anxiety fills the space you give it. The louder anxiety gets, the more you are making space to meet its needs rather than your own.</p>
-        <p className={styles.heroBody}>Don't try to manage anxiety. Focus on meeting your needs.</p>
-        <p className={styles.heroBody}><strong>Maslow is your partner.</strong></p>
+        <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own. Don't try to manage anxiety. Focus on meeting your needs. Maslow is a simple framework designed to help.</p>
         <div className={styles.heroLinks}>
           <a href="#needs" className={styles.heroLink}>10 needs</a>
           <a href="#modes" className={styles.heroLink}>4 modes</a>
@@ -56,15 +54,14 @@ export default function Home() {
         <div className={styles.twoCol}>
           <div>
             <h2 className={styles.sectionHeadline}>know what <em>you</em> need,</h2>
-            <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things we need to live and things we need to feel alive. They are usually different versions of the same needs. We just need to know which ones matter — on a physiological level, not just a logical one.</p>
-            <p className={styles.monoBody} style={{ marginTop: 24, maxWidth: 520, fontWeight: 500 }}>There are 10 needs most people need most.</p>
+            <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one. There are 10 needs most people need most.</p>
           </div>
           <div style={{ paddingTop: 16 }}>
             <div className={styles.bulletList}>
               <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs aren't aspirational goals.</span></div>
               <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They have no particular order.</span></div>
-              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They are not even the things that give your life meaning.</span></div>
-              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs create the conditions for meaning and experience.</span></div>
+              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They don't give your life meaning.</span></div>
+              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs create the conditions for meaning.</span></div>
             </div>
           </div>
         </div>
@@ -130,8 +127,7 @@ export default function Home() {
         </div>
         <div style={{ maxWidth: 920 }}>
           <h2 className={styles.sectionHeadline}>know how <em>you</em> need it.</h2>
-          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>What's often missing from meeting our needs is meeting them in a way our unique bodies and minds can internalize. You need to eat, but what you eat, the circumstances in which you eat, and the nutrition you get determine if your body truly feels fed.</p>
-          <p className={styles.monoBody} style={{ marginTop: 24, maxWidth: 520, fontWeight: 500 }}>Modes tailor needs to each person.</p>
+          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>What's often missing from meeting our needs is meeting them in a way our unique bodies and minds can internalize. For instance, you need to eat, but what you eat, the circumstances in which you eat, and the nutrition you get determine if your body truly feels fed.</p>
         </div>
         <div className={styles.modesTable}>
           {MODES.map((mode, i) => (
@@ -160,7 +156,7 @@ export default function Home() {
           </div>
         </div>
         <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
-        <p className={styles.canvasBody}>Your canvas brings it all together. It makes it easy to see the space available for anxiety. When you meet the needs important to you in a way that makes sense to you, you become more of yourself.</p>
+        <p className={styles.canvasBody}>Your canvas brings it all together. It's where you decide the mode in which you will approach each need. When you meet the needs important to you in a way that makes sense to you, you become more of yourself and leave less space for anxiety.</p>
         <CanvasAnimation />
       </section>
 
