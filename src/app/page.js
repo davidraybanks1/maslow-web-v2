@@ -31,7 +31,7 @@ export default function Home() {
         <h1 className={styles.heroHeadline}>
           anxiety isn't who you are.<br />it's who you <em>aren't.</em>
         </h1>
-        <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own. Don't try to manage anxiety. Focus on meeting your needs. Maslow is a simple framework designed to help.</p>
+        <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own. Don't try to manage anxiety. Focus on meeting your needs.<br />Maslow is a simple framework designed to help.</p>
         <div className={styles.heroLinks}>
           <a href="#needs" className={styles.heroLink}>10 needs</a>
           <a href="#modes" className={styles.heroLink}>4 modes</a>
