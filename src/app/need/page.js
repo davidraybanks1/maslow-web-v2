@@ -168,7 +168,7 @@ export default function NeedPage() {
       <main className={styles.main}>
         <div className={styles.intro}>
           <div className={styles.introEyebrow}>The ten needs</div>
-          <h1 className={styles.introHeadline}>the conditions for<br /><em>being alive.</em></h1>
+          <h1 className={styles.introHeadline}>how to think about<br /><em>your needs.</em></h1>
           <p className={styles.introBody}>We are living through a unique moment of collective disconnection. The systems we've built to make life easier — digital convenience, algorithmic entertainment, optimized productivity — have quietly hollowed out the very things that make us feel alive. We have become disconnected from other people, from the environments around us, and most quietly, from ourselves. We are more connected and more isolated, more informed and more confused, more comfortable and more anxious than any generation before us.</p>
           <p className={styles.introBody}>The needs on this page are not a wellness checklist. They are the conditions under which a human being actually functions — the ground beneath everything else. When they go unmet, anxiety fills the space they leave behind. Not because something is wrong with you, but because something essential is missing. Meeting your needs isn't self-care. It's what allows you to actually experience meaning rather than simply exist next to it.</p>
         </div>
