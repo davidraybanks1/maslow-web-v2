@@ -54,7 +54,7 @@ export default function Home() {
         <div className={styles.twoCol}>
           <div>
             <h2 className={styles.sectionHeadline}>know what <em>you</em> need,</h2>
-            <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one. There are 10 needs most people need most.</p>
+            <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.<br /><br /><strong>There are 10 needs most people need most.</strong></p>
           </div>
           <div style={{ paddingTop: 16 }}>
             <div className={styles.bulletList}>
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
         <div style={{ maxWidth: 920 }}>
           <h2 className={styles.sectionHeadline}>know how <em>you</em> need it.</h2>
-          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>What's often missing from meeting our needs is meeting them in a way our unique bodies and minds can internalize. For instance, you need to eat, but what you eat, the circumstances in which you eat, and the nutrition you get determine if your body truly feels fed.</p>
+          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>What's often missing from meeting our needs is meeting them in a way our unique bodies and minds can internalize. For instance, you need to eat, but what you eat, the circumstances in which you eat, and the nutrition you get determine if your body truly feels fed.<br /><br />Modes tailor needs to each person.</p>
         </div>
         <div className={styles.modesTable}>
           {MODES.map((mode, i) => (
