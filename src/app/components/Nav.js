@@ -22,8 +22,8 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link href="/" className={styles.logo}>
-        <img src="/mark-dark-1024.png" alt="" width={20} height={20} style={{ marginRight: 8, verticalAlign: 'middle' }} />
-        maslow.
+        <img src="/mark-dark-1024.png" alt="" width={32} height={32} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+        <span style={{ fontFamily: "'DM Mono', monospace", fontWeight: 200 }}>maslow.</span>
       </Link>
       <div className={styles.right}>
         <div className={styles.dropdownWrap} ref={dropdownRef}>
