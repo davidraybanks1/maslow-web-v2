@@ -54,7 +54,7 @@ export default function Home() {
         </div>
         <div className={styles.twoCol}>
           <div>
-            <h2 className={styles.sectionHeadline}>know what <em>you</em> need,</h2>
+            <h2 className={styles.sectionHeadline}>know what <em>you</em> need.</h2>
             <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.<br /><br /><strong>There are 10 needs most people need most.</strong></p>
           </div>
           <div style={{ paddingTop: 16 }}>
