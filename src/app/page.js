@@ -17,10 +17,10 @@ const NEEDS = [
 ]
 
 const MODES = [
-  { name: 'survival',     color: '#D93B1C', desc: 'In survival mode, you are literally doing the bear minimum to meet this need. And that\'s not always a bad thing. That may be out of necessity or because you have chosen to deprioritize a need to give another more attention.' },
+  { name: 'survival',     color: '#D93B1C', desc: 'In survival mode, you are doing the bare minimum. That may be out of necessity or because you have chosen to prioritize other needs.' },
   { name: 'nourishment',  color: '#E8B81F', desc: 'In nourishment mode, you are meeting a need intentionally, in a way that gives you energy rather than depletes it.' },
   { name: 'appreciation', color: '#B8C3B1', desc: 'In appreciation mode, you create space to enjoy meeting a need by being present, invested, and in flow.' },
-  { name: 'purpose',      color: '#1B3A2D', desc: 'In purpose mode, you are focusing on the one need that is core to who you are and through which you create that which others can appreciate and be nourished by.' },
+  { name: 'purpose',      color: '#1B3A2D', desc: 'In purpose mode, you are focusing on one need that is core to you and through which you create what others can appreciate and be nourished by.' },
 ]
 
 export default function Home() {
