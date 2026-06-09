@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import styles from './page.module.css'
 import DailyLoopAnimation from './components/DailyLoopAnimation'
 
@@ -32,19 +31,14 @@ export default function Home() {
           anxiety isn't who you are.<br />it's who you <em>aren't.</em>
         </h1>
         <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own. Don't try to manage anxiety. Focus on meeting your needs.</p>
-        <p className={styles.heroBody}>Maslow is a simple framework designed to help.</p>
-        <div className={styles.heroLinks}>
-          <a href="#needs" className={styles.heroLink}>10 needs</a>
-          <a href="#modes" className={styles.heroLink}>4 modes</a>
-          <a href="#canvas" className={styles.heroLink}>1 canvas</a>
-        </div>
+        <p className={styles.heroBody}>Maslow App is designed to help you take up space.</p>
       </section>
 
       {/* How it works */}
       <section className={styles.howItWorks}>
         <div className={styles.howItWorksHeader}>
-          <div className={styles.howItWorksLabel}>02 — how it works</div>
-          <div className={styles.howItWorksTitle}>three ideas. one framework.</div>
+          <div className={styles.howItWorksLabel}>how it works</div>
+          <div className={styles.howItWorksTitle}>how you take up space</div>
         </div>
         <div className={styles.howItWorksGrid}>
           <div className={styles.howItWorksCol}>
@@ -81,7 +75,7 @@ export default function Home() {
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Modes</div>
-            <p className={styles.howItWorksCopyBody}>Everyone meets their needs differently. Modes help you understand what kind of attention each need requires from you right now, and give you permission to give some needs minimal attention.</p>
+            <p className={styles.howItWorksCopyBody}>Everyone meets their needs differently. Modes help you understand what kind of attention each need requires from you right now, and give you permission to not meet all your needs all the time.</p>
           </div>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
@@ -101,7 +95,7 @@ export default function Home() {
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Practices</div>
-            <p className={styles.howItWorksCopyBody}>Needs and modes are just interesting ideas without action. Practices turn needs into productive actions that take up space in your life — space that otherwise would be available to anxiety.</p>
+            <p className={styles.howItWorksCopyBody}>Without action, needs and modes are just interesting ideas. Practices turn needs into positive actions that help you own more space in your life — space that otherwise would be available to anxiety.</p>
           </div>
         </div>
       </section>
@@ -109,7 +103,7 @@ export default function Home() {
       {/* Needs */}
       <section className={styles.section} id="needs">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>02 — The Needs</div>
+          <div className={styles.eyebrow}>Get started</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPillActive}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -121,15 +115,8 @@ export default function Home() {
         <div className={styles.twoCol}>
           <div>
             <h2 className={styles.sectionHeadline}>know what <em>you</em> need.</h2>
-            <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.<br /><br /><strong>There are 10 needs most people need most.</strong></p>
-          </div>
-          <div style={{ paddingTop: 16 }}>
-            <div className={styles.bulletList}>
-              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs aren't aspirational goals.</span></div>
-              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They have no particular order.</span></div>
-              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They don't give your life meaning.</span></div>
-              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs create the conditions for meaning.</span></div>
-            </div>
+            <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.</p>
+            <p className={styles.monoBody} style={{ maxWidth: 520 }}>Based on the research of Abraham Maslow and other humanistic and positive psychologists, Maslow App centers on 10 needs. You can also create custom needs based on your own experiences.</p>
           </div>
         </div>
 
@@ -178,16 +165,12 @@ export default function Home() {
           ))}
         </div>
 
-        <div className={styles.sectionFooter}>
-          <span>§ 01 of 05 sections</span>
-          <Link href="/need" className={styles.sectionFooterLink}>explore all 10 needs →</Link>
-        </div>
       </section>
 
       {/* Modes */}
       <section className={styles.section} id="modes">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>03 — The Modes</div>
+          <div className={styles.eyebrow}>The Modes</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPill}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -217,7 +200,7 @@ export default function Home() {
       {/* Canvas */}
       <section className={styles.canvasSection} id="canvas">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>04 — Practices</div>
+          <div className={styles.eyebrow}>Practices</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPill}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -228,7 +211,8 @@ export default function Home() {
         </div>
         <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
         <div className={styles.practicesLayout}>
-          <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into daily practices with mood check-ins and data tracking to help you uncover what works, what doesn't.</p>
+          <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into custom daily practices and keeps them front and center.</p>
+          <p className={styles.canvasBody}>Maslow App isn't designed to make you feel bad about not checking off all your practices. It's simply information. With mood and practice tracking, you're able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
           <DailyLoopAnimation />
         </div>
       </section>
@@ -236,7 +220,7 @@ export default function Home() {
       {/* How it works */}
       <section className={styles.section} id="how">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>05 — How It Works</div>
+          <div className={styles.eyebrow}>How It Works</div>
         </div>
         <div style={{ maxWidth: 920 }}>
           <h2 className={styles.sectionHeadline}>your maslow,<br /><em>in four steps</em></h2>
