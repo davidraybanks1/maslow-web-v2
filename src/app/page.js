@@ -90,13 +90,6 @@ export default function Home() {
       <section className={styles.section} id="needs">
         <div className={styles.sectionHeader}>
           <div className={styles.eyebrow}>NEEDS</div>
-          <div className={styles.sectionHeaderRight}>
-            <span className={styles.sectionPillActive}>10 needs</span>
-            <span className={styles.dot}>·</span>
-            <span className={styles.sectionPill}>4 modes</span>
-            <span className={styles.dot}>·</span>
-            <span className={styles.sectionPill}>1 canvas</span>
-          </div>
         </div>
         <div className={styles.twoCol}>
           <div>
@@ -165,13 +158,6 @@ export default function Home() {
       <section className={styles.section} id="modes">
         <div className={styles.sectionHeader}>
           <div className={styles.eyebrow}>MODES</div>
-          <div className={styles.sectionHeaderRight}>
-            <span className={styles.sectionPill}>10 needs</span>
-            <span className={styles.dot}>·</span>
-            <span className={styles.sectionPillActive}>4 modes</span>
-            <span className={styles.dot}>·</span>
-            <span className={styles.sectionPill}>1 canvas</span>
-          </div>
         </div>
         <div style={{ maxWidth: 920 }}>
           <h2 className={styles.sectionHeadline}>know how <em>you</em> need it.</h2>
@@ -195,13 +181,6 @@ export default function Home() {
       <section className={styles.canvasSection} id="canvas">
         <div className={styles.sectionHeader}>
           <div className={styles.eyebrow}>PRACTICES</div>
-          <div className={styles.sectionHeaderRight}>
-            <span className={styles.sectionPill}>10 needs</span>
-            <span className={styles.dot}>·</span>
-            <span className={styles.sectionPill}>4 modes</span>
-            <span className={styles.dot}>·</span>
-            <span className={styles.sectionPillActive}>1 canvas</span>
-          </div>
         </div>
         <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
         <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into custom daily practices and keeps them front and center.</p>

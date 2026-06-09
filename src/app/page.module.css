@@ -64,32 +64,7 @@
   text-transform: uppercase;
   color: var(--ink2);
 }
-.sectionHeaderRight {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.sectionPill {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink3);
-}
-.sectionPillActive {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 3px;
-}
-.dot {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink4);
-}
+
 .sectionHeadline {
   font-family: var(--sans);
   font-size: clamp(52px, 6vw, 84px);
@@ -110,7 +85,7 @@
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 96px;
-  align-items: flex-start;
+  align-items: end;
 }
 .bulletList { border-top: 1px solid var(--border); }
 .bulletItem {
@@ -517,7 +492,7 @@
   gap: 48px;
   margin-top: 64px;
 }
-.step {}
+
 .stepNum {
   font-family: var(--serif);
   font-size: 2rem;
