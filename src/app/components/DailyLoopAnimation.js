@@ -9,134 +9,130 @@ export default function DailyLoopAnimation() {
     cancelRef.current = false
 
     function delay(ms) {
-      return new Promise(resolve => {
-        const id = setTimeout(resolve, ms)
-        cancelRef.current && clearTimeout(id)
-      })
+      return new Promise(resolve => setTimeout(resolve, ms))
     }
 
-    async function typeNote(text, elId) {
+    async function typeText(elId, text) {
+      if (cancelRef.current) return
       const el = document.getElementById(elId)
       if (!el) return
-      document.getElementById('note-wrap').classList.add(styles.visible)
       el.textContent = ''
       for (let i = 0; i < text.length; i++) {
         if (cancelRef.current) return
         el.textContent += text[i]
-        await delay(38)
+        await delay(36)
       }
     }
 
-    function setTime(t) {
-      ['morning','midday','evening'].forEach(x => {
-        const el = document.getElementById('pill-' + x)
-        if (el) el.className = styles.timePill + (x === t ? ' ' + styles.active : '')
-      })
-    }
-
-    function showRow(i) {
-      const el = document.getElementById('row-' + i)
-      if (el) el.classList.add(styles.visible)
-    }
-
-    function selectChip(row, col, color) {
-      const chip = document.getElementById('chip-' + row + '-' + col)
-      if (chip) chip.classList.add(styles.chipSelected)
-      const b = document.getElementById('b-' + row)
-      if (b) { b.style.background = color; b.style.borderColor = color; b.classList.add(styles.bubbleDone) }
-    }
-
-    function setMood(m) {
-      ['good','fine','bad'].forEach(x => {
-        const el = document.getElementById('mood-' + x)
-        if (el) el.className = styles.moodBtn + (x === m ? ' ' + styles.moodSelected : '')
-      })
-    }
-
-    function clearNote() {
-      const wrap = document.getElementById('note-wrap')
-      const el = document.getElementById('note-text')
-      if (wrap) wrap.classList.remove(styles.visible)
-      if (el) el.textContent = ''
-    }
-
-    function deselectAll() {
-      const bubbleColors = ['#1B3A2D','#1B3A2D','#B8C3B1','#E8B81F']
-      for (let r = 0; r < 4; r++) {
-        for (let c = 0; c < 2; c++) {
-          const chip = document.getElementById('chip-' + r + '-' + c)
-          if (chip) chip.classList.remove(styles.chipSelected)
-        }
-        const b = document.getElementById('b-' + r)
-        if (b) { b.style.background = ''; b.style.borderColor = bubbleColors[r]; b.classList.remove(styles.bubbleDone) }
-        const row = document.getElementById('row-' + r)
-        if (row) row.classList.remove(styles.visible)
-      }
-      const moodSection = document.getElementById('mood-section')
-      if (moodSection) moodSection.classList.remove(styles.visible)
-      setMood(null)
-      clearNote()
-      const fill = document.getElementById('prog-fill')
-      if (fill) fill.style.width = '0%'
-      const pct = document.getElementById('prog-pct')
-      if (pct) pct.textContent = '0%'
-      const label = document.getElementById('prog-label')
-      if (label) label.textContent = '0 of 10'
-    }
-
-    function setProgress(done, total) {
-      const pct = Math.round(done / total * 100)
+    function setProgress(done) {
+      const pct = Math.round(done / 10 * 100)
       const fill = document.getElementById('prog-fill')
       const pctEl = document.getElementById('prog-pct')
       const label = document.getElementById('prog-label')
       if (fill) fill.style.width = pct + '%'
       if (pctEl) pctEl.textContent = pct + '%'
-      if (label) label.textContent = done + ' of ' + total
+      if (label) label.textContent = done + '/10'
+    }
+
+    function setPracticeTime(t) {
+      ['morning', 'midday', 'evening'].forEach(x => {
+        const el = document.getElementById('p-' + x)
+        if (el) el.className = styles.timePill + (x === t ? ' ' + styles.active : '')
+      })
+    }
+
+    const BUBBLE_COLORS = ['#1B3A2D', '#1B3A2D', '#B8C3B1']
+    const BAR_HEIGHTS = [38, 52, 44, 60, 50, 65, 72, 80]
+    const NOTES = [
+      'ran before work for the first time in weeks',
+      'ate at desk, felt rushed all afternoon',
+      'quiet evening, felt like myself again'
+    ]
+
+    function reset() {
+      for (let i = 0; i < 3; i++) {
+        const row = document.getElementById('pr-' + i)
+        if (row) row.classList.remove(styles.vis)
+        const b = document.getElementById('pb-' + i)
+        if (b) { b.style.background = ''; b.style.borderColor = BUBBLE_COLORS[i]; b.classList.remove(styles.done) }
+        const ck = document.getElementById('pck-' + i)
+        if (ck) ck.textContent = ''
+      }
+      for (let i = 0; i < 6; i++) {
+        const c = document.getElementById('pc-' + i)
+        if (c) c.classList.remove(styles.chipSel)
+      }
+      const mn0 = document.getElementById('mn-0')
+      if (mn0) mn0.textContent = ''
+      ;['good', 'fine', 'bad'].forEach(m => {
+        const el = document.getElementById('mb-0-' + m)
+        if (el) el.classList.remove(styles.moodSel)
+      })
+      for (let i = 1; i < 3; i++) {
+        const m = document.getElementById('m-' + i)
+        if (m) m.classList.remove(styles.vis)
+        const mn = document.getElementById('mn-' + i)
+        if (mn) mn.textContent = ''
+        ;['good', 'fine', 'bad'].forEach(mood => {
+          const el = document.getElementById('mb-' + i + '-' + mood)
+          if (el) el.classList.remove(styles.moodSel)
+        })
+      }
+      setProgress(0)
+      setPracticeTime('morning')
+      for (let i = 0; i < 8; i++) {
+        const b = document.getElementById('bar-' + i)
+        if (b) b.style.height = '0px'
+      }
     }
 
     async function runLoop() {
       if (cancelRef.current) return
-      deselectAll()
+      reset()
       await delay(500)
 
-      setTime('morning')
-      showRow(0); await delay(500)
-      showRow(1); await delay(500)
-      selectChip(0, 0, '#1B3A2D'); setProgress(1, 10); await delay(500)
-      selectChip(1, 1, '#1B3A2D'); setProgress(2, 10); await delay(500)
-      const ms = document.getElementById('mood-section')
-      if (ms) ms.classList.add(styles.visible)
-      await delay(400)
-      setMood('good')
-      await typeNote('ran before work for the first time in weeks', 'note-text')
-      await delay(1400)
-      clearNote(); setMood(null)
-      if (ms) ms.classList.remove(styles.visible)
-      await delay(400)
+      setPracticeTime('morning')
+      document.getElementById('pr-0')?.classList.add(styles.vis); await delay(400)
+      document.getElementById('pr-1')?.classList.add(styles.vis); await delay(400)
+      document.getElementById('pc-0')?.classList.add(styles.chipSel)
+      const b0 = document.getElementById('pb-0')
+      if (b0) { b0.style.background = '#1B3A2D'; b0.style.borderColor = '#1B3A2D'; b0.classList.add(styles.done) }
+      const ck0 = document.getElementById('pck-0'); if (ck0) ck0.textContent = '✓'
+      setProgress(1)
+      document.getElementById('mb-0-good')?.classList.add(styles.moodSel)
+      await typeText('mn-0', NOTES[0]); await delay(500)
 
-      setTime('midday')
-      showRow(2); await delay(500)
-      selectChip(2, 0, '#B8C3B1'); setProgress(3, 10); await delay(500)
-      if (ms) ms.classList.add(styles.visible)
-      await delay(400)
-      setMood('fine')
-      await typeNote('skipped lunch, ate at desk again', 'note-text')
-      await delay(1400)
-      clearNote(); setMood(null)
-      if (ms) ms.classList.remove(styles.visible)
-      await delay(400)
+      if (cancelRef.current) return
+      setPracticeTime('midday')
+      document.getElementById('pr-2')?.classList.add(styles.vis); await delay(400)
+      document.getElementById('pc-2')?.classList.add(styles.chipSel)
+      const b1 = document.getElementById('pb-1')
+      if (b1) { b1.style.background = '#1B3A2D'; b1.style.borderColor = '#1B3A2D'; b1.classList.add(styles.done) }
+      const ck1 = document.getElementById('pck-1'); if (ck1) ck1.textContent = '✓'
+      setProgress(2); await delay(300)
+      document.getElementById('m-1')?.classList.add(styles.vis); await delay(300)
+      document.getElementById('mb-1-fine')?.classList.add(styles.moodSel)
+      await typeText('mn-1', NOTES[1]); await delay(500)
 
-      setTime('evening')
-      showRow(3); await delay(500)
-      selectChip(3, 1, '#E8B81F'); setProgress(4, 10); await delay(500)
-      if (ms) ms.classList.add(styles.visible)
-      await delay(400)
-      setMood('bad')
-      await typeNote('too much screen time, felt disconnected all evening', 'note-text')
-      await delay(1800)
-      clearNote(); setMood(null)
+      if (cancelRef.current) return
+      setPracticeTime('evening')
+      document.getElementById('pc-4')?.classList.add(styles.chipSel)
+      const b2 = document.getElementById('pb-2')
+      if (b2) { b2.style.background = '#B8C3B1'; b2.style.borderColor = '#B8C3B1'; b2.classList.add(styles.done) }
+      const ck2 = document.getElementById('pck-2'); if (ck2) ck2.textContent = '✓'
+      setProgress(3); await delay(300)
+      document.getElementById('m-2')?.classList.add(styles.vis); await delay(300)
+      document.getElementById('mb-2-bad')?.classList.add(styles.moodSel)
+      await typeText('mn-2', NOTES[2]); await delay(600)
 
-      await delay(600)
+      if (cancelRef.current) return
+      for (let i = 0; i < 8; i++) {
+        const b = document.getElementById('bar-' + i)
+        if (b) b.style.height = BAR_HEIGHTS[i] + 'px'
+        await delay(120)
+      }
+
+      await delay(2000)
       if (!cancelRef.current) runLoop()
     }
 
@@ -145,51 +141,99 @@ export default function DailyLoopAnimation() {
   }, [])
 
   return (
-    <div className={styles.scene}>
-      <div className={styles.timeRow}>
-        <div className={styles.timePill} id="pill-morning">morning</div>
-        <div className={styles.timePill} id="pill-midday">midday</div>
-        <div className={styles.timePill} id="pill-evening">evening</div>
-      </div>
+    <div className={styles.grid}>
 
-      <div className={styles.practicesRow}>
+      {/* Col 1: Practices */}
+      <div className={styles.col}>
+        <div className={styles.colLabel}>Daily practices</div>
+        <div className={styles.colTitle}>what you do</div>
+        <div className={styles.timeRow}>
+          <div className={styles.timePill} id="p-morning">morning</div>
+          <div className={styles.timePill} id="p-midday">midday</div>
+          <div className={styles.timePill} id="p-evening">evening</div>
+        </div>
         {[
           { id: 0, color: '#1B3A2D', name: 'Movement',   chips: ['Morning run', 'Bike'] },
-          { id: 1, color: '#1B3A2D', name: 'Reflection',  chips: ['Journal', 'Meditate'] },
-          { id: 2, color: '#B8C3B1', name: 'Nutrition',   chips: ['Cook a meal', 'Greens'] },
-          { id: 3, color: '#E8B81F', name: 'Beauty',      chips: ['Time in nature', 'Listen to music'] },
-        ].map(r => (
-          <div key={r.id} className={styles.needRow} id={'row-' + r.id}>
-            <div className={styles.bubble} id={'b-' + r.id} style={{ borderColor: r.color }}>
-              <span className={styles.check}>✓</span>
+          { id: 1, color: '#1B3A2D', name: 'Reflection', chips: ['Journal', 'Meditate'] },
+          { id: 2, color: '#B8C3B1', name: 'Nutrition',  chips: ['Cook a meal', 'Greens'] },
+        ].map((r) => (
+          <div key={r.id} className={styles.needRow} id={'pr-' + r.id}>
+            <div className={styles.bubble} id={'pb-' + r.id} style={{ borderColor: r.color }}>
+              <span id={'pck-' + r.id}></span>
             </div>
             <div className={styles.needName}>{r.name}</div>
             <div className={styles.chips}>
               {r.chips.map((c, ci) => (
-                <div key={ci} className={styles.chip} id={`chip-${r.id}-${ci}`}>{c}</div>
+                <div key={ci} className={styles.chip} id={`pc-${r.id * 2 + ci}`}>{c}</div>
               ))}
             </div>
           </div>
         ))}
-      </div>
-
-      <div className={styles.moodSection} id="mood-section">
-        <div className={styles.moodRow}>
-          <div className={styles.moodLabel}>mood</div>
-          <div className={styles.moodBtn} id="mood-good">good</div>
-          <div className={styles.moodBtn} id="mood-fine">fine</div>
-          <div className={styles.moodBtn} id="mood-bad">bad</div>
-        </div>
-        <div className={styles.noteWrap} id="note-wrap">
-          <div className={styles.noteText} id="note-text"></div>
+        <div className={styles.progRow}>
+          <div className={styles.progLabel} id="prog-label">0/10</div>
+          <div className={styles.progTrack}><div className={styles.progFill} id="prog-fill"></div></div>
+          <div className={styles.progPct} id="prog-pct">0%</div>
         </div>
       </div>
 
-      <div className={styles.progressSection}>
-        <div className={styles.progLabel} id="prog-label">0 of 10</div>
-        <div className={styles.progTrack}><div className={styles.progFill} id="prog-fill"></div></div>
-        <div className={styles.progPct} id="prog-pct">0%</div>
+      {/* Col 2: Mood */}
+      <div className={styles.col}>
+        <div className={styles.colLabel}>Mood check-ins</div>
+        <div className={styles.colTitle}>how you feel</div>
+        <div className={`${styles.moodBlock} ${styles.alwaysVisible}`} id="m-0">
+          <div className={styles.moodBlockTop}>
+            <div className={styles.moodTime}>morning</div>
+            <div className={styles.moodBtns}>
+              {['good', 'fine', 'bad'].map(m => (
+                <div key={m} className={styles.moodBtn} id={`mb-0-${m}`}>{m}</div>
+              ))}
+            </div>
+          </div>
+          <div className={styles.moodNote} id="mn-0"></div>
+        </div>
+        {[1, 2].map(i => (
+          <div key={i} className={styles.moodBlock} id={`m-${i}`}>
+            <div className={styles.moodBlockTop}>
+              <div className={styles.moodTime}>{i === 1 ? 'midday' : 'evening'}</div>
+              <div className={styles.moodBtns}>
+                {['good', 'fine', 'bad'].map(m => (
+                  <div key={m} className={styles.moodBtn} id={`mb-${i}-${m}`}>{m}</div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.moodNote} id={`mn-${i}`}></div>
+          </div>
+        ))}
       </div>
+
+      {/* Col 3: Chart */}
+      <div className={`${styles.col} ${styles.colLast}`}>
+        <div className={styles.colLabel}>Progress tracking</div>
+        <div className={styles.colTitle}>what's working</div>
+        <div className={styles.chartArea}>
+          {[
+            { bg: '#E8B81F', op: 1 },
+            { bg: '#E8B81F', op: 0.85 },
+            { bg: '#E8B81F', op: 0.7 },
+            { bg: '#E8B81F', op: 1 },
+            { bg: '#1B3A2D', op: 0.7 },
+            { bg: '#1B3A2D', op: 0.85 },
+            { bg: '#1B3A2D', op: 1 },
+            { bg: '#1B3A2D', op: 1 },
+          ].map((b, i) => (
+            <div key={i} className={styles.barGroup}>
+              <div className={styles.bar} id={`bar-${i}`} style={{ height: 0, background: b.bg, opacity: b.op }} />
+              <div className={styles.barWeek}>W{i + 1}</div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.chartDivider} />
+        <div className={styles.chartLegend}>
+          <div className={styles.legendItem}><div className={styles.legendDot} style={{ background: '#E8B81F' }} />practices</div>
+          <div className={styles.legendItem}><div className={styles.legendDot} style={{ background: '#1B3A2D' }} />mood</div>
+        </div>
+      </div>
+
     </div>
   )
 }

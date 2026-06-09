@@ -209,12 +209,9 @@ export default function Home() {
             <span className={styles.sectionPillActive}>1 canvas</span>
           </div>
         </div>
-        <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
-        <div className={styles.practicesLayout}>
-          <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into custom daily practices and keeps them front and center.</p>
-          <p className={styles.canvasBody}>Maslow App isn't designed to make you feel bad about not checking off all your practices. It's simply information. With mood and practice tracking, you're able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
-          <DailyLoopAnimation />
-        </div>
+        <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into custom daily practices and keeps them front and center.</p>
+        <p className={styles.canvasBody}>Maslow App isn't designed to make you feel bad about not checking off all your practices. It's simply information. With mood and practice tracking, you're able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
+        <DailyLoopAnimation />
       </section>
 
       {/* How it works */}
