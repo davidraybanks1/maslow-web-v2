@@ -133,25 +133,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.needsGridHeader}>
-          <span>fig. 02 — the ten</span>
-          <span className={styles.needsGridHint}>hover to learn more</span>
-        </div>
-        <div className={styles.needsGrid}>
+        <div className={styles.needsTable}>
           {NEEDS.map((need, i) => (
-            <div key={need.id} className={styles.needCard}>
-              <div className={styles.needCardFront}>
-                <div className={styles.needCardTop}>
-                  <span className={styles.needCardNum}>{need.num}</span>
-                  <span className={styles.needCardPip} style={{ background: need.pip }} />
-                </div>
-                <div>
-                  <div className={styles.needCardName}>{need.name}</div>
-                </div>
+            <div key={need.id} className={styles.needsRow}>
+              <span className={styles.modeRowNum}>{need.num}</span>
+              <div className={styles.modeRowLabel}>
+                <span className={styles.modePip} style={{ background: need.pip }} />
+                <span className={styles.modeName} style={{ color: need.pip }}>{need.name}</span>
               </div>
-              <div className={styles.needCardBack}>
-                <p className={styles.needCardDesc}>{need.desc}</p>
-              </div>
+              <p className={styles.modeDesc}>{need.desc}</p>
             </div>
           ))}
         </div>

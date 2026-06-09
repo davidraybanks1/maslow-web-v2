@@ -316,6 +316,21 @@
 .sectionFooterLink:hover { border-color: var(--ink); }
 
 /* Modes */
+.needsTable {
+  width: 100%;
+  margin-top: 40px;
+}
+.needsRow {
+  display: grid;
+  grid-template-columns: 48px 200px 1fr;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 0.5px solid var(--border);
+  gap: 24px;
+}
+.needsRow:first-child {
+  border-top: 0.5px solid var(--border);
+}
 .modesTable {
   border-top: 1px solid var(--border);
   margin-top: 64px;
@@ -609,6 +624,8 @@
   .twoCol { grid-template-columns: 1fr; gap: 48px; }
   .needsGrid { display: none; }
   .needsGridHeader { display: none; }
+  .needsRow { grid-template-columns: 40px 1fr; gap: 16px; }
+  .needsRow > p { grid-column: 1 / -1; }
   .needsMobileList { display: block; margin-top: 48px; }
   .modeRow { grid-template-columns: 40px 1fr; gap: 16px; }
   .modeDesc { grid-column: 1 / -1; }
