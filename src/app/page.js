@@ -31,29 +31,29 @@ export default function Home() {
           anxiety isn't who you are.<br />it's who you <em>aren't.</em>
         </h1>
         <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own. Don't try to manage anxiety. Focus on meeting your needs.</p>
-        <p className={styles.heroBody}>Maslow App is designed to help you take up space.</p>
+        <p className={styles.heroBody}>Maslow App is designed to help you take back space.</p>
       </section>
 
       {/* How it works */}
       <section className={styles.howItWorks}>
         <div className={styles.howItWorksHeader}>
           <div className={styles.howItWorksLabel}>HOW IT WORKS</div>
-          <div className={styles.howItWorksTitle}>how you take up space</div>
+          <div className={styles.howItWorksTitle}>how you take back space.</div>
         </div>
         <div className={styles.howItWorksGrid}>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
-              <svg width="168" height="140" viewBox="0 0 120 100" fill="none">
-                <circle cx="60" cy="18" r="6" fill="#E8B81F"/>
-                <circle cx="44" cy="38" r="6" fill="#1A1A1A" opacity="0.15"/>
-                <circle cx="76" cy="38" r="6" fill="#1A1A1A" opacity="0.15"/>
-                <circle cx="28" cy="58" r="6" fill="#1A1A1A" opacity="0.15"/>
-                <circle cx="60" cy="58" r="6" fill="#1A1A1A" opacity="0.15"/>
-                <circle cx="92" cy="58" r="6" fill="#1A1A1A" opacity="0.15"/>
-                <circle cx="12" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
-                <circle cx="44" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
-                <circle cx="76" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
-                <circle cx="108" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
+              <svg width="80" height="56" viewBox="0 0 80 56" fill="none">
+                <circle cx="40" cy="4" r="3" fill="#E8B81F"/>
+                <circle cx="32" cy="16" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="48" cy="16" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="24" cy="28" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="40" cy="28" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="56" cy="28" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="16" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+                <circle cx="32" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+                <circle cx="48" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+                <circle cx="64" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Needs</div>
@@ -61,17 +61,11 @@ export default function Home() {
           </div>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
-              <svg width="168" height="120" viewBox="0 0 140 100" fill="none">
-                <rect x="8" y="30" width="28" height="8" rx="4" fill="#1B3A2D"/>
-                <rect x="8" y="46" width="28" height="8" rx="4" fill="#1B3A2D"/>
-                <rect x="8" y="62" width="28" height="8" rx="4" fill="#1B3A2D"/>
-                <rect x="44" y="22" width="44" height="8" rx="4" fill="#B8C3B1"/>
-                <rect x="44" y="38" width="44" height="8" rx="4" fill="#B8C3B1"/>
-                <rect x="44" y="54" width="44" height="8" rx="4" fill="#B8C3B1"/>
-                <rect x="44" y="70" width="44" height="8" rx="4" fill="#B8C3B1"/>
-                <rect x="96" y="34" width="36" height="8" rx="4" fill="#E8B81F"/>
-                <rect x="96" y="50" width="36" height="8" rx="4" fill="#E8B81F"/>
-                <rect x="96" y="66" width="24" height="8" rx="4" fill="#D93B1C" opacity="0.4"/>
+              <svg width="80" height="56" viewBox="0 0 80 56" fill="none">
+                <line x1="8" y1="12" x2="72" y2="12" stroke="#1B3A2D" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="8" y1="24" x2="56" y2="24" stroke="#B8C3B1" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="8" y1="36" x2="40" y2="36" stroke="#E8B81F" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="8" y1="48" x2="20" y2="48" stroke="#D93B1C" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Modes</div>
@@ -79,19 +73,11 @@ export default function Home() {
           </div>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
-              <svg width="168" height="120" viewBox="0 0 140 100" fill="none">
-                <rect x="8" y="58" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
-                <rect x="8" y="58" width="80" height="6" rx="3" fill="#E8B81F"/>
-                <rect x="8" y="72" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
-                <rect x="8" y="72" width="40" height="6" rx="3" fill="#1A1A1A" opacity="0.2"/>
-                <rect x="8" y="86" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
-                <rect x="8" y="86" width="100" height="6" rx="3" fill="#E8B81F"/>
-                <circle cx="18" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
-                <circle cx="44" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
-                <circle cx="70" cy="30" r="10" fill="#1B3A2D" opacity="0.9"/>
-                <circle cx="96" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
-                <circle cx="122" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
-                <path d="M65 30 L75 30 M70 25 L70 35" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              <svg width="80" height="56" viewBox="0 0 80 56" fill="none">
+                <circle cx="40" cy="28" r="20" stroke="#1A1A1A" strokeWidth="1" fill="none" opacity="0.15"/>
+                <path d="M40 8 A20 20 0 0 1 60 28" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+                <path d="M40 8 A20 20 0 1 0 40 48" stroke="#E8B81F" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <circle cx="40" cy="28" r="3" fill="#1A1A1A"/>
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Practices</div>
