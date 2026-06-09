@@ -372,6 +372,13 @@
   max-width: 1440px;
   margin: 0 auto;
 }
+.practicesLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 40px;
+}
 .canvasHed {
   font-family: var(--sans);
   font-size: clamp(52px, 6vw, 84px);
@@ -597,6 +604,7 @@
 /* Responsive */
 @media (max-width: 900px) {
   .hero, .section, .canvasSection, .cta, .howItWorks { padding-left: 24px; padding-right: 24px; }
+  .practicesLayout { grid-template-columns: 1fr; gap: 40px; }
   .howItWorksGrid { grid-template-columns: 1fr; }
   .twoCol { grid-template-columns: 1fr; gap: 48px; }
   .needsGrid { display: none; }

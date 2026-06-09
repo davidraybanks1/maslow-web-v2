@@ -222,9 +222,13 @@ export default function Home() {
             <span className={styles.sectionPillActive}>1 canvas</span>
           </div>
         </div>
-        <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
-        <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into daily practices with mood check-ins and data tracking to help you uncover what works, what doesn't.</p>
-        <DailyLoopAnimation />
+  <div className={styles.practicesLayout}>
+    <div>
+      <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
+      <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into daily practices with mood check-ins and data tracking to help you uncover what works, what doesn't.</p>
+    </div>
+    <DailyLoopAnimation />
+  </div>
       </section>
 
       {/* How it works */}
