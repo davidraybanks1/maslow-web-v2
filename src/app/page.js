@@ -213,7 +213,7 @@ export default function Home() {
       {/* Canvas */}
       <section className={styles.canvasSection} id="canvas">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>04 — Your Canvas</div>
+          <div className={styles.eyebrow}>04 — Practices</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPill}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -223,7 +223,7 @@ export default function Home() {
           </div>
         </div>
         <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
-        <p className={styles.canvasBody}>Your canvas brings it all together. It's where you decide the mode in which you will approach each need. When you meet the needs important to you in a way that makes sense to you, you become more of yourself and leave less space for anxiety.</p>
+        <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into daily practices with mood check-ins and data tracking to help you uncover what works, what doesn't.</p>
         <CanvasAnimation />
       </section>
 
