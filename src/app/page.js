@@ -43,8 +43,7 @@ export default function Home() {
       {/* How it works */}
       <section className={styles.howItWorks}>
         <div className={styles.howItWorksHeader}>
-          <div className={styles.howItWorksLabel}>how it works</div>
-          <div className={styles.howItWorksTitle}>three ideas. one practice.</div>
+          <div className={styles.howItWorksTitle}>how it works.</div>
         </div>
         <div className={styles.howItWorksGrid}>
           <div className={styles.howItWorksCard}>
