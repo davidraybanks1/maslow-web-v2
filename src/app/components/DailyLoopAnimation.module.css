@@ -1,0 +1,110 @@
+.scene {
+  width: 100%;
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.timeRow { display: flex; gap: 8px; align-items: center; }
+.timePill {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 0.5px solid var(--border);
+  color: var(--ink3);
+  transition: all 0.4s ease;
+}
+.timePill.active, .active { background: #1A1A1A; color: #fff; border-color: #1A1A1A; }
+.practicesRow { display: flex; flex-direction: column; gap: 12px; }
+.needRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.needRow.visible, .visible { opacity: 1; transform: translateY(0); }
+.bubble {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border2);
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bubbleDone { border-color: transparent !important; }
+.bubbleDone .check { opacity: 1; }
+.check { font-size: 9px; color: #fff; opacity: 0; transition: opacity 0.3s ease; }
+.needName { font-family: var(--serif); font-size: 13px; color: var(--ink); min-width: 80px; }
+.chips { display: flex; gap: 5px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 0.5px solid var(--border2);
+  color: var(--ink);
+  transition: all 0.35s ease;
+}
+.chipSelected { background: #1A1A1A; color: #fff; border-color: #1A1A1A; }
+.moodSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.moodRow { display: flex; align-items: center; gap: 10px; }
+.moodLabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  min-width: 48px;
+}
+.moodBtn {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 0.5px solid var(--border);
+  color: var(--ink3);
+  transition: all 0.35s ease;
+}
+.moodSelected { background: #1A1A1A; color: #fff; border-color: #1A1A1A; }
+.noteWrap {
+  padding-left: 56px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.noteText {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 200;
+  color: var(--ink2);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  min-height: 18px;
+}
+.progressSection {
+  border-top: 0.5px solid var(--border);
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.progLabel { font-family: var(--mono); font-size: 10px; color: var(--ink3); min-width: 60px; }
+.progTrack { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.progFill { height: 100%; background: #E8B81F; border-radius: 2px; width: 0%; transition: width 0.8s ease; }
+.progPct { font-family: var(--mono); font-size: 10px; color: var(--ink3); min-width: 32px; text-align: right; }
