@@ -239,24 +239,29 @@ export default function Home() {
           <div className={styles.eyebrow}>05 — How It Works</div>
         </div>
         <div style={{ maxWidth: 920 }}>
-          <h2 className={styles.sectionHeadline}>your maslow,<br /><em>in three steps</em></h2>
+          <h2 className={styles.sectionHeadline}>your maslow,<br /><em>in four steps</em></h2>
           <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>It takes about five minutes to set up. Then it runs in the background of your life.</p>
         </div>
         <div className={styles.stepsGrid}>
           <div className={styles.step}>
             <div className={styles.stepNum}>01</div>
-            <div className={styles.stepTitle}>Set your intentions</div>
-            <p className={styles.stepBody}>Before anything else, get clear on where you're going. What does a good life look like for you right now? Without direction, meeting your needs is just maintenance.</p>
+            <div className={styles.stepTitle}>Answer a few questions</div>
+            <p className={styles.stepBody}>Tell Maslow where you are in life right now — what's hard, what you value, what pulls at you. Your answers shape a starting canvas built around your actual life, not a generic template.</p>
           </div>
           <div className={styles.step}>
             <div className={styles.stepNum}>02</div>
-            <div className={styles.stepTitle}>Build your canvas</div>
-            <p className={styles.stepBody}>Answer a short survey and Maslow proposes a canvas — a visual map of your ten needs, sized by how much attention each one deserves right now.</p>
+            <div className={styles.stepTitle}>Review your canvas</div>
+            <p className={styles.stepBody}>Maslow proposes a canvas — your ten needs, each assigned a mode based on your answers. Move things around until it feels right. This is your starting point.</p>
           </div>
           <div className={styles.step}>
             <div className={styles.stepNum}>03</div>
+            <div className={styles.stepTitle}>Build your practice library</div>
+            <p className={styles.stepBody}>For each need, add a handful of practices — the specific things you actually do to meet that need. You don't have to meet your needs the same way every day. The library gives you options.</p>
+          </div>
+          <div className={styles.step}>
+            <div className={styles.stepNum}>04</div>
             <div className={styles.stepTitle}>Track and reflect</div>
-            <p className={styles.stepBody}>Check in as you go. At the end of each week, your summary shows what you built, what you didn't, and what the data suggests for next week.</p>
+            <p className={styles.stepBody}>Check in three times a day. Log your mood. Note what's behind it. Over time, the data shows you what's working, what isn't, and where to focus next.</p>
           </div>
         </div>
       </section>
