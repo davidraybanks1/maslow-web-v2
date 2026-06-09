@@ -40,6 +40,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How it works */}
+      <section className={styles.howItWorks}>
+        <div className={styles.howItWorksHeader}>
+          <div className={styles.howItWorksLabel}>how it works</div>
+          <div className={styles.howItWorksTitle}>three ideas. one practice.</div>
+        </div>
+        <div className={styles.howItWorksGrid}>
+          <div className={styles.howItWorksCard}>
+            <div className={styles.howItWorksIllustration}>
+              <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+                <circle cx="60" cy="18" r="6" fill="#E8B81F"/>
+                <circle cx="44" cy="38" r="6" fill="#1A1A1A" opacity="0.15"/>
+                <circle cx="76" cy="38" r="6" fill="#1A1A1A" opacity="0.15"/>
+                <circle cx="28" cy="58" r="6" fill="#1A1A1A" opacity="0.15"/>
+                <circle cx="60" cy="58" r="6" fill="#1A1A1A" opacity="0.15"/>
+                <circle cx="92" cy="58" r="6" fill="#1A1A1A" opacity="0.15"/>
+                <circle cx="12" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
+                <circle cx="44" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
+                <circle cx="76" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
+                <circle cx="108" cy="78" r="6" fill="#1A1A1A" opacity="0.08"/>
+              </svg>
+            </div>
+            <div className={styles.howItWorksCopy}>
+              <div className={styles.howItWorksCopyLabel}>Needs</div>
+              <p className={styles.howItWorksCopyBody}>There are basic things we need as humans but we often fast-forward through them to get to what we want. But without meeting your needs, it's hard to appreciate what you have, who you are, and what you achieve.</p>
+            </div>
+          </div>
+          <div className={styles.howItWorksCard}>
+            <div className={styles.howItWorksIllustration}>
+              <svg width="140" height="100" viewBox="0 0 140 100" fill="none">
+                <rect x="8" y="30" width="28" height="8" rx="4" fill="#1B3A2D"/>
+                <rect x="8" y="46" width="28" height="8" rx="4" fill="#1B3A2D"/>
+                <rect x="8" y="62" width="28" height="8" rx="4" fill="#1B3A2D"/>
+                <rect x="44" y="22" width="44" height="8" rx="4" fill="#B8C3B1"/>
+                <rect x="44" y="38" width="44" height="8" rx="4" fill="#B8C3B1"/>
+                <rect x="44" y="54" width="44" height="8" rx="4" fill="#B8C3B1"/>
+                <rect x="44" y="70" width="44" height="8" rx="4" fill="#B8C3B1"/>
+                <rect x="96" y="34" width="36" height="8" rx="4" fill="#E8B81F"/>
+                <rect x="96" y="50" width="36" height="8" rx="4" fill="#E8B81F"/>
+                <rect x="96" y="66" width="24" height="8" rx="4" fill="#D93B1C" opacity="0.4"/>
+              </svg>
+            </div>
+            <div className={styles.howItWorksCopy}>
+              <div className={styles.howItWorksCopyLabel}>Modes</div>
+              <p className={styles.howItWorksCopyBody}>Everyone meets their needs differently. Modes help you understand what kind of attention each need requires from you right now, and give you permission to give some needs minimal attention.</p>
+            </div>
+          </div>
+          <div className={styles.howItWorksCard}>
+            <div className={styles.howItWorksIllustration}>
+              <svg width="140" height="100" viewBox="0 0 140 100" fill="none">
+                <rect x="8" y="58" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
+                <rect x="8" y="58" width="80" height="6" rx="3" fill="#E8B81F"/>
+                <rect x="8" y="72" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
+                <rect x="8" y="72" width="40" height="6" rx="3" fill="#1A1A1A" opacity="0.2"/>
+                <rect x="8" y="86" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
+                <rect x="8" y="86" width="100" height="6" rx="3" fill="#E8B81F"/>
+                <circle cx="18" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
+                <circle cx="44" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
+                <circle cx="70" cy="30" r="10" fill="#1B3A2D" opacity="0.9"/>
+                <circle cx="96" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
+                <circle cx="122" cy="30" r="10" fill="none" stroke="#1A1A1A" strokeWidth="1" opacity="0.15"/>
+                <path d="M65 30 L75 30 M70 25 L70 35" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <div className={styles.howItWorksCopy}>
+              <div className={styles.howItWorksCopyLabel}>Practices</div>
+              <p className={styles.howItWorksCopyBody}>Needs and modes are just interesting ideas without action. Practices turn needs into productive actions that take up space in your life — space that otherwise would be available to anxiety.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Needs */}
       <section className={styles.section} id="needs">
         <div className={styles.sectionHeader}>

@@ -13,7 +13,9 @@
   --nour:    #E8B81F;
   --surv:    #D93B1C;
   --sans: 'Instrument Sans', Inter, system-ui, sans-serif;
+  --serif: 'Instrument Serif', Georgia, serif;
   --mono: 'DM Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --bg2: #F7F7F5;
 }
 
 html {
