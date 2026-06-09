@@ -116,10 +116,9 @@ export default function Home() {
           <div>
             <h2 className={styles.sectionHeadline}>know what <em>you</em> need.</h2>
             <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.</p>
-            <p className={styles.monoBody} style={{ maxWidth: 520 }}>Based on the research of Abraham Maslow and other humanistic and positive psychologists, Maslow App centers on 10 needs. You can also create custom needs based on your own experiences.</p>
+            <p className={styles.monoBody} style={{ marginTop: 20, maxWidth: 520 }}>Based on the research of Abraham Maslow and other humanistic and positive psychologists, Maslow App centers on 10 needs. You can also create custom needs based on your own experiences.</p>
           </div>
           <div style={{ paddingTop: 16 }}>
-            <p className={styles.monoBody} style={{ marginBottom: 16 }}><strong>There are 10 needs most people need most.</strong></p>
             <div className={styles.bulletList}>
               <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs aren't aspirational goals.</span></div>
               <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They have no particular order.</span></div>
@@ -218,6 +217,7 @@ export default function Home() {
             <span className={styles.sectionPillActive}>1 canvas</span>
           </div>
         </div>
+        <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
         <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into custom daily practices and keeps them front and center.</p>
         <p className={styles.canvasBody}>Maslow App isn't designed to make you feel bad about not checking off all your practices. It's simply information. With mood and practice tracking, you're able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
         <DailyLoopAnimation />
