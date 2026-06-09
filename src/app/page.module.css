@@ -316,6 +316,33 @@
 .sectionFooterLink:hover { border-color: var(--ink); }
 
 /* Modes */
+.needsHairlineGrid {
+  width: 100%;
+  border-top: 0.5px solid var(--border);
+  margin-top: 40px;
+}
+.needsHairlineRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 0.5px solid var(--border);
+}
+.needsHairlineCell {
+  padding: 20px 16px 24px;
+}
+.needsHairlineMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+.needsHairlineDesc {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  line-height: 1.6;
+  font-weight: 200;
+  margin-top: 8px;
+}
 .needsTable {
   width: 100%;
   margin-top: 40px;
@@ -624,6 +651,7 @@
   .twoCol { grid-template-columns: 1fr; gap: 48px; }
   .needsGrid { display: none; }
   .needsGridHeader { display: none; }
+  .needsHairlineGrid { display: none; }
   .needsRow { grid-template-columns: 40px 1fr; gap: 16px; }
   .needsRow > p { grid-column: 1 / -1; }
   .needsMobileList { display: block; margin-top: 48px; }

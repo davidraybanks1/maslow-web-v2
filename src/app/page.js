@@ -133,17 +133,31 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.needsTable}>
-          {NEEDS.map((need, i) => (
-            <div key={need.id} className={styles.needsRow}>
-              <span className={styles.modeRowNum}>{need.num}</span>
-              <div className={styles.modeRowLabel}>
-                <span className={styles.modePip} style={{ background: need.pip }} />
-                <span className={styles.modeName} style={{ color: need.pip }}>{need.name}</span>
+        <div className={styles.needsHairlineGrid}>
+          <div className={styles.needsHairlineRow}>
+            {NEEDS.slice(0, 5).map((need, i) => (
+              <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 4 ? '0.5px solid var(--border)' : 'none' }}>
+                <div className={styles.needsHairlineMeta}>
+                  <span className={styles.needCardNum}>{need.num}</span>
+                  <span className={styles.needCardPip} style={{ background: need.pip }} />
+                </div>
+                <div className={styles.needCardName}>{need.name}</div>
+                <p className={styles.needsHairlineDesc}>{need.desc}</p>
               </div>
-              <p className={styles.modeDesc}>{need.desc}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className={styles.needsHairlineRow}>
+            {NEEDS.slice(5, 10).map((need, i) => (
+              <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 4 ? '0.5px solid var(--border)' : 'none' }}>
+                <div className={styles.needsHairlineMeta}>
+                  <span className={styles.needCardNum}>{need.num}</span>
+                  <span className={styles.needCardPip} style={{ background: need.pip }} />
+                </div>
+                <div className={styles.needCardName}>{need.name}</div>
+                <p className={styles.needsHairlineDesc}>{need.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className={styles.needsMobileList}>
