@@ -377,7 +377,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: start;
-  margin-top: 40px;
+  margin-top: 24px;
 }
 .canvasHed {
   font-family: var(--sans);
