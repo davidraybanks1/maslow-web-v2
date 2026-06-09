@@ -48,7 +48,7 @@ export default function Home() {
         </div>
         <div className={styles.howItWorksGrid}>
           <div className={styles.howItWorksCol}>
-            <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+            <svg width="168" height="140" viewBox="0 0 120 100" fill="none">
               <circle cx="60" cy="18" r="6" fill="#E8B81F"/>
               <circle cx="44" cy="38" r="6" fill="#1A1A1A" opacity="0.15"/>
               <circle cx="76" cy="38" r="6" fill="#1A1A1A" opacity="0.15"/>
@@ -64,7 +64,7 @@ export default function Home() {
             <p className={styles.howItWorksCopyBody}>There are basic things we need as humans but we often fast-forward through them to get to what we want. But without meeting your needs, it's hard to appreciate what you have, who you are, and what you achieve.</p>
           </div>
           <div className={styles.howItWorksCol}>
-            <svg width="140" height="100" viewBox="0 0 140 100" fill="none">
+            <svg width="168" height="120" viewBox="0 0 140 100" fill="none">
               <rect x="8" y="30" width="28" height="8" rx="4" fill="#1B3A2D"/>
               <rect x="8" y="46" width="28" height="8" rx="4" fill="#1B3A2D"/>
               <rect x="8" y="62" width="28" height="8" rx="4" fill="#1B3A2D"/>
@@ -80,7 +80,7 @@ export default function Home() {
             <p className={styles.howItWorksCopyBody}>Everyone meets their needs differently. Modes help you understand what kind of attention each need requires from you right now, and give you permission to give some needs minimal attention.</p>
           </div>
           <div className={styles.howItWorksCol}>
-            <svg width="140" height="100" viewBox="0 0 140 100" fill="none">
+            <svg width="168" height="120" viewBox="0 0 140 100" fill="none">
               <rect x="8" y="58" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>
               <rect x="8" y="58" width="80" height="6" rx="3" fill="#E8B81F"/>
               <rect x="8" y="72" width="124" height="6" rx="3" fill="#1A1A1A" opacity="0.08"/>

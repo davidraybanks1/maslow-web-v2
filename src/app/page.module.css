@@ -556,10 +556,12 @@
   margin-bottom: 16px;
 }
 .howItWorksTitle {
-  font-family: var(--serif);
-  font-size: 28px;
+  font-family: var(--sans);
+  font-size: clamp(52px, 6vw, 84px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  line-height: 1.2;
 }
 .howItWorksGrid {
   display: grid;
@@ -569,7 +571,11 @@
 .howItWorksCol {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
+}
+.howItWorksCol > svg {
+  align-self: center;
 }
 .howItWorksCopyLabel {
   font-family: var(--serif);
