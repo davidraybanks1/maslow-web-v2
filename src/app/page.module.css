@@ -557,10 +557,10 @@
 }
 .howItWorksTitle {
   font-family: var(--sans);
-  font-size: clamp(52px, 6vw, 84px);
+  font-size: clamp(48px, 5.5vw, 72px);
   font-weight: 400;
-  line-height: 1.02;
-  letter-spacing: -0.01em;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 .howItWorksGrid {
@@ -571,11 +571,14 @@
 .howItWorksCol {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 16px;
 }
-.howItWorksCol > svg {
-  align-self: center;
+.howItWorksIllustration {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 .howItWorksCopyLabel {
   font-family: var(--serif);
