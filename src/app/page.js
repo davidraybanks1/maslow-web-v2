@@ -37,7 +37,7 @@ export default function Home() {
       {/* How it works */}
       <section className={styles.howItWorks}>
         <div className={styles.howItWorksHeader}>
-          <div className={styles.howItWorksLabel}>how it works</div>
+          <div className={styles.howItWorksLabel}>HOW IT WORKS</div>
           <div className={styles.howItWorksTitle}>how you take up space</div>
         </div>
         <div className={styles.howItWorksGrid}>
@@ -103,7 +103,7 @@ export default function Home() {
       {/* Needs */}
       <section className={styles.section} id="needs">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>Get started</div>
+          <div className={styles.eyebrow}>NEEDS</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPillActive}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -117,6 +117,15 @@ export default function Home() {
             <h2 className={styles.sectionHeadline}>know what <em>you</em> need.</h2>
             <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.</p>
             <p className={styles.monoBody} style={{ maxWidth: 520 }}>Based on the research of Abraham Maslow and other humanistic and positive psychologists, Maslow App centers on 10 needs. You can also create custom needs based on your own experiences.</p>
+          </div>
+          <div style={{ paddingTop: 16 }}>
+            <p className={styles.monoBody} style={{ marginBottom: 16 }}><strong>There are 10 needs most people need most.</strong></p>
+            <div className={styles.bulletList}>
+              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs aren't aspirational goals.</span></div>
+              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They have no particular order.</span></div>
+              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>They don't give your life meaning.</span></div>
+              <div className={styles.bulletItem}><span className={styles.bulletDot}>•</span><span>Needs create the conditions for meaning.</span></div>
+            </div>
           </div>
         </div>
 
@@ -170,7 +179,7 @@ export default function Home() {
       {/* Modes */}
       <section className={styles.section} id="modes">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>The Modes</div>
+          <div className={styles.eyebrow}>MODES</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPill}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -200,7 +209,7 @@ export default function Home() {
       {/* Canvas */}
       <section className={styles.canvasSection} id="canvas">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>Practices</div>
+          <div className={styles.eyebrow}>PRACTICES</div>
           <div className={styles.sectionHeaderRight}>
             <span className={styles.sectionPill}>10 needs</span>
             <span className={styles.dot}>·</span>
@@ -217,7 +226,7 @@ export default function Home() {
       {/* How it works */}
       <section className={styles.section} id="how">
         <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>How It Works</div>
+          <div className={styles.eyebrow}>GET STARTED</div>
         </div>
         <div style={{ maxWidth: 920 }}>
           <h2 className={styles.sectionHeadline}>your maslow,<br /><em>in four steps</em></h2>
