@@ -1,14 +1,12 @@
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(3, 1fr);
   border-top: 0.5px solid var(--border);
   border-left: 0.5px solid var(--border);
   margin-top: 40px;
-  max-width: 720px;
 }
 .cell {
-  padding: 32px 28px 36px;
+  padding: 28px 24px;
   border-right: 0.5px solid var(--border);
   border-bottom: 0.5px solid var(--border);
 }
@@ -39,10 +37,7 @@
 .moodBtn { font-family: var(--mono); font-size: 9px; padding: 2px 8px; border-radius: 20px; border: 0.5px solid var(--border); color: var(--ink3); transition: all 0.35s ease; }
 .moodSel { background: #1A1A1A; color: #fff; border-color: #1A1A1A; }
 .moodNote { font-family: var(--mono); font-size: 10px; font-weight: 200; color: var(--ink2); min-height: 13px; border-bottom: 0.5px solid var(--border); padding-bottom: 2px; }
-.journalLines { position: relative; margin-top: 4px; }
-.journalLine { height: 0.5px; background: var(--border); margin-bottom: 28px; }
-.journalText { position: absolute; top: 0; left: 0; right: 0; font-family: var(--mono); font-size: 11px; font-weight: 200; color: var(--ink2); line-height: 22px; overflow: hidden; }
-.chartArea { display: flex; align-items: flex-end; gap: 6px; height: 120px; margin-bottom: 8px; }
+.chartArea { display: flex; align-items: flex-end; gap: 6px; height: 100px; margin-bottom: 8px; }
 .barGroup { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
 .bar { width: 100%; border-radius: 2px 2px 0 0; transition: height 1s ease; min-height: 2px; }
 .barWeek { font-family: var(--mono); font-size: 8px; color: var(--ink3); }

@@ -24,15 +24,6 @@ export default function DailyLoopAnimation() {
       }
     }
 
-    const BUBBLE_COLORS = ['#1B3A2D', '#1B3A2D', '#B8C3B1']
-    const BAR_HEIGHTS = [38, 52, 44, 60, 50, 65, 72, 80]
-    const NOTES = [
-      'ran before work for the first time in weeks',
-      'ate at desk, felt rushed all afternoon',
-      'quiet evening, felt like myself again'
-    ]
-    const JOURNAL_TEXT = 'Today felt like a reset. Got moving early, stayed present at lunch. Still struggling with evening screen time but I noticed it — that feels like progress.'
-
     function setProgress(done) {
       const pct = Math.round(done / 10 * 100)
       const fill = document.getElementById('prog-fill')
@@ -49,6 +40,14 @@ export default function DailyLoopAnimation() {
         if (el) el.className = styles.timePill + (x === t ? ' ' + styles.active : '')
       })
     }
+
+    const BUBBLE_COLORS = ['#1B3A2D', '#1B3A2D', '#B8C3B1']
+    const BAR_HEIGHTS = [38, 52, 44, 60, 50, 65, 72, 80]
+    const NOTES = [
+      'ran before work for the first time in weeks',
+      'ate at desk, felt rushed all afternoon',
+      'quiet evening, felt like myself again'
+    ]
 
     function reset() {
       for (let i = 0; i < 3; i++) {
@@ -79,8 +78,6 @@ export default function DailyLoopAnimation() {
           if (el) el.classList.remove(styles.moodSel)
         })
       }
-      const jt = document.getElementById('journal-text')
-      if (jt) jt.textContent = ''
       setProgress(0)
       setPracticeTime('morning')
       for (let i = 0; i < 8; i++) {
@@ -129,9 +126,6 @@ export default function DailyLoopAnimation() {
       await typeText('mn-2', NOTES[2]); await delay(600)
 
       if (cancelRef.current) return
-      await typeText('journal-text', JOURNAL_TEXT, 28); await delay(800)
-
-      if (cancelRef.current) return
       for (let i = 0; i < 8; i++) {
         const b = document.getElementById('bar-' + i)
         if (b) b.style.height = BAR_HEIGHTS[i] + 'px'
@@ -149,7 +143,7 @@ export default function DailyLoopAnimation() {
   return (
     <div className={styles.grid}>
 
-      {/* Top left: Practices */}
+      {/* Col 1: Practices */}
       <div className={styles.cell}>
         <div className={styles.colLabel}>Daily practices</div>
         <div className={styles.colTitle}>what you do</div>
@@ -182,7 +176,7 @@ export default function DailyLoopAnimation() {
         </div>
       </div>
 
-      {/* Top right: Mood */}
+      {/* Col 2: Mood */}
       <div className={styles.cell}>
         <div className={styles.colLabel}>Mood check-ins</div>
         <div className={styles.colTitle}>how you feel</div>
@@ -212,17 +206,7 @@ export default function DailyLoopAnimation() {
         ))}
       </div>
 
-      {/* Bottom left: Journal */}
-      <div className={styles.cell}>
-        <div className={styles.colLabel}>Journal</div>
-        <div className={styles.colTitle}>your thoughts</div>
-        <div className={styles.journalLines}>
-          {[0,1,2,3,4].map(i => <div key={i} className={styles.journalLine}></div>)}
-          <div className={styles.journalText} id="journal-text"></div>
-        </div>
-      </div>
-
-      {/* Bottom right: Chart */}
+      {/* Col 3: Chart */}
       <div className={styles.cell}>
         <div className={styles.colLabel}>Progress tracking</div>
         <div className={styles.colTitle}>what's working</div>
