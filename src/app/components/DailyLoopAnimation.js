@@ -12,7 +12,7 @@ export default function DailyLoopAnimation() {
       return new Promise(resolve => setTimeout(resolve, ms))
     }
 
-    async function typeText(elId, text) {
+    async function typeText(elId, text, speed = 36) {
       if (cancelRef.current) return
       const el = document.getElementById(elId)
       if (!el) return
@@ -20,9 +20,18 @@ export default function DailyLoopAnimation() {
       for (let i = 0; i < text.length; i++) {
         if (cancelRef.current) return
         el.textContent += text[i]
-        await delay(36)
+        await delay(speed)
       }
     }
+
+    const BUBBLE_COLORS = ['#1B3A2D', '#1B3A2D', '#B8C3B1']
+    const BAR_HEIGHTS = [38, 52, 44, 60, 50, 65, 72, 80]
+    const NOTES = [
+      'ran before work for the first time in weeks',
+      'ate at desk, felt rushed all afternoon',
+      'quiet evening, felt like myself again'
+    ]
+    const JOURNAL_TEXT = 'Today felt like a reset. Got moving early, stayed present at lunch. Still struggling with evening screen time but I noticed it — that feels like progress.'
 
     function setProgress(done) {
       const pct = Math.round(done / 10 * 100)
@@ -40,14 +49,6 @@ export default function DailyLoopAnimation() {
         if (el) el.className = styles.timePill + (x === t ? ' ' + styles.active : '')
       })
     }
-
-    const BUBBLE_COLORS = ['#1B3A2D', '#1B3A2D', '#B8C3B1']
-    const BAR_HEIGHTS = [38, 52, 44, 60, 50, 65, 72, 80]
-    const NOTES = [
-      'ran before work for the first time in weeks',
-      'ate at desk, felt rushed all afternoon',
-      'quiet evening, felt like myself again'
-    ]
 
     function reset() {
       for (let i = 0; i < 3; i++) {
@@ -78,6 +79,8 @@ export default function DailyLoopAnimation() {
           if (el) el.classList.remove(styles.moodSel)
         })
       }
+      const jt = document.getElementById('journal-text')
+      if (jt) jt.textContent = ''
       setProgress(0)
       setPracticeTime('morning')
       for (let i = 0; i < 8; i++) {
@@ -109,7 +112,7 @@ export default function DailyLoopAnimation() {
       const b1 = document.getElementById('pb-1')
       if (b1) { b1.style.background = '#1B3A2D'; b1.style.borderColor = '#1B3A2D'; b1.classList.add(styles.done) }
       const ck1 = document.getElementById('pck-1'); if (ck1) ck1.textContent = '✓'
-      setProgress(2); await delay(300)
+      setProgress(2)
       document.getElementById('m-1')?.classList.add(styles.vis); await delay(300)
       document.getElementById('mb-1-fine')?.classList.add(styles.moodSel)
       await typeText('mn-1', NOTES[1]); await delay(500)
@@ -120,10 +123,13 @@ export default function DailyLoopAnimation() {
       const b2 = document.getElementById('pb-2')
       if (b2) { b2.style.background = '#B8C3B1'; b2.style.borderColor = '#B8C3B1'; b2.classList.add(styles.done) }
       const ck2 = document.getElementById('pck-2'); if (ck2) ck2.textContent = '✓'
-      setProgress(3); await delay(300)
+      setProgress(3)
       document.getElementById('m-2')?.classList.add(styles.vis); await delay(300)
       document.getElementById('mb-2-bad')?.classList.add(styles.moodSel)
       await typeText('mn-2', NOTES[2]); await delay(600)
+
+      if (cancelRef.current) return
+      await typeText('journal-text', JOURNAL_TEXT, 28); await delay(800)
 
       if (cancelRef.current) return
       for (let i = 0; i < 8; i++) {
@@ -143,8 +149,8 @@ export default function DailyLoopAnimation() {
   return (
     <div className={styles.grid}>
 
-      {/* Col 1: Practices */}
-      <div className={styles.col}>
+      {/* Top left: Practices */}
+      <div className={styles.cell}>
         <div className={styles.colLabel}>Daily practices</div>
         <div className={styles.colTitle}>what you do</div>
         <div className={styles.timeRow}>
@@ -156,7 +162,7 @@ export default function DailyLoopAnimation() {
           { id: 0, color: '#1B3A2D', name: 'Movement',   chips: ['Morning run', 'Bike'] },
           { id: 1, color: '#1B3A2D', name: 'Reflection', chips: ['Journal', 'Meditate'] },
           { id: 2, color: '#B8C3B1', name: 'Nutrition',  chips: ['Cook a meal', 'Greens'] },
-        ].map((r) => (
+        ].map(r => (
           <div key={r.id} className={styles.needRow} id={'pr-' + r.id}>
             <div className={styles.bubble} id={'pb-' + r.id} style={{ borderColor: r.color }}>
               <span id={'pck-' + r.id}></span>
@@ -176,8 +182,8 @@ export default function DailyLoopAnimation() {
         </div>
       </div>
 
-      {/* Col 2: Mood */}
-      <div className={styles.col}>
+      {/* Top right: Mood */}
+      <div className={styles.cell}>
         <div className={styles.colLabel}>Mood check-ins</div>
         <div className={styles.colTitle}>how you feel</div>
         <div className={`${styles.moodBlock} ${styles.alwaysVisible}`} id="m-0">
@@ -206,8 +212,18 @@ export default function DailyLoopAnimation() {
         ))}
       </div>
 
-      {/* Col 3: Chart */}
-      <div className={`${styles.col} ${styles.colLast}`}>
+      {/* Bottom left: Journal */}
+      <div className={styles.cell}>
+        <div className={styles.colLabel}>Journal</div>
+        <div className={styles.colTitle}>your thoughts</div>
+        <div className={styles.journalLines}>
+          {[0,1,2,3,4].map(i => <div key={i} className={styles.journalLine}></div>)}
+          <div className={styles.journalText} id="journal-text"></div>
+        </div>
+      </div>
+
+      {/* Bottom right: Chart */}
+      <div className={styles.cell}>
         <div className={styles.colLabel}>Progress tracking</div>
         <div className={styles.colTitle}>what's working</div>
         <div className={styles.chartArea}>
