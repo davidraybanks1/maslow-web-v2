@@ -28,7 +28,7 @@ export default function Nav() {
       <div className={styles.right}>
         <div className={styles.dropdownWrap} ref={dropdownRef}>
           <button
-            className={`${styles.navItem} ${['/about', '/need', '/modes'].includes(pathname) ? styles.active : ''}`}
+            className={`${styles.navItem} ${['/about', '/need', '/mode'].includes(pathname) ? styles.active : ''}`}
             onClick={() => setAboutOpen(v => !v)}
           >
             About
@@ -44,7 +44,7 @@ export default function Nav() {
                 <span className={styles.dropdownLabel}>The Needs</span>
                 <span className={styles.dropdownSub}>The ten needs, explained</span>
               </Link>
-              <Link href="/modes" className={styles.dropdownItem} onClick={() => setAboutOpen(false)}>
+              <Link href="/mode" className={styles.dropdownItem} onClick={() => setAboutOpen(false)}>
                 <span className={styles.dropdownLabel}>The Modes</span>
                 <span className={styles.dropdownSub}>How you meet each need</span>
               </Link>
