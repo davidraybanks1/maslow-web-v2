@@ -42,7 +42,6 @@ export default function DailyLoopAnimation() {
     }
 
     const BUBBLE_COLORS = ['#1B3A2D', '#1B3A2D', '#B8C3B1']
-    const BAR_HEIGHTS = [38, 52, 44, 60, 50, 65, 72, 80]
     const NOTES = [
       'ran before work for the first time in weeks',
       'ate at desk, felt rushed all afternoon',
@@ -66,7 +65,7 @@ export default function DailyLoopAnimation() {
       if (mn0) mn0.textContent = ''
       ;['good', 'fine', 'bad'].forEach(m => {
         const el = document.getElementById('mb-0-' + m)
-        if (el) el.classList.remove(styles.moodSel)
+        if (el) el.classList.remove(styles.moodSelGood, styles.moodSelFine, styles.moodSelBad)
       })
       for (let i = 1; i < 3; i++) {
         const m = document.getElementById('m-' + i)
@@ -75,15 +74,11 @@ export default function DailyLoopAnimation() {
         if (mn) mn.textContent = ''
         ;['good', 'fine', 'bad'].forEach(mood => {
           const el = document.getElementById('mb-' + i + '-' + mood)
-          if (el) el.classList.remove(styles.moodSel)
+          if (el) el.classList.remove(styles.moodSelGood, styles.moodSelFine, styles.moodSelBad)
         })
       }
       setProgress(0)
       setPracticeTime('morning')
-      for (let i = 0; i < 8; i++) {
-        const b = document.getElementById('bar-' + i)
-        if (b) b.style.height = '0px'
-      }
     }
 
     async function runLoop() {
@@ -99,7 +94,7 @@ export default function DailyLoopAnimation() {
       if (b0) { b0.style.background = '#1B3A2D'; b0.style.borderColor = '#1B3A2D'; b0.classList.add(styles.done) }
       const ck0 = document.getElementById('pck-0'); if (ck0) ck0.textContent = '✓'
       setProgress(1)
-      document.getElementById('mb-0-good')?.classList.add(styles.moodSel)
+      document.getElementById('mb-0-good')?.classList.add(styles.moodSelGood)
       await typeText('mn-0', NOTES[0]); await delay(500)
 
       if (cancelRef.current) return
@@ -111,7 +106,7 @@ export default function DailyLoopAnimation() {
       const ck1 = document.getElementById('pck-1'); if (ck1) ck1.textContent = '✓'
       setProgress(2)
       document.getElementById('m-1')?.classList.add(styles.vis); await delay(300)
-      document.getElementById('mb-1-fine')?.classList.add(styles.moodSel)
+      document.getElementById('mb-1-fine')?.classList.add(styles.moodSelFine)
       await typeText('mn-1', NOTES[1]); await delay(500)
 
       if (cancelRef.current) return
@@ -122,15 +117,8 @@ export default function DailyLoopAnimation() {
       const ck2 = document.getElementById('pck-2'); if (ck2) ck2.textContent = '✓'
       setProgress(3)
       document.getElementById('m-2')?.classList.add(styles.vis); await delay(300)
-      document.getElementById('mb-2-bad')?.classList.add(styles.moodSel)
+      document.getElementById('mb-2-good')?.classList.add(styles.moodSelGood)
       await typeText('mn-2', NOTES[2]); await delay(600)
-
-      if (cancelRef.current) return
-      for (let i = 0; i < 8; i++) {
-        const b = document.getElementById('bar-' + i)
-        if (b) b.style.height = BAR_HEIGHTS[i] + 'px'
-        await delay(120)
-      }
 
       await delay(2000)
       if (!cancelRef.current) runLoop()
@@ -206,32 +194,15 @@ export default function DailyLoopAnimation() {
         ))}
       </div>
 
-      {/* Col 3: Chart */}
+      {/* Col 3: Pattern */}
       <div className={styles.cell}>
         <div className={styles.colLabel}>Progress tracking</div>
         <div className={styles.colTitle}>what's working</div>
-        <div className={styles.chartArea}>
-          {[
-            { bg: '#E8B81F', op: 1 },
-            { bg: '#E8B81F', op: 0.85 },
-            { bg: '#E8B81F', op: 0.7 },
-            { bg: '#E8B81F', op: 1 },
-            { bg: '#1B3A2D', op: 0.7 },
-            { bg: '#1B3A2D', op: 0.85 },
-            { bg: '#1B3A2D', op: 1 },
-            { bg: '#1B3A2D', op: 1 },
-          ].map((b, i) => (
-            <div key={i} className={styles.barGroup}>
-              <div className={styles.bar} id={`bar-${i}`} style={{ height: 0, background: b.bg, opacity: b.op }} />
-              <div className={styles.barWeek}>W{i + 1}</div>
-            </div>
-          ))}
+        <div className={styles.patternCard}>
+          <div className={styles.patternEyebrow}>Pattern</div>
+          <p className={styles.patternBody}>on days you complete <em>movement</em>, you log <em>good</em> in the evening 1.8× more often.</p>
         </div>
-        <div className={styles.chartDivider} />
-        <div className={styles.chartLegend}>
-          <div className={styles.legendItem}><div className={styles.legendDot} style={{ background: '#E8B81F' }} />practices</div>
-          <div className={styles.legendItem}><div className={styles.legendDot} style={{ background: '#1B3A2D' }} />mood</div>
-        </div>
+        <div className={styles.patternNote}>computed from your own check-ins — not generic advice.</div>
       </div>
 
     </div>

@@ -3,16 +3,16 @@ import DailyLoopAnimation from './components/DailyLoopAnimation'
 
 
 const NEEDS = [
-  { id: 'movement',   name: 'Movement',   mode: 'purpose',      pip: '#1B3A2D', num: '01', desc: 'Your body needs to be used — not optimized, not tracked, just moved.' },
-  { id: 'community',  name: 'Community',  mode: 'nourishment',  pip: '#E8B81F', num: '02', desc: 'You need people who know you, not followers who see you.' },
-  { id: 'reflection', name: 'Reflection', mode: 'appreciation', pip: '#B8C3B1', num: '03', desc: 'Without time to process your own experience, life just happens to you.' },
-  { id: 'nutrition',  name: 'Nutrition',  mode: 'survival',     pip: '#D93B1C', num: '04', desc: 'Not just food, but your relationship to eating and being nourished.' },
-  { id: 'rest',       name: 'Rest',       mode: 'purpose',      pip: '#1B3A2D', num: '05', desc: 'The nervous system needs to recover — not just through sleep, but through stillness.' },
-  { id: 'beauty',     name: 'Beauty',     mode: 'nourishment',  pip: '#E8B81F', num: '06', desc: 'You need contact with things that move you — art, nature, music, something made with care.' },
-  { id: 'money',      name: 'Money',      mode: 'appreciation', pip: '#B8C3B1', num: '07', desc: 'Whether money feels like a tool or a threat determines how much of your mind it occupies.' },
-  { id: 'dwelling',   name: 'Dwelling',   mode: 'survival',     pip: '#D93B1C', num: '08', desc: 'Your environment shapes your nervous system more than you think.' },
-  { id: 'intimacy',   name: 'Intimacy',   mode: 'purpose',      pip: '#1B3A2D', num: '09', desc: 'To be truly known by another person — and to offer the same in return.' },
-  { id: 'play',       name: 'Play',       mode: 'nourishment',  pip: '#E8B81F', num: '10', desc: 'Unstructured, purposeless joy — things you do for no reason other than they feel good.' },
+  { id: 'movement',   name: 'Movement',   num: '01', desc: 'Your body needs to be used — not optimized, not tracked, just moved.' },
+  { id: 'community',  name: 'Community',  num: '02', desc: 'You need people who know you, not followers who see you.' },
+  { id: 'reflection', name: 'Reflection', num: '03', desc: 'Without time to process your own experience, life just happens to you.' },
+  { id: 'nutrition',  name: 'Nutrition',  num: '04', desc: 'Not just food, but your relationship to eating and being nourished.' },
+  { id: 'rest',       name: 'Rest',       num: '05', desc: 'The nervous system needs to recover — not just through sleep, but through stillness.' },
+  { id: 'beauty',     name: 'Beauty',     num: '06', desc: 'You need contact with things that move you — art, nature, music, something made with care.' },
+  { id: 'money',      name: 'Money',      num: '07', desc: 'Whether money feels like a tool or a threat determines how much of your mind it occupies.' },
+  { id: 'dwelling',   name: 'Dwelling',   num: '08', desc: 'Your environment shapes your nervous system more than you think.' },
+  { id: 'intimacy',   name: 'Intimacy',   num: '09', desc: 'To be truly known by another person — and to offer the same in return.' },
+  { id: 'play',       name: 'Play',       num: '10', desc: 'Unstructured, purposeless joy — things you do for no reason other than they feel good.' },
 ]
 
 const MODES = [
@@ -31,7 +31,7 @@ export default function Home() {
           anxiety isn't who you are.<br />it's who you <em>aren't.</em>
         </h1>
         <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own. Don't try to manage anxiety. Focus on meeting your needs.</p>
-        <p className={styles.heroBody}>Maslow App is designed to help you take back space.</p>
+        <p className={styles.heroBody}>Maslow is designed to help you take back space.</p>
       </section>
 
       {/* How it works */}
@@ -43,17 +43,17 @@ export default function Home() {
         <div className={styles.howItWorksGrid}>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
-              <svg width="80" height="56" viewBox="0 0 80 56" fill="none">
-                <circle cx="40" cy="4" r="3" fill="#E8B81F"/>
-                <circle cx="32" cy="16" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
-                <circle cx="48" cy="16" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
-                <circle cx="24" cy="28" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
-                <circle cx="40" cy="28" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
-                <circle cx="56" cy="28" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
-                <circle cx="16" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
-                <circle cx="32" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
-                <circle cx="48" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
-                <circle cx="64" cy="40" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="12" r="3" fill="#E8B81F"/>
+                <circle cx="24" cy="24" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="40" cy="24" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="16" cy="36" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="32" cy="36" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="48" cy="36" r="3" stroke="#1A1A1A" strokeWidth="1" fill="none"/>
+                <circle cx="8" cy="48" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+                <circle cx="24" cy="48" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+                <circle cx="40" cy="48" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
+                <circle cx="56" cy="48" r="3" stroke="#1A1A1A" strokeWidth="0.5" fill="none" opacity="0.4"/>
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Needs</div>
@@ -61,10 +61,10 @@ export default function Home() {
           </div>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
-              <svg width="80" height="56" viewBox="0 0 80 56" fill="none">
-                <line x1="8" y1="12" x2="72" y2="12" stroke="#1B3A2D" strokeWidth="2" strokeLinecap="round"/>
-                <line x1="8" y1="24" x2="56" y2="24" stroke="#B8C3B1" strokeWidth="2" strokeLinecap="round"/>
-                <line x1="8" y1="36" x2="40" y2="36" stroke="#E8B81F" strokeWidth="2" strokeLinecap="round"/>
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <line x1="8" y1="12" x2="56" y2="12" stroke="#1B3A2D" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="8" y1="24" x2="46" y2="24" stroke="#B8C3B1" strokeWidth="2" strokeLinecap="round"/>
+                <line x1="8" y1="36" x2="34" y2="36" stroke="#E8B81F" strokeWidth="2" strokeLinecap="round"/>
                 <line x1="8" y1="48" x2="20" y2="48" stroke="#D93B1C" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </div>
@@ -73,11 +73,11 @@ export default function Home() {
           </div>
           <div className={styles.howItWorksCol}>
             <div className={styles.howItWorksIllustration}>
-              <svg width="80" height="56" viewBox="0 0 80 56" fill="none">
-                <circle cx="40" cy="28" r="20" stroke="#1A1A1A" strokeWidth="1" fill="none" opacity="0.15"/>
-                <path d="M40 8 A20 20 0 0 1 60 28" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
-                <path d="M40 8 A20 20 0 1 0 40 48" stroke="#E8B81F" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                <circle cx="40" cy="28" r="3" fill="#1A1A1A"/>
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="30" r="20" stroke="#1A1A1A" strokeWidth="1" fill="none" opacity="0.15"/>
+                <path d="M32 10 A20 20 0 0 1 52 30" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+                <path d="M32 10 A20 20 0 1 0 32 50" stroke="#E8B81F" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                <circle cx="32" cy="30" r="3" fill="#1A1A1A"/>
               </svg>
             </div>
             <div className={styles.howItWorksCopyLabel}>Practices</div>
@@ -95,7 +95,7 @@ export default function Home() {
           <div>
             <h2 className={styles.sectionHeadline}>know what <em>you</em> need.</h2>
             <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you—on a physiological level, not just a logical one.</p>
-            <p className={styles.monoBody} style={{ marginTop: 20, maxWidth: 520 }}>Based on the research of Abraham Maslow and other humanistic and positive psychologists, Maslow App centers on 10 needs. You can also create custom needs based on your own experiences.</p>
+            <p className={styles.monoBody} style={{ marginTop: 20, maxWidth: 520 }}>Based on the research of Abraham Maslow and other humanistic and positive psychologists, Maslow centers on 10 needs. You can also create custom needs based on your own experiences.</p>
           </div>
           <div style={{ paddingTop: 16 }}>
             <div className={styles.bulletList}>
@@ -113,7 +113,7 @@ export default function Home() {
               <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 4 ? '0.5px solid var(--border)' : 'none' }}>
                 <div className={styles.needsHairlineMeta}>
                   <span className={styles.needCardNum}>{need.num}</span>
-                  <span className={styles.needCardPip} style={{ background: need.pip }} />
+                  <span className={styles.needCardPip} />
                 </div>
                 <div className={styles.needCardName}>{need.name}</div>
                 <p className={styles.needsHairlineDesc}>{need.desc}</p>
@@ -125,7 +125,7 @@ export default function Home() {
               <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 4 ? '0.5px solid var(--border)' : 'none' }}>
                 <div className={styles.needsHairlineMeta}>
                   <span className={styles.needCardNum}>{need.num}</span>
-                  <span className={styles.needCardPip} style={{ background: need.pip }} />
+                  <span className={styles.needCardPip} />
                 </div>
                 <div className={styles.needCardName}>{need.name}</div>
                 <p className={styles.needsHairlineDesc}>{need.desc}</p>
@@ -139,11 +139,8 @@ export default function Home() {
             <details key={need.id} className={styles.needMobileItem}>
               <summary className={styles.needMobileSummary}>
                 <div className={styles.needMobileLeft}>
-                  <span className={styles.needMobilePip} style={{ background: need.pip }} />
-                  <div>
-                    <div className={styles.needMobileName}>{need.name}</div>
-                    <div className={styles.needMobileMode}>{need.mode}</div>
-                  </div>
+                  <span className={styles.needMobilePip} />
+                  <div className={styles.needMobileName}>{need.name}</div>
                 </div>
                 <span className={styles.needMobileChevron}>↓</span>
               </summary>
@@ -169,7 +166,7 @@ export default function Home() {
               <span className={styles.modeRowNum}>0{i + 1}</span>
               <div className={styles.modeRowLabel}>
                 <span className={styles.modePip} style={{ background: mode.color }} />
-                <span className={styles.modeName} style={{ color: mode.color }}>{mode.name}</span>
+                <span className={styles.modeName}>{mode.name}</span>
               </div>
               <p className={styles.modeDesc}>{mode.desc}</p>
             </div>
@@ -184,7 +181,7 @@ export default function Home() {
         </div>
         <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
         <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. Maslow helps you turn that information into custom daily practices and keeps them front and center.</p>
-        <p className={styles.canvasBody}>Maslow App isn't designed to make you feel bad about not checking off all your practices. It's simply information. With mood and practice tracking, you're able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
+        <p className={styles.canvasBody}>Maslow isn't designed to make you feel bad about not checking off all your practices. It's simply information. With mood and practice tracking, you're able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
         <DailyLoopAnimation />
       </section>
 
