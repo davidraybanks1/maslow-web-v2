@@ -12,6 +12,12 @@
   --appr:    #B8C3B1;
   --nour:    #E8B81F;
   --surv:    #D93B1C;
+  /* Semantic mode-color aliases — used by HeroFountain and any component needing mode identity */
+  --exploration:  #1B3A2D;
+  --appreciation: #B8C3B1;
+  --nourishment:  #E8B81F;
+  --survival:     #D93B1C;
+  --loader-lavender: #C9C1E0;
   --sans: 'Instrument Sans', Inter, system-ui, sans-serif;
   --serif: 'Instrument Serif', Georgia, serif;
   --mono: 'DM Mono', 'JetBrains Mono', ui-monospace, monospace;

@@ -1,0 +1,56 @@
+/* Confined to the hero section — parent must be position:relative; overflow:hidden */
+.fountain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.drop {
+  position: absolute;
+  bottom: -12%;
+  left: var(--x);
+  animation: rise var(--dur) linear var(--delay) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes rise {
+  0%   { transform: translateY(0);      opacity: 0; }
+  12%  { opacity: var(--op); }
+  88%  { opacity: var(--op); }
+  100% { transform: translateY(-120%);  opacity: 0; }
+}
+
+.bubble {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--color);
+  filter: blur(var(--blur));
+  animation: sway var(--sdur) ease-in-out var(--sdelay) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes sway {
+  from { transform: translateX(calc(var(--drift) * -1)); }
+  to   { transform: translateX(var(--drift)); }
+}
+
+/* Radial veil protects headline legibility */
+.veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 60% at 30% 50%,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.45) 40%,
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drop,
+  .bubble { animation: none !important; }
+}
