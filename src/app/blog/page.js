@@ -4,7 +4,7 @@ import { urlFor } from '../../sanity/lib/image'
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Blog — Maslow',
+  title: 'Memos — Maslow',
   description: 'Thoughts on needs, anxiety, and living with more intention.',
 }
 
@@ -16,8 +16,7 @@ export default async function BlogPage() {
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
-        <div className={styles.eyebrow}>Blog</div>
-        <h1 className={styles.headline}>Thoughts on living<br /><em>with more intention.</em></h1>
+        <h1 className={styles.headline}>memos</h1>
       </div>
 
       {posts.length === 0 ? (
