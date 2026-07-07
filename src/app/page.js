@@ -93,14 +93,24 @@ export default function Home() {
             <div className={styles.howItWorksIllustration}>
               <div className={styles.appUI}>
                 {[
-                  { color: '#1B3A2D', name: 'exploration' },
-                  { color: '#B8C3B1', name: 'appreciation' },
-                  { color: '#E8B81F', name: 'nourishment' },
-                  { color: '#D93B1C', name: 'survival' },
+                  { color: '#1B3A2D', name: 'exploration',  count: 3, half: false },
+                  { color: '#B8C3B1', name: 'appreciation', count: 2, half: false },
+                  { color: '#E8B81F', name: 'nourishment',  count: 1, half: false },
+                  { color: '#D93B1C', name: 'survival',     count: 1, half: true  },
                 ].map(m => (
                   <div key={m.name} className={styles.appUIModeRow}>
-                    <span className={styles.appUIModePip} style={{ background: m.color }} />
-                    <span className={styles.appUIModeLabel}>{m.name}</span>
+                    <div className={styles.appUIModeLeft}>
+                      <span className={styles.appUIModePip} style={{ background: m.color }} />
+                      <span className={styles.appUIModeLabel}>{m.name}</span>
+                    </div>
+                    <div className={styles.appUIModeBubbles}>
+                      {m.half
+                        ? <span className={styles.appUIModeBubble} style={{ background: `linear-gradient(to right, ${m.color} 50%, transparent 50%)`, borderColor: m.color }} />
+                        : Array.from({ length: m.count }).map((_, i) => (
+                            <span key={i} className={styles.appUIModeBubble} style={{ background: m.color }} />
+                          ))
+                      }
+                    </div>
                   </div>
                 ))}
               </div>
@@ -112,9 +122,10 @@ export default function Home() {
             <div className={styles.howItWorksIllustration}>
               <div className={styles.appUI}>
                 {[
-                  { color: '#1B3A2D', name: 'movement',   chips: ['morning run', 'bike'],  done: true },
-                  { color: '#B8C3B1', name: 'reflection', chips: ['journal'],              done: true },
+                  { color: '#1B3A2D', name: 'movement',   chips: ['morning run', 'bike'],   done: true  },
+                  { color: '#B8C3B1', name: 'reflection', chips: ['journal'],               done: true  },
                   { color: '#E8B81F', name: 'nutrition',  chips: ['cook a meal', 'greens'], done: false },
+                  { color: '#E8B81F', name: 'rest',       chips: ['wind down'],             done: false },
                 ].map((r, i) => (
                   <div key={i} className={styles.appUIPracticeRow}>
                     <span className={styles.appUIBubble} style={{ borderColor: r.color, background: r.done ? r.color : 'transparent' }} />
