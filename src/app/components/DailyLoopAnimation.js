@@ -197,12 +197,32 @@ export default function DailyLoopAnimation() {
       {/* Col 3: Pattern */}
       <div className={styles.cell}>
         <div className={styles.colLabel}>Progress tracking</div>
-        <div className={styles.colTitle}>what's working</div>
+        <div className={styles.colTitle}>what&apos;s working</div>
         <div className={styles.patternCard}>
           <div className={styles.patternEyebrow}>Pattern</div>
           <p className={styles.patternBody}>on days you complete <em>movement</em>, you log <em>good</em> in the evening 1.8× more often.</p>
         </div>
         <div className={styles.patternNote}>computed from your own check-ins — not generic advice.</div>
+      </div>
+
+      {/* Col 4: Canvas */}
+      <div className={styles.cell}>
+        <div className={styles.colLabel}>Canvas</div>
+        <div className={styles.colTitle}>your canvas</div>
+        <div className={styles.canvasNeedsList}>
+          {[
+            { color: '#1B3A2D', name: 'movement',    mode: 'exploration' },
+            { color: '#1B3A2D', name: 'reflection',  mode: 'exploration' },
+            { color: '#B8C3B1', name: 'nutrition',   mode: 'appreciation' },
+            { color: '#E8B81F', name: 'rest',        mode: 'nourishment' },
+            { color: '#D93B1C', name: 'information', mode: 'survival' },
+          ].map(n => (
+            <div key={n.name} className={styles.canvasNeedRow} style={{ borderLeftColor: n.color }}>
+              <span className={styles.canvasNeedName}>{n.name}</span>
+              <span className={styles.canvasNeedMode} style={{ color: n.color }}>{n.mode}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
     </div>

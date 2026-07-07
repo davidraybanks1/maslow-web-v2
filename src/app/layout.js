@@ -3,8 +3,8 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 
 export const metadata = {
-  title: 'Maslow — practice becoming yourself',
-  description: 'Anxiety fills the space your unmet needs leave behind. Maslow helps you fill that space first.',
+  title: 'MyMaslow — practice becoming yourself',
+  description: 'Anxiety fills the space your unmet needs leave behind. MyMaslow helps you fill that space first.',
   icons: {
     icon: [
       { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },

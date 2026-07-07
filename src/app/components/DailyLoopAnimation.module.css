@@ -1,9 +1,12 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-top: 0.5px solid var(--border);
   border-left: 0.5px solid var(--border);
   margin-top: 40px;
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
 }
 .cell {
   padding: 28px 24px;
@@ -44,3 +47,7 @@
 .patternBody { font-family: var(--mono); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 200; }
 .patternBody em { font-family: var(--serif); font-style: italic; font-size: 15px; }
 .patternNote { font-family: var(--mono); font-size: 11px; color: rgba(26, 26, 26, 0.45); margin-top: 8px; }
+.canvasNeedsList { display: flex; flex-direction: column; gap: 4px; }
+.canvasNeedRow { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px; border-left: 3px solid transparent; background: var(--bg2); }
+.canvasNeedName { font-family: var(--serif); font-size: 12px; color: var(--ink); text-transform: lowercase; }
+.canvasNeedMode { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }

@@ -4,7 +4,7 @@ import { urlFor } from '../../sanity/lib/image'
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Memos — Maslow',
+  title: 'Memos — MyMaslow',
   description: 'Thoughts on needs, anxiety, and living with more intention.',
 }
 
