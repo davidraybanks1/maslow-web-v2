@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getPosts } from '../../lib/sanity-client'
+import { urlFor } from '../../sanity/lib/image'
 import styles from './page.module.css'
 
 export const metadata = {
@@ -27,6 +28,13 @@ export default async function BlogPage() {
         <div className={styles.postList}>
           {posts.map(post => (
             <Link key={post._id} href={`/blog/${post.slug.current}`} className={styles.postItem}>
+              {post.mainImage?.asset?._ref && (
+                <img
+                  src={urlFor(post.mainImage).width(800).height(400).auto('format').fit('crop').url()}
+                  alt={post.mainImage.alt || post.title}
+                  className={styles.postImg}
+                />
+              )}
               <div className={styles.postMeta}>
                 <span className={styles.postDate}>
                   {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

@@ -15,6 +15,7 @@ export async function getPosts() {
       slug,
       publishedAt,
       excerpt,
+      mainImage,
       "categories": categories[]->title,
       "author": author->name,
     }
@@ -29,6 +30,7 @@ export async function getPost(slug) {
       slug,
       publishedAt,
       excerpt,
+      mainImage,
       body,
       "categories": categories[]->title,
       "author": author->name,

@@ -49,6 +49,13 @@
   font-weight: 200;
 }
 
+.coverImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 64px;
+}
+
 /* Body */
 .body { }
 
@@ -122,6 +129,13 @@
   position: absolute;
   left: 0;
   color: var(--ink4);
+}
+
+.bodyImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 40px 0;
 }
 
 @media (max-width: 900px) {

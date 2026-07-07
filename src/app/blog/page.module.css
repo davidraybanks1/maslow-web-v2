@@ -44,6 +44,14 @@
   flex-direction: column;
 }
 
+.postImg {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 32px;
+}
+
 .postItem {
   display: block;
   padding: 48px 0;

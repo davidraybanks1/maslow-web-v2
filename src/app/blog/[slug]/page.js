@@ -1,5 +1,6 @@
 import { PortableText } from '@portabletext/react'
 import { getPost, getPosts } from '../../../lib/sanity-client'
+import { urlFor } from '../../../sanity/lib/image'
 import styles from './page.module.css'
 import { notFound } from 'next/navigation'
 
@@ -42,6 +43,18 @@ const components = {
     bullet: ({ children }) => <li className={styles.bodyLi}>{children}</li>,
     number: ({ children }) => <li className={styles.bodyLi}>{children}</li>,
   },
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) return null
+      return (
+        <img
+          src={urlFor(value).width(800).auto('format').url()}
+          alt={value.alt || ''}
+          className={styles.bodyImg}
+        />
+      )
+    },
+  },
 }
 
 export default async function PostPage({ params }) {
@@ -61,6 +74,13 @@ export default async function PostPage({ params }) {
         <h1 className={styles.title}>{post.title}</h1>
         {post.excerpt && <p className={styles.excerpt}>{post.excerpt}</p>}
       </div>
+      {post.mainImage?.asset?._ref && (
+        <img
+          src={urlFor(post.mainImage).width(1200).auto('format').url()}
+          alt={post.mainImage.alt || post.title}
+          className={styles.coverImg}
+        />
+      )}
       <div className={styles.body}>
         {post.body && <PortableText value={post.body} components={components} />}
       </div>
