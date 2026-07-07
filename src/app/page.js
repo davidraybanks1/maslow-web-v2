@@ -308,17 +308,78 @@ export default function Home() {
           </p>
         </div>
         <div className={styles.featuresGrid}>
-          {[
-            { name: 'journal',       desc: 'a place to think that stays with your day.' },
-            { name: 'debriefs',      desc: 'seven minutes to process an anxiety episode or understand a peak moment.' },
-            { name: 'notes to self', desc: 'swipeable cards that resurface what you want to remember.' },
-            { name: 'weekly review', desc: 'five steps to close the week and set the next one.' },
-          ].map(f => (
-            <div key={f.name} className={styles.featureBlock}>
-              <div className={styles.featureName}>{f.name}</div>
-              <p className={styles.featureDesc}>{f.desc}</p>
+
+          {/* Journal */}
+          <div className={styles.featureBlock}>
+            <div className={styles.featureGlyph} style={{ background: '#E8E4F0' }}>
+              <div className={styles.glyphJournalDate}>tuesday</div>
+              <div className={styles.glyphTextLine} style={{ width: '84%' }} />
+              <div className={styles.glyphTextLine} style={{ width: '67%' }} />
+              <div className={styles.glyphTextLine} style={{ width: '50%' }} />
             </div>
-          ))}
+            <div className={styles.featureName}>journal</div>
+            <p className={styles.featureDesc}>a place to think that stays with your day.</p>
+          </div>
+
+          {/* Debriefs */}
+          <div className={styles.featureBlock}>
+            <div className={styles.featureGlyph}>
+              <div className={styles.glyphFilterRow}>
+                <span className={styles.glyphPill} style={{ background: '#D93B1C', color: '#fff', borderColor: '#D93B1C' }}>
+                  <span className={styles.glyphPillDot} style={{ background: '#fff' }} />
+                  anxiety
+                </span>
+                <span className={styles.glyphPill} style={{ color: '#1B3A2D', borderColor: '#1B3A2D' }}>
+                  <span className={styles.glyphPillDot} style={{ background: '#1B3A2D' }} />
+                  peak
+                </span>
+              </div>
+              {['what triggered it', 'how it felt', "what it's about"].map((label, i) => (
+                <div key={i} className={styles.glyphFieldRow}>
+                  <span className={styles.glyphFieldLabel}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div className={styles.featureName}>debriefs</div>
+            <p className={styles.featureDesc}>seven minutes to process an anxiety episode or understand a peak moment.</p>
+          </div>
+
+          {/* Notes to self */}
+          <div className={styles.featureBlock}>
+            <div className={styles.featureGlyph}>
+              <div className={styles.notesDeck}>
+                <div className={styles.noteCard}>
+                  <span className={styles.glyphMicroText}>a good conversation is a form of rest.</span>
+                </div>
+              </div>
+              <div className={styles.notesPagination}>
+                <span className={`${styles.notesDot} ${styles.notesDotFilled}`} />
+                {[1,2,3,4].map(i => <span key={i} className={styles.notesDot} />)}
+              </div>
+            </div>
+            <div className={styles.featureName}>notes to self</div>
+            <p className={styles.featureDesc}>swipeable cards that resurface what you want to remember.</p>
+          </div>
+
+          {/* Weekly review */}
+          <div className={styles.featureBlock}>
+            <div className={styles.featureGlyph}>
+              <div className={styles.stepperList}>
+                {['last week', 'how it felt', 'canvas check', 'insight', 'note'].map((label, i) => (
+                  <div key={i} className={styles.stepperRow}>
+                    <div className={styles.stepperTrack}>
+                      <span className={styles.stepperDot} style={{ background: i < 3 ? 'var(--ink)' : 'transparent' }} />
+                      {i < 4 && <span className={styles.stepperConnector} />}
+                    </div>
+                    <span className={styles.stepperLabel}>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.featureName}>weekly review</div>
+            <p className={styles.featureDesc}>five steps to close the week and set the next one.</p>
+          </div>
+
         </div>
       </section>
 
