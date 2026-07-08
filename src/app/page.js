@@ -1,27 +1,7 @@
 import styles from './page.module.css'
 import DailyLoopAnimation from './components/DailyLoopAnimation'
 import HeroFountain from './components/HeroFountain'
-
-// Canonical taxonomy pulled from maslow-app/src/lib/constants.js.
-// 13 needs total: 3 universal + 10 personal.
-const NEEDS_UNIVERSAL = [
-  { id: 'movement',   name: 'Movement',   num: '01', desc: 'Your body needs to be used — not optimized, not tracked, just moved.' },
-  { id: 'nutrition',  name: 'Nutrition',  num: '02', desc: 'Not just food, but your relationship to eating and being nourished.' },
-  { id: 'rest',       name: 'Rest',       num: '03', desc: 'The nervous system needs to recover — not just through sleep, but through stillness.' },
-]
-
-const NEEDS_PERSONAL = [
-  { id: 'community',   name: 'Community',   num: '04', desc: 'You need people who know you, not followers who see you.' },
-  { id: 'beauty',      name: 'Beauty',      num: '05', desc: 'You need contact with things that move you — art, nature, music, something made with care.' },
-  { id: 'intimacy',    name: 'Intimacy',    num: '06', desc: 'To be truly known by another person — and to offer the same in return.' },
-  { id: 'reflection',  name: 'Reflection',  num: '07', desc: 'Without time to process your own experience, life just happens to you.' },
-  { id: 'play',        name: 'Play',        num: '08', desc: 'Unstructured, purposeless joy — things you do for no reason other than they feel good.' },
-  { id: 'money',       name: 'Money',       num: '09', desc: 'Whether money feels like a tool or a threat determines how much of your mind it occupies.' },
-  { id: 'dwelling',    name: 'Dwelling',    num: '10', desc: 'Your environment shapes your nervous system more than you think.' },
-  { id: 'information', name: 'Information', num: '11', desc: 'Your mind wants to be fed, not just filled. There\'s a difference between learning and scrolling.' },
-  { id: 'touch',       name: 'Touch',       num: '12', desc: 'Skin has needs your calendar never accounts for. Contact is not a luxury.' },
-  { id: 'thrill',      name: 'Thrill',      num: '13', desc: 'You need moments that make your heart beat faster on purpose — chosen intensity, not ambient stress.' },
-]
+import NeedsTypeSpec from './components/NeedsTypeSpec'
 
 const MODES = [
   {
@@ -156,94 +136,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Desktop needs grid — universal group then personal group */}
-        <div className={styles.needsHairlineGrid}>
-
-          <div className={styles.needsGroupLabel}>— UNIVERSAL · 3</div>
-          <div className={styles.needsHairlineRowUniversal}>
-            {NEEDS_UNIVERSAL.map((need, i) => (
-              <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 2 ? '0.5px solid var(--border)' : 'none' }}>
-                <div className={styles.needsHairlineMeta}>
-                  <span className={styles.needCardPip} />
-                </div>
-                <div className={styles.needCardName}>{need.name}</div>
-                <p className={styles.needsHairlineDesc}>{need.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.needsGroupLabel}>— PERSONAL · 10</div>
-          <div className={styles.needsHairlineRow}>
-            {NEEDS_PERSONAL.slice(0, 5).map((need, i) => (
-              <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 4 ? '0.5px solid var(--border)' : 'none' }}>
-                <div className={styles.needsHairlineMeta}>
-                  <span className={styles.needCardPip} />
-                </div>
-                <div className={styles.needCardName}>{need.name}</div>
-                <p className={styles.needsHairlineDesc}>{need.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className={styles.needsHairlineRow}>
-            {NEEDS_PERSONAL.slice(5, 10).map((need, i) => (
-              <div key={need.id} className={styles.needsHairlineCell} style={{ borderRight: i < 4 ? '0.5px solid var(--border)' : 'none' }}>
-                <div className={styles.needsHairlineMeta}>
-                  <span className={styles.needCardPip} />
-                </div>
-                <div className={styles.needCardName}>{need.name}</div>
-                <p className={styles.needsHairlineDesc}>{need.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className={styles.needsHairlineRow}>
-            <div className={`${styles.needsHairlineCell} ${styles.needCellAdd}`} style={{ borderRight: 'none' }}>
-              <div className={styles.needsHairlineMeta} />
-              <div className={styles.needCardName}>+ your own</div>
-              <p className={styles.needsHairlineDesc}>add needs that are yours alone.</p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Mobile needs list — accordion, all 13 */}
-        <div className={styles.needsMobileList}>
-          <div className={styles.needsMobileGroupLabel}>— universal</div>
-          {NEEDS_UNIVERSAL.map(need => (
-            <details key={need.id} className={styles.needMobileItem}>
-              <summary className={styles.needMobileSummary}>
-                <div className={styles.needMobileLeft}>
-                  <span className={styles.needMobilePip} />
-                  <div className={styles.needMobileName}>{need.name}</div>
-                </div>
-                <span className={styles.needMobileChevron}>↓</span>
-              </summary>
-              <p className={styles.needMobileDesc}>{need.desc}</p>
-            </details>
-          ))}
-          <div className={styles.needsMobileGroupLabel}>— personal</div>
-          {NEEDS_PERSONAL.map(need => (
-            <details key={need.id} className={styles.needMobileItem}>
-              <summary className={styles.needMobileSummary}>
-                <div className={styles.needMobileLeft}>
-                  <span className={styles.needMobilePip} />
-                  <div className={styles.needMobileName}>{need.name}</div>
-                </div>
-                <span className={styles.needMobileChevron}>↓</span>
-              </summary>
-              <p className={styles.needMobileDesc}>{need.desc}</p>
-            </details>
-          ))}
-          <details className={styles.needMobileItem}>
-            <summary className={styles.needMobileSummary}>
-              <div className={styles.needMobileLeft}>
-                <span className={styles.needMobilePip} style={{ background: 'transparent', border: '1px dashed rgba(26,26,26,0.3)' }} />
-                <div className={styles.needMobileName}>+ your own</div>
-              </div>
-              <span className={styles.needMobileChevron}>↓</span>
-            </summary>
-            <p className={styles.needMobileDesc}>add needs that are yours alone.</p>
-          </details>
-        </div>
+        <NeedsTypeSpec />
 
       </section>
 
