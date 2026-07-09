@@ -1,37 +1,24 @@
 import styles from './page.module.css'
-import DailyLoopAnimation from './components/DailyLoopAnimation'
 import HeroFountain from './components/HeroFountain'
-import NeedsTypeSpec from './components/NeedsTypeSpec'
-
-const MODES = [
-  {
-    name: 'survival',
-    color: '#D93B1C',
-    desc: 'In survival mode, you are doing the bare minimum. That may be out of necessity or because you\'re prioritizing other needs.',
-  },
-  {
-    name: 'nourishment',
-    color: '#E8B81F',
-    desc: 'In nourishment mode, you are meeting a need intentionally, in a way that gives you energy rather than depletes it.',
-  },
-  {
-    name: 'appreciation',
-    color: '#B8C3B1',
-    desc: 'In appreciation mode, you create space to enjoy meeting a need by being present, invested, and in flow.',
-  },
-  {
-    name: 'exploration',
-    color: '#1B3A2D',
-    desc: 'In exploration mode, you\'re not just experiencing, you\'re creating. You\'re pushing the boundaries of a thing and yourself.',
-  },
-]
+import {
+  NeedsSection,
+  ModesSection,
+  PracticesSection,
+  CanvasSection,
+  MoodsSection,
+  DataSection,
+  JournalSection,
+  DebriefSection,
+  NotesSection,
+  ReviewSection,
+  Divider,
+} from './components/HomeSections'
 
 export default function Home() {
   return (
     <div>
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        {/* Workstream 2: rising-circles fountain, behind headline */}
         <HeroFountain />
         <div className={styles.heroContent}>
           <h1 className={styles.heroHeadline}>
@@ -42,272 +29,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── How it works ── */}
-      <section className={styles.howItWorks}>
-        <div className={styles.howItWorksHeader}>
-          <div className={styles.howItWorksTitle}>how it works.</div>
-        </div>
-        <div className={styles.howItWorksGrid}>
-          <div className={styles.howItWorksCol}>
-            <div className={styles.howItWorksIllustration}>
-              <div className={styles.appUI}>
-                {[
-                  { color: '#1B3A2D', needs: ['movement'] },
-                  { color: '#B8C3B1', needs: ['reflection', 'play'] },
-                  { color: '#E8B81F', needs: ['nutrition', 'rest'] },
-                  { color: '#D93B1C', needs: ['information'] },
-                ].map((row, i) => (
-                  <div key={i} className={styles.appUICanvasRow}>
-                    <span className={styles.appUICanvasDot} style={{ background: row.color }} />
-                    {row.needs.map(n => (
-                      <span key={n} className={styles.appUICanvasChip} style={{ borderColor: row.color }}>{n}</span>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={styles.howItWorksCopyLabel}>Needs</div>
-            <p className={styles.howItWorksCopyBody}>There are basic things we need as humans but we often fast-forward through them to get to what we want. But without meeting your needs, it&apos;s hard to appreciate what you have, who you are, and what you achieve.</p>
-          </div>
-          <div className={styles.howItWorksCol}>
-            <div className={styles.howItWorksIllustration}>
-              <div className={styles.appUI}>
-                {[
-                  { color: '#1B3A2D', name: 'exploration',  count: 3, half: false },
-                  { color: '#B8C3B1', name: 'appreciation', count: 2, half: false },
-                  { color: '#E8B81F', name: 'nourishment',  count: 1, half: false },
-                  { color: '#D93B1C', name: 'survival',     count: 1, half: true  },
-                ].map(m => (
-                  <div key={m.name} className={styles.appUIModeRow}>
-                    <div className={styles.appUIModeLeft}>
-                      <span className={styles.appUIModePip} style={{ background: m.color }} />
-                      <span className={styles.appUIModeLabel}>{m.name}</span>
-                    </div>
-                    <div className={styles.appUIModeBubbles}>
-                      {m.half
-                        ? <span className={styles.appUIModeBubble} style={{ background: `linear-gradient(to right, ${m.color} 50%, transparent 50%)`, borderColor: m.color }} />
-                        : Array.from({ length: m.count }).map((_, i) => (
-                            <span key={i} className={styles.appUIModeBubble} style={{ background: m.color }} />
-                          ))
-                      }
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={styles.howItWorksCopyLabel}>Modes</div>
-            <p className={styles.howItWorksCopyBody}>Everyone meets their needs differently. Modes help you understand what kind of attention each need requires from you right now, and give you permission to not meet all your needs all the time.</p>
-          </div>
-          <div className={styles.howItWorksCol}>
-            <div className={styles.howItWorksIllustration}>
-              <div className={styles.appUI}>
-                {[
-                  { color: '#1B3A2D', name: 'movement',   chips: ['morning run', 'bike'],   done: true  },
-                  { color: '#B8C3B1', name: 'reflection', chips: ['journal'],               done: true  },
-                  { color: '#E8B81F', name: 'nutrition',  chips: ['cook a meal', 'greens'], done: false },
-                  { color: '#E8B81F', name: 'rest',       chips: ['wind down'],             done: false },
-                ].map((r, i) => (
-                  <div key={i} className={styles.appUIPracticeRow}>
-                    <span className={styles.appUIBubble} style={{ borderColor: r.color, background: r.done ? r.color : 'transparent' }} />
-                    <span className={styles.appUINeedName}>{r.name}</span>
-                    {r.chips.map(c => <span key={c} className={styles.appUIChip}>{c}</span>)}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={styles.howItWorksCopyLabel}>Practices</div>
-            <p className={styles.howItWorksCopyBody}>Without action, needs and modes are just interesting ideas. Practices turn needs into positive actions that help you own more space in your life — space that otherwise would be available to anxiety.</p>
-          </div>
-        </div>
-      </section>
+      {/* ── Sections 01–03: Needs / Modes / Practices ── */}
+      <NeedsSection />
+      <ModesSection />
+      <PracticesSection />
 
-      {/* ── Needs ── */}
-      <section className={styles.section} id="needs">
-        <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>NEEDS</div>
-        </div>
-        <div style={{ maxWidth: 920 }}>
-          <h2 className={styles.sectionHeadline}>know <em>what</em> you need.</h2>
-          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>
-            There are things you need to live and things you need to feel alive. They are usually different versions of the same needs. You just need to know which ones matter to you — physiologically, not just logically.
-          </p>
-          <p className={styles.monoBody} style={{ marginTop: 20, maxWidth: 520 }}>
-            MyMaslow is built around 14 needs based on the research of Abraham Maslow and remixed to fit our highly-connected, highly-digital modern lives.
-          </p>
-        </div>
+      {/* ── Divider ── */}
+      <Divider text="your canvas holds it all together." />
 
-        <NeedsTypeSpec />
+      {/* ── Sections 04–06: Canvas / Moods / Data ── */}
+      <CanvasSection />
+      <MoodsSection />
+      <DataSection />
 
-      </section>
+      {/* ── Divider ── */}
+      <Divider text="and in the background of all of it." />
 
-      {/* ── Modes ── */}
-      <section className={styles.section} id="modes">
-        <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>MODES</div>
-        </div>
-        <div style={{ maxWidth: 920 }}>
-          <h2 className={styles.sectionHeadline}>know <em>how</em> you need it.</h2>
-          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>
-            What&apos;s often missing from meeting our needs is meeting them in a way our unique bodies and minds can internalize. For instance, you need to eat, but what you eat, the circumstances in which you eat, and the nutrition you get determine if your body truly feels fed.<br /><br />
-            Modes tailor needs to each person.
-          </p>
-        </div>
-        <div className={styles.modesTable}>
-          {MODES.map((mode, i) => (
-            <div key={mode.name} className={styles.modeRow}>
-              <span className={styles.modeRowNum}>0{i + 1}</span>
-              <div className={styles.modeRowLabel}>
-                <span className={styles.modePip} style={{ background: mode.color }} />
-                <span className={styles.modeName}>{mode.name}</span>
-              </div>
-              <p className={styles.modeDesc}>{mode.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* ── Sections 07–09: Journal / Debriefs / Notes ── */}
+      <JournalSection />
+      <DebriefSection />
+      <NotesSection />
 
-      {/* ── Practices / Canvas ── */}
-      <section className={styles.canvasSection} id="canvas">
-        <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>PRACTICES</div>
-        </div>
-        <h2 className={styles.canvasHed}>meet your needs.<br /><em>become more of yourself.</em></h2>
-        <p className={styles.canvasBody}>Your needs and modes are just information. The real work is what you do with it every day. MyMaslow helps you turn that information into custom daily practices and keeps them front and center.</p>
-        <p className={styles.canvasBody}>MyMaslow isn&apos;t designed to make you feel bad about not checking off all your practices. It&apos;s simply information. With mood and practice tracking, you&apos;re able to see what it feels like when you meet all your needs, some, or experiment with different modes.</p>
-        <DailyLoopAnimation />
-        {/*
-          WORKSTREAM 3 — ASSET SLOTS
-          ─────────────────────────────────────────────────────────────────────
-          Drop updated app screenshots here when ready.
-          Slot A: Today screen showing practice chips and donut progress chart
-          Slot B: Canvas screen showing mode cards with exploration/appreciation/nourishment/survival
-          Slot C: Data screen — mood + streak + BY NEED accordion
-          ─────────────────────────────────────────────────────────────────────
-          <Image src="/screenshots/today.png" alt="Today screen" width={860} height={640} />
-          <Image src="/screenshots/canvas.png" alt="Canvas screen" width={860} height={640} />
-          <Image src="/screenshots/data.png" alt="Data screen" width={860} height={640} />
-        */}
-      </section>
+      {/* ── Divider ── */}
+      <Divider text="close the loop." />
 
-      {/* ── Features ── */}
-      <section className={styles.section} id="debriefs">
-        <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>FEATURES</div>
-        </div>
-        <div style={{ maxWidth: 920 }}>
-          <h2 className={styles.sectionHeadline}>the rest of<br /><em>the practice.</em></h2>
-          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>
-            Meeting needs is the core of MyMaslow, but living leaves data. A journal for what&apos;s on your mind. Debriefs for anxiety spikes and peak moments. Notes to self you actually see again. A weekly review that takes minutes, not resolve.
-          </p>
-        </div>
-        <div className={styles.featuresGrid}>
-
-          {/* Journal */}
-          <div className={styles.featureBlock}>
-            <div className={styles.featureGlyph} style={{ background: '#E8E4F0' }}>
-              <div className={styles.glyphJournalDate}>tuesday</div>
-              <div className={styles.glyphTextLine} style={{ width: '84%' }} />
-              <div className={styles.glyphTextLine} style={{ width: '67%' }} />
-              <div className={styles.glyphTextLine} style={{ width: '50%' }} />
-            </div>
-            <div className={styles.featureName}>journal</div>
-            <p className={styles.featureDesc}>a place to think that stays with your day.</p>
-          </div>
-
-          {/* Debriefs */}
-          <div className={styles.featureBlock}>
-            <div className={styles.featureGlyph}>
-              <div className={styles.glyphFilterRow}>
-                <span className={styles.glyphPill} style={{ background: '#D93B1C', color: '#fff', borderColor: '#D93B1C' }}>
-                  <span className={styles.glyphPillDot} style={{ background: '#fff' }} />
-                  anxiety
-                </span>
-                <span className={styles.glyphPill} style={{ color: '#1B3A2D', borderColor: '#1B3A2D' }}>
-                  <span className={styles.glyphPillDot} style={{ background: '#1B3A2D' }} />
-                  peak
-                </span>
-              </div>
-              {['what triggered it', 'how it felt', "what it's about"].map((label, i) => (
-                <div key={i} className={styles.glyphFieldRow}>
-                  <span className={styles.glyphFieldLabel}>{label}</span>
-                </div>
-              ))}
-            </div>
-            <div className={styles.featureName}>debriefs</div>
-            <p className={styles.featureDesc}>seven minutes to process an anxiety episode or understand a peak moment.</p>
-          </div>
-
-          {/* Notes to self */}
-          <div className={styles.featureBlock}>
-            <div className={styles.featureGlyph}>
-              <div className={styles.notesDeck}>
-                <div className={styles.noteCard}>
-                  <span className={styles.glyphMicroText}>a good conversation is a form of rest.</span>
-                </div>
-              </div>
-              <div className={styles.notesPagination}>
-                <span className={`${styles.notesDot} ${styles.notesDotFilled}`} />
-                {[1,2,3,4].map(i => <span key={i} className={styles.notesDot} />)}
-              </div>
-            </div>
-            <div className={styles.featureName}>notes to self</div>
-            <p className={styles.featureDesc}>swipeable cards that resurface what you want to remember.</p>
-          </div>
-
-          {/* Weekly review */}
-          <div className={styles.featureBlock}>
-            <div className={styles.featureGlyph}>
-              <div className={styles.stepperList}>
-                {['last week', 'how it felt', 'canvas check', 'insight', 'note'].map((label, i) => (
-                  <div key={i} className={styles.stepperRow}>
-                    <div className={styles.stepperTrack}>
-                      <span className={styles.stepperDot} style={{ background: i < 3 ? 'var(--ink)' : 'transparent' }} />
-                      {i < 4 && <span className={styles.stepperConnector} />}
-                    </div>
-                    <span className={styles.stepperLabel}>{label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={styles.featureName}>weekly review</div>
-            <p className={styles.featureDesc}>five steps to close the week and set the next one.</p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── Your maslow, in four steps ── */}
-      <section className={styles.section} id="how">
-        <div className={styles.sectionHeader}>
-          <div className={styles.eyebrow}>GET STARTED</div>
-        </div>
-        <div style={{ maxWidth: 920 }}>
-          <h2 className={styles.sectionHeadline}>your mymaslow,<br /><em>in four steps</em></h2>
-          <p className={styles.monoBody} style={{ marginTop: 40, maxWidth: 520 }}>It takes about five minutes to set up. Then it runs in the background of your life.</p>
-        </div>
-        <div className={styles.stepsGrid}>
-          <div className={styles.step}>
-            <div className={styles.stepNum}>01</div>
-            <div className={styles.stepTitle}>Answer a few questions</div>
-            <p className={styles.stepBody}>Tell MyMaslow where you are in life right now — what&apos;s hard, what you value, what pulls at you. Your answers shape a starting canvas built around your actual life, not a generic template.</p>
-          </div>
-          <div className={styles.step}>
-            <div className={styles.stepNum}>02</div>
-            <div className={styles.stepTitle}>Review your canvas</div>
-            <p className={styles.stepBody}>MyMaslow proposes a canvas — not all thirteen needs, a deliberate few. One to explore deeply. Two to appreciate. A handful to keep nourished, and a floor of survival-mode needs that just need to not fall apart. You can&apos;t do everything at once. The canvas is where you admit that — and choose.</p>
-          </div>
-          <div className={styles.step}>
-            <div className={styles.stepNum}>03</div>
-            <div className={styles.stepTitle}>Build your practice library</div>
-            <p className={styles.stepBody}>For each need, add a handful of practices — the specific things you actually do to meet that need. You don&apos;t have to meet your needs the same way every day. The library gives you options.</p>
-          </div>
-          <div className={styles.step}>
-            <div className={styles.stepNum}>04</div>
-            <div className={styles.stepTitle}>Track and reflect</div>
-            <p className={styles.stepBody}>Check in three times a day. Log your mood. Note what&apos;s behind it. Over time, the data shows you what&apos;s working, what isn&apos;t, and where to focus next.</p>
-          </div>
-        </div>
-      </section>
+      {/* ── Section 10: Review ── */}
+      <ReviewSection />
 
       {/* ── CTA ── */}
       <section className={styles.cta}>
