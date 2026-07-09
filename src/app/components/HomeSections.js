@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import s from './HomeSections.module.css'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
@@ -219,27 +219,65 @@ const CANVAS_STATES = [
   { exploration:['play'], appreciation:['touch','reflection'], nourishment:['movement','rest','beauty','information'], survival:['intimacy','money','dwelling','thrill'], unassigned:['nutrition','community'] },
 ]
 const MODE_CAPS = { exploration:1, appreciation:2, nourishment:4, survival:4 }
+// All 13 needs always present in some group — safe to snapshot all at once
+const ALL_CANVAS_NEEDS = ['reflection','nutrition','community','movement','rest','beauty','intimacy','money','dwelling','thrill','play','information','touch']
 
 export function CanvasSection() {
   const ref = useRef(null)
   const visible = useVisible(ref, 0.2)
   const reduced = useReducedMotion()
   const [idx, setIdx] = useState(0)
-  const [opacity, setOpacity] = useState(1)
 
+  // FLIP state
+  const chipRefs = useRef({})   // need name → current DOM element
+  const prevRects = useRef({})  // need name → DOMRect captured before state change
+
+  // Auto-advance: snapshot positions, then update index
   useEffect(() => {
     if (!visible || reduced) return
     const t = setInterval(() => {
-      setOpacity(0)
-      setTimeout(() => {
-        setIdx(p => (p + 1) % CANVAS_STATES.length)
-        setOpacity(1)
-      }, 300)
+      // F(irst): record every chip's current screen rect
+      prevRects.current = {}
+      for (const name of ALL_CANVAS_NEEDS) {
+        const el = chipRefs.current[name]
+        if (el) prevRects.current[name] = el.getBoundingClientRect()
+      }
+      setIdx(p => (p + 1) % CANVAS_STATES.length)
     }, 2600)
     return () => clearInterval(t)
   }, [visible, reduced])
 
+  // FLIP play: runs after React commits the new DOM (chips are in new positions)
+  useLayoutEffect(() => {
+    if (reduced || Object.keys(prevRects.current).length === 0) return
+    for (const [name, prev] of Object.entries(prevRects.current)) {
+      const el = chipRefs.current[name]
+      if (!el) continue
+      // L(ast): read new position
+      const next = el.getBoundingClientRect()
+      const dx = prev.left - next.left
+      const dy = prev.top  - next.top
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) continue
+      // I(nvert): teleport chip back to old visual position
+      el.style.transition = 'none'
+      el.style.transform  = `translate(${dx}px,${dy}px)`
+      el.style.opacity    = '0.55'
+      // Force layout flush so the browser registers the invert
+      void el.offsetHeight
+      // P(lay): animate to natural (new) position
+      el.style.transition = 'transform 400ms cubic-bezier(0.4,0,0.2,1), opacity 350ms ease'
+      el.style.transform  = ''
+      el.style.opacity    = ''
+    }
+    prevRects.current = {}
+  }, [idx, reduced])
+
   const cs = CANVAS_STATES[idx]
+
+  // Stable callback-ref factory (uses object assignment, not closure per render)
+  function setChipRef(name) {
+    return el => { chipRefs.current[name] = el }
+  }
 
   return (
     <div className={s.fullRow} ref={ref}>
@@ -248,7 +286,7 @@ export function CanvasSection() {
         <h2 className={s.heading}>your life takes up space. see it.</h2>
         <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 500 }}>Your Canvas is a picture of the space you protect for what matters. It&apos;s where you set what you&apos;re meeting, in what mode, and how often. Everything else in the app follows from it.</p>
       </div>
-      <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', opacity, transition: 'opacity 300ms ease' }}>
+      <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', aspectRatio: '2/1' }}>
         <div className={s.canvasCard}>
           <div className={s.canvasGroups}>
             {(['exploration','appreciation','nourishment','survival']).map(mode => {
@@ -262,7 +300,14 @@ export function CanvasSection() {
                   </div>
                   <div className={s.canvasGroupBody} style={{ borderLeftColor: col, background: col + '0d', borderColor: col + '33' }}>
                     {needs.map(n => (
-                      <span key={n} className={s.canvasChip} style={{ background: col + '1a', borderColor: col + '55', color: col }}>{n}</span>
+                      <span
+                        key={n}
+                        ref={setChipRef(n)}
+                        className={s.canvasChip}
+                        style={{ background: col + '1a', borderColor: col + '55', color: col }}
+                      >
+                        {n}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -275,7 +320,7 @@ export function CanvasSection() {
             </div>
             <div className={s.unassignedBody}>
               {cs.unassigned.map(n => (
-                <span key={n} className={s.unassignedChip}>{n}</span>
+                <span key={n} ref={setChipRef(n)} className={s.unassignedChip}>{n}</span>
               ))}
             </div>
             <div className={s.unassignedFooter}>tap one to place it.</div>
@@ -572,7 +617,7 @@ export function DataSection() {
         <h2 className={s.heading}>patterns from your own days.</h2>
         <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 520 }}>MyMaslow doesn&apos;t tell you what everyone should do. It tells you what you did and what came after. Computed from your own check-ins.</p>
       </div>
-      <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto' }}>
+      <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', aspectRatio: '2/1', overflow: 'hidden' }}>
         <div className={s.dataCardInner}>
           <div className={s.dataHeader}>
             <span className={s.dataTitle}>data</span>

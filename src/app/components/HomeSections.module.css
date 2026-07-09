@@ -63,6 +63,13 @@
   max-width: 380px;
 }
 
+/* ── Visual / Copy column roles ── */
+.visual { order: 2; aspect-ratio: 5 / 4; }
+.copy   { order: 1; align-self: center; }
+/* Cards inside half-width visuals fill the fixed-ratio container */
+.visual .card,
+.visual .journalCard { height: 100%; }
+
 /* ── Card base ── */
 .card {
   background: #F7F5F0;
@@ -175,7 +182,7 @@
 .canvasCard {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  min-height: 340px;
+  height: 100%;
 }
 .canvasGroups {
   padding: 18px;
@@ -213,9 +220,9 @@
   padding: 3px 9px;
   border-radius: 20px;
   border: 0.5px solid;
-  transition: opacity 350ms ease, transform 350ms ease;
+  /* transform is set/cleared by JS FLIP animation */
+  will-change: transform, opacity;
 }
-.canvasChipHidden { opacity: 0; transform: scale(0.92); }
 .unassignedBody {
   background: #efece0;
   border-radius: 8px;
@@ -492,8 +499,12 @@
   .fullRow { padding: 56px 24px; }
   .divider { padding: 20px 24px; }
   .subhead { max-width: 100%; }
+  /* On mobile: visual on top (order 1), copy below (order 2) */
+  .visual { order: 1; aspect-ratio: auto; }
+  .visual .card, .visual .journalCard { height: auto; }
+  .copy   { order: 2; }
   .modeRow { grid-template-columns: 16px 1fr 40px; }
   .dataAlertRow { grid-template-columns: 1fr; }
-  .canvasCard { grid-template-columns: 1fr; }
+  .canvasCard { grid-template-columns: 1fr; height: auto; }
   .canvasGroups { border-right: none; border-bottom: 0.5px solid rgba(26,26,26,0.1); }
 }
