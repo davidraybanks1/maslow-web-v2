@@ -499,10 +499,10 @@
   .fullRow { padding: 56px 24px; }
   .divider { padding: 20px 24px; }
   .subhead { max-width: 100%; }
-  /* On mobile: visual on top (order 1), copy below (order 2) */
-  .visual { order: 1; aspect-ratio: auto; }
+  /* On mobile: copy on top (order 1), visual below (order 2) */
+  .copy   { order: 1; }
+  .visual { order: 2; aspect-ratio: auto; }
   .visual .card, .visual .journalCard { height: auto; }
-  .copy   { order: 2; }
   .modeRow { grid-template-columns: 16px 1fr 40px; }
   .dataAlertRow { grid-template-columns: 1fr; }
   .canvasCard { grid-template-columns: 1fr; height: auto; }
