@@ -103,9 +103,9 @@ export function NeedsSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>01 · Needs</div>
-        <h2 className={s.heading}>know what you need.</h2>
-        <p className={s.subhead}>Everyone needs the same fourteen things to live and to feel alive. The mix that matters to you is yours. Start with the defaults or add your own.</p>
+        <div className={s.eyebrow}>Needs</div>
+        <h2 className={s.heading}>meet your needs, not anxiety&apos;s</h2>
+        <p className={s.subhead}>You fill your canvas by adding the needs you want to focus on. Based on the work of Abraham Maslow, and remixed for modern lives, MyMaslow gives you a library of needs to choose from, test, and customize to create a lifestyle that gives you productive energy.</p>
       </div>
     </div>
   )
@@ -146,9 +146,9 @@ export function ModesSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>02 · Modes</div>
-        <h2 className={s.heading}>know how you need it.</h2>
-        <p className={s.subhead}>Meeting a need isn&apos;t binary. Some days you&apos;re doing the bare minimum. Some days you&apos;re going deep. Modes tell you which one you&apos;re in and what that means.</p>
+        <div className={s.eyebrow}>Modes</div>
+        <h2 className={s.heading}>live beyond survival-mode</h2>
+        <p className={s.subhead}>You don&apos;t require the same needs as everyone else. Move needs between modes to tailor your canvas to your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that&apos;s not the default.</p>
       </div>
     </div>
   )
@@ -202,9 +202,9 @@ export function PracticesSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>03 · Practices</div>
-        <h2 className={s.heading}>small things, done today.</h2>
-        <p className={s.subhead}>Practices are the daily actions that meet a need. Cook a meal. Go for a walk. Text a friend back. Tap them off when you do them, or don&apos;t. The point isn&apos;t the checklist.</p>
+        <div className={s.eyebrow}>Practices</div>
+        <h2 className={s.heading}>do things instead of think them</h2>
+        <p className={s.subhead}>The needs and modes in your canvas set the stage for the specific things, called practices in MyMaslow, that you will do everyday. Instead of thinking about managing anxiety, practices force you to take up real space in your day. Space that anxiety will fill otherwise.</p>
       </div>
     </div>
   )
@@ -282,9 +282,9 @@ export function CanvasSection() {
   return (
     <div className={s.fullRow} ref={ref}>
       <div className={s.fullCenter}>
-        <div className={s.eyebrow}>04 · Canvas</div>
-        <h2 className={s.heading}>your life takes up space. see it.</h2>
-        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 500 }}>Your Canvas is a picture of the space you protect for what matters. It&apos;s where you set what you&apos;re meeting, in what mode, and how often. Everything else in the app follows from it.</p>
+        <div className={s.eyebrow}>Canvas</div>
+        <h2 className={s.heading}>know your space. and own it.</h2>
+        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 500 }}>MyMaslow gives you a canvas to visualize the space we&apos;re all given. Your canvas makes it clear how much space you own and how much you&apos;re giving to anxiety.</p>
       </div>
       <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', aspectRatio: '2/1' }}>
         <div className={s.canvasCard}>
@@ -432,9 +432,9 @@ export function MoodsSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>05 · Moods</div>
-        <h2 className={s.heading}>morning, midday, evening.</h2>
-        <p className={s.subhead}>Three check-ins a day. Good, fine, bad. Two seconds each. Over weeks, they show you what actually moves the needle.</p>
+        <div className={s.eyebrow}>Moods</div>
+        <h2 className={s.heading}>be honest with yourself</h2>
+        <p className={s.subhead}>Three times a day, press a button to document how you feel. Include a note if you know why. Your moods provide a barometer to measure how well everything you are working on is working for you.</p>
       </div>
     </div>
   )
@@ -613,9 +613,9 @@ export function DataSection() {
   return (
     <div className={s.fullRow} ref={ref}>
       <div className={s.fullCenter}>
-        <div className={s.eyebrow}>06 · Data</div>
-        <h2 className={s.heading}>patterns from your own days.</h2>
-        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 520 }}>MyMaslow doesn&apos;t tell you what everyone should do. It tells you what you did and what came after. Computed from your own check-ins.</p>
+        <div className={s.eyebrow}>Data</div>
+        <h2 className={s.heading}>get to know your best self</h2>
+        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 520 }}>There is no one approach that works for everyone. But there is one approach that works for each of us. All the information from your canvas and practices turns into data that helps pinpoint what to do more of, less of, and experiment with.</p>
       </div>
       <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', aspectRatio: '2/1', overflow: 'hidden' }}>
         <div className={s.dataCardInner}>
@@ -661,9 +661,9 @@ export function JournalSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>07 · Journal</div>
-        <h2 className={s.heading}>somewhere to think.</h2>
-        <p className={s.subhead}>Not a mood log. Not a template. Just a page. The app dates it and saves it and leaves you alone.</p>
+        <div className={s.eyebrow}>Journal</div>
+        <h2 className={s.heading}>talk about yourself to yourself.</h2>
+        <p className={s.subhead}>Every day you get a clean journal entry. Jot down the happenings of the day, your wins or challenges, or fleeting thought that might mean something later. Your journal entries become the color commentary for the trends you uncover in your data.</p>
       </div>
     </div>
   )
@@ -704,9 +704,9 @@ export function DebriefSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>08 · Debriefs</div>
-        <h2 className={s.heading}>seven minutes when it spikes.</h2>
-        <p className={s.subhead}>For anxiety episodes and peak moments alike — same tool, different reasons. A short set of prompts to help you name what happened while it&apos;s still fresh.</p>
+        <div className={s.eyebrow}>Debriefs</div>
+        <h2 className={s.heading}>turn a moment of anxiety into growth</h2>
+        <p className={s.subhead}>Within each journal entry, you have access to debriefs that help you break down anxious episodes into useful information. Similarly, you can deconstruct peak experiences to identify the right ingredients to make them the rule not the exception.</p>
       </div>
     </div>
   )
@@ -764,9 +764,9 @@ export function NotesSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>09 · Notes to Self</div>
-        <h2 className={s.heading}>the things worth remembering.</h2>
-        <p className={s.subhead}>Cards you write to your future self. They resurface later — sometimes when you ask for them, sometimes when the app thinks you could use one.</p>
+        <div className={s.eyebrow}>Notes to Self</div>
+        <h2 className={s.heading}>keep your best thoughts top of mind</h2>
+        <p className={s.subhead}>There&apos;s often a phrase, quote, or memory that can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
       </div>
     </div>
   )
@@ -849,9 +849,9 @@ export function ReviewSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>10 · Review</div>
-        <h2 className={s.heading}>close the week.</h2>
-        <p className={s.subhead}>Five prompts. Five minutes. What worked, what didn&apos;t, what you&apos;re carrying into next week. Then start it on purpose.</p>
+        <div className={s.eyebrow}>Review</div>
+        <h2 className={s.heading}>review, remember, revise</h2>
+        <p className={s.subhead}>At the end of each week, review your data, journal entries, and debriefs so every lesson learned is internalized. This gives you a chance to tweak your canvas, practices, or notes to self so your next week is even better than the last.</p>
       </div>
     </div>
   )
