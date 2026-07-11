@@ -148,7 +148,7 @@ export function ModesSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Modes</div>
         <h2 className={s.heading}>live beyond survival-mode</h2>
-        <p className={s.subhead}>You don&apos;t require the same needs as everyone else. Move needs between modes to tailor your canvas to your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that&apos;s not the default.</p>
+        <p className={s.subhead}>Move needs between modes to tailor your canvas to your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that&apos;s not the default.</p>
       </div>
     </div>
   )
