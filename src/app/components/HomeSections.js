@@ -766,7 +766,7 @@ export function NotesSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Notes to Self</div>
         <h2 className={s.heading}>keep your best thoughts top of mind</h2>
-        <p className={s.subhead}>There&apos;s often a phrase, quote, or memory that can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
+        <p className={s.subhead}>A phrase, quote, or memory can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
       </div>
     </div>
   )
