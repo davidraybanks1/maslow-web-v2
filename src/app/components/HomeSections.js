@@ -215,6 +215,11 @@ export function PracticesSection() {
 export function CanvasSection() {
   return (
     <div className={s.fullRow}>
+      <div className={s.fullCenter}>
+        <div className={s.eyebrow}>Canvas</div>
+        <h2 className={s.heading}>know your space. and own it.</h2>
+        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 500 }}>MyMaslow gives you a canvas to visualize the space we&apos;re all given. Your canvas makes it clear how much space you own and how much you&apos;re giving to anxiety.</p>
+      </div>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
         <CanvasWidget />
       </div>

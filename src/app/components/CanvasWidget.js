@@ -83,15 +83,6 @@ export default function CanvasWidget() {
     <div className={s.wrapper} ref={wrapperRef}>
       <div className={s.widget} style={{ transform: `scale(${scale})` }}>
 
-        {/* Header */}
-        <div className={s.header}>
-          <div className={s.eyebrow}>canvas</div>
-          <h2 className={s.title}>know your space. and own it.</h2>
-          <p className={s.subcopy}>
-            Place needs out of the unassigned rail to claim your space. Whatever you leave stays black — the space anxiety fills by default.
-          </p>
-        </div>
-
         {/* Space-owned bar */}
         <div className={s.barSection}>
           <div className={s.barRow}>
