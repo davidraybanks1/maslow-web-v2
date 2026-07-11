@@ -434,7 +434,7 @@ export function MoodsSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Moods</div>
         <h2 className={s.heading}>be honest with yourself</h2>
-        <p className={s.subhead}>Three times a day, press a button to document how you feel. Include a note if you know why. Your moods provide a barometer to measure how well everything you are working on is working for you.</p>
+        <p className={s.subhead}>Three times a day, press a button to document how you feel. Your moods provide a barometer to measure how well everything you are working on is working for you.</p>
       </div>
     </div>
   )
