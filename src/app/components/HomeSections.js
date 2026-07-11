@@ -849,9 +849,9 @@ export function ReviewSection() {
         </div>
       </div>
       <div className={s.copy}>
-        <div className={s.eyebrow}>Review</div>
+        <div className={s.eyebrow}>Weekly Review</div>
         <h2 className={s.heading}>review, remember, revise</h2>
-        <p className={s.subhead}>At the end of each week, review your data, journal entries, and debriefs so every lesson learned is internalized. This gives you a chance to tweak your canvas, practices, or notes to self so your next week is even better than the last.</p>
+        <p className={s.subhead}>At the end of each week, review your data, journal entries, and debriefs. Then revise or recommit so your next week is even better than the last.</p>
       </div>
     </div>
   )
