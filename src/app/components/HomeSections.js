@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import s from './HomeSections.module.css'
 import CanvasWidget from './CanvasWidget'
+import NeedsWidget from './NeedsWidget'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
 function useVisible(ref, threshold = 0.3) {
@@ -50,58 +51,11 @@ export function Divider({ text }) {
 }
 
 // ── SECTION 01: NEEDS ─────────────────────────────────────────────────────────
-const ALL_NEEDS = ['movement','nutrition','rest','community','beauty','intimacy','reflection','play','money','dwelling','information','touch','thrill']
-
-const MIXES = [
-  {},
-  { movement:'exploration', reflection:'exploration', nutrition:'nourishment', rest:'nourishment', community:'appreciation', beauty:'appreciation', money:'survival', dwelling:'survival' },
-  { play:'exploration', intimacy:'appreciation', beauty:'appreciation', community:'nourishment', touch:'nourishment', movement:'survival', nutrition:'survival', rest:'survival', money:'survival' },
-  { rest:'nourishment', nutrition:'nourishment', movement:'survival', dwelling:'survival', money:'survival', information:'survival' },
-]
-
 export function NeedsSection() {
-  const ref = useRef(null)
-  const visible = useVisible(ref)
-  const reduced = useReducedMotion()
-  const [mixIdx, setMixIdx] = useState(0)
-
-  useEffect(() => {
-    if (!visible || reduced) return
-    const t = setInterval(() => setMixIdx(p => (p + 1) % MIXES.length), 3200)
-    return () => clearInterval(t)
-  }, [visible, reduced])
-
-  const mix = MIXES[reduced ? 1 : mixIdx]
-
   return (
-    <div className={s.halfRow} ref={ref}>
+    <div className={s.halfRow}>
       <div className={s.visual}>
-        <div className={s.card}>
-          <div className={s.needsCard}>
-            <div className={s.needsCardHeader}>— Your Needs · 14</div>
-            <div className={s.needsGrid}>
-              {ALL_NEEDS.map(need => {
-                const mode = mix[need]
-                const col = mode ? C[mode] : null
-                return (
-                  <div
-                    key={need}
-                    className={s.needTile}
-                    style={col ? {
-                      background: col + '26',
-                      borderColor: col + '8C',
-                      borderLeftColor: col,
-                      borderLeftWidth: '3px',
-                    } : {}}
-                  >
-                    {need}
-                  </div>
-                )
-              })}
-              <div className={`${s.needTile} ${s.needTileAdd}`}>+ your own</div>
-            </div>
-          </div>
-        </div>
+        <NeedsWidget />
       </div>
       <div className={s.copy}>
         <div className={s.eyebrow}>Needs</div>

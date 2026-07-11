@@ -1,0 +1,159 @@
+/* Fills the .visual grid cell — mirrors the height:100% rule used by .card in HomeSections */
+.panel {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e7e2d8;
+  border-radius: 22px;
+  background: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 2px 14px rgba(28, 26, 22, 0.04);
+}
+
+@media (max-width: 900px) {
+  .panel { height: auto; }
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.dim          { color: #cfc8ba; }
+.headerLabel  { color: #a49c8b; }
+.headerCount  { color: #1c1a16; min-width: 20px; }
+
+.headerHint {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c3bbac;
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 11px;
+}
+
+/* ── Need cards ──────────────────────────────────────────────────────── */
+.card {
+  height: 56px;
+  border-radius: 12px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  font-family: 'Space Mono', monospace;
+  font-size: 13.5px;
+  letter-spacing: 0.005em;
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    box-shadow 0.5s ease,
+    border-color 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.cardName {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cardMarker {
+  flex-shrink: 0;
+  margin-left: 6px;
+  transition: color 0.5s ease;
+}
+
+/* ── Create-your-own cell ────────────────────────────────────────────── */
+.createCell {
+  height: 56px;
+  border-radius: 12px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 13.5px;
+  letter-spacing: 0.005em;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 17px;
+  background: #1c1a16;
+  border-radius: 1px;
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f0ebe1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: #a49c8b;
+}
+
+.footerStatus { flex: 1; min-width: 0; }
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
