@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import s from './CanvasWidget.module.css'
 
 const NEEDS_ORDER = [
@@ -32,8 +32,6 @@ const TOKEN = {
 }
 
 export default function CanvasWidget() {
-  const wrapperRef = useRef(null)
-  const [scale, setScale]   = useState(1)
   const [placed, setPlaced] = useState(START)
   const [reduced, setReduced] = useState(false)
 
@@ -44,23 +42,6 @@ export default function CanvasWidget() {
     const h = e => setReduced(e.matches)
     mq.addEventListener('change', h)
     return () => mq.removeEventListener('change', h)
-  }, [])
-
-  // Initial scale — runs before first paint to avoid flash of unscaled content
-  useLayoutEffect(() => {
-    const el = wrapperRef.current
-    if (el) setScale(el.getBoundingClientRect().width / 1000)
-  }, [])
-
-  // Resize observer for subsequent changes
-  useEffect(() => {
-    const el = wrapperRef.current
-    if (!el) return
-    const ro = new ResizeObserver(entries => {
-      setScale(entries[0].contentRect.width / 1000)
-    })
-    ro.observe(el)
-    return () => ro.disconnect()
   }, [])
 
   // Tick animation
@@ -80,8 +61,8 @@ export default function CanvasWidget() {
   const unassigned  = NEEDS_ORDER.slice(placedCount)
 
   return (
-    <div className={s.wrapper} ref={wrapperRef}>
-      <div className={s.widget} style={{ transform: `scale(${scale})` }}>
+    <div className={s.wrapper}>
+      <div className={s.widget}>
 
         {/* Space-owned bar */}
         <div className={s.barSection}>
@@ -117,7 +98,7 @@ export default function CanvasWidget() {
               const t = TOKEN[mode]
               const needs = placedNeeds.filter(n => n.mode === mode)
               return (
-                <div key={mode} className={s.band}>
+                <div key={mode} className={s.band} style={{ borderLeft: `3px solid ${t.solid}`, paddingLeft: '12px' }}>
                   <div className={s.bandHead}>
                     <span className={s.bandName} style={{ color: t.solid }}>{mode}</span>
                     <span className={s.bandCount}>{needs.length} placed</span>

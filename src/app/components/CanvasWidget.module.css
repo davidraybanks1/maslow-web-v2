@@ -1,7 +1,6 @@
-/* Outer: constrains aspect ratio, clips scaled content, provides visual styling */
+/* Outer */
 .wrapper {
   width: 100%;
-  aspect-ratio: 5 / 4;
   overflow: hidden;
   border-radius: 24px;
   border: 1px solid #e7e2d8;
@@ -9,11 +8,10 @@
   background: #fbf9f5;
 }
 
-/* Inner: fixed 1000×800 base design, scaled to fit wrapper via JS */
+/* Inner: fills wrapper width, height follows content */
 .widget {
-  width: 1000px;
-  height: 800px;
-  transform-origin: top left;
+  width: 100%;
+  height: auto;
   padding: 32px 60px 56px;
   box-sizing: border-box;
   display: flex;
