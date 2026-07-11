@@ -706,7 +706,7 @@ export function DebriefSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Debriefs</div>
         <h2 className={s.heading}>turn a moment of anxiety into growth</h2>
-        <p className={s.subhead}>Within each journal entry, you have access to debriefs that help you break down anxious episodes into useful information. Similarly, you can deconstruct peak experiences to identify the right ingredients to make them the rule not the exception.</p>
+        <p className={s.subhead}>Answer simple questions in debriefs to turn an anxious episode into useful information. Similarly, deconstruct peak experiences to learn how to create more of them.</p>
       </div>
     </div>
   )
