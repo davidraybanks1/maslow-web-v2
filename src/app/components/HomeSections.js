@@ -615,7 +615,7 @@ export function DataSection() {
       <div className={s.fullCenter}>
         <div className={s.eyebrow}>Data</div>
         <h2 className={s.heading}>discover what makes for good days</h2>
-        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 520 }}>All the information from your canvas and practices turns into data that helps pinpoint what to do more of, less of, and experiment with.</p>
+        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 520 }}>The information from your canvas and practices turns into data that helps pinpoint what to add, subtract, or try.</p>
       </div>
       <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', aspectRatio: '2/1', overflow: 'hidden' }}>
         <div className={s.dataCardInner}>
