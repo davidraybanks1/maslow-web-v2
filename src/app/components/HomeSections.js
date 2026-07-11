@@ -663,7 +663,7 @@ export function JournalSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Journal</div>
         <h2 className={s.heading}>talk about yourself to yourself.</h2>
-        <p className={s.subhead}>Every day you get a clean journal entry. Jot down the happenings of the day, your wins or challenges, or fleeting thought that might mean something later. Your journal entries become the color commentary for the trends you uncover in your data.</p>
+        <p className={s.subhead}>Every day you get a fresh journal entry. Jot down the day&apos;s events, wins and challenges, or fleeting thoughts. This is the color commentary for the trends in your data.</p>
       </div>
     </div>
   )
