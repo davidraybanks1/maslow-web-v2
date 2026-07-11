@@ -1,6 +1,7 @@
 'use client'
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import s from './HomeSections.module.css'
+import CanvasWidget from './CanvasWidget'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
 function useVisible(ref, threshold = 0.3) {
@@ -211,121 +212,11 @@ export function PracticesSection() {
 }
 
 // ── SECTION 04: CANVAS ────────────────────────────────────────────────────────
-const CANVAS_STATES = [
-  { exploration:['reflection'], appreciation:['nutrition','community'], nourishment:['movement','rest','beauty'], survival:['intimacy','money','dwelling','thrill'], unassigned:['play','information','touch'] },
-  { exploration:[], appreciation:['nutrition','reflection'], nourishment:['movement','rest','beauty'], survival:['intimacy','money','dwelling','thrill'], unassigned:['play','information','touch','community'] },
-  { exploration:['play'], appreciation:['nutrition','reflection'], nourishment:['movement','rest','beauty'], survival:['intimacy','money','dwelling','thrill'], unassigned:['information','touch','community'] },
-  { exploration:['play'], appreciation:['nutrition','reflection'], nourishment:['movement','rest','beauty','information'], survival:['intimacy','money','dwelling','thrill'], unassigned:['touch','community'] },
-  { exploration:['play'], appreciation:['touch','reflection'], nourishment:['movement','rest','beauty','information'], survival:['intimacy','money','dwelling','thrill'], unassigned:['nutrition','community'] },
-]
-const MODE_CAPS = { exploration:1, appreciation:2, nourishment:4, survival:4 }
-// All 13 needs always present in some group — safe to snapshot all at once
-const ALL_CANVAS_NEEDS = ['reflection','nutrition','community','movement','rest','beauty','intimacy','money','dwelling','thrill','play','information','touch']
-
 export function CanvasSection() {
-  const ref = useRef(null)
-  const visible = useVisible(ref, 0.2)
-  const reduced = useReducedMotion()
-  const [idx, setIdx] = useState(0)
-
-  // FLIP state
-  const chipRefs = useRef({})   // need name → current DOM element
-  const prevRects = useRef({})  // need name → DOMRect captured before state change
-
-  // Auto-advance: snapshot positions, then update index
-  useEffect(() => {
-    if (!visible || reduced) return
-    const t = setInterval(() => {
-      // F(irst): record every chip's current screen rect
-      prevRects.current = {}
-      for (const name of ALL_CANVAS_NEEDS) {
-        const el = chipRefs.current[name]
-        if (el) prevRects.current[name] = el.getBoundingClientRect()
-      }
-      setIdx(p => (p + 1) % CANVAS_STATES.length)
-    }, 2600)
-    return () => clearInterval(t)
-  }, [visible, reduced])
-
-  // FLIP play: runs after React commits the new DOM (chips are in new positions)
-  useLayoutEffect(() => {
-    if (reduced || Object.keys(prevRects.current).length === 0) return
-    for (const [name, prev] of Object.entries(prevRects.current)) {
-      const el = chipRefs.current[name]
-      if (!el) continue
-      // L(ast): read new position
-      const next = el.getBoundingClientRect()
-      const dx = prev.left - next.left
-      const dy = prev.top  - next.top
-      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) continue
-      // I(nvert): teleport chip back to old visual position
-      el.style.transition = 'none'
-      el.style.transform  = `translate(${dx}px,${dy}px)`
-      el.style.opacity    = '0.55'
-      // Force layout flush so the browser registers the invert
-      void el.offsetHeight
-      // P(lay): animate to natural (new) position
-      el.style.transition = 'transform 400ms cubic-bezier(0.4,0,0.2,1), opacity 350ms ease'
-      el.style.transform  = ''
-      el.style.opacity    = ''
-    }
-    prevRects.current = {}
-  }, [idx, reduced])
-
-  const cs = CANVAS_STATES[idx]
-
-  // Stable callback-ref factory (uses object assignment, not closure per render)
-  function setChipRef(name) {
-    return el => { chipRefs.current[name] = el }
-  }
-
   return (
-    <div className={s.fullRow} ref={ref}>
-      <div className={s.fullCenter}>
-        <div className={s.eyebrow}>Canvas</div>
-        <h2 className={s.heading}>know your space. and own it.</h2>
-        <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 500 }}>MyMaslow gives you a canvas to visualize the space we&apos;re all given. Your canvas makes it clear how much space you own and how much you&apos;re giving to anxiety.</p>
-      </div>
-      <div className={s.card} style={{ maxWidth: 1100, margin: '0 auto', aspectRatio: '2/1' }}>
-        <div className={s.canvasCard}>
-          <div className={s.canvasGroups}>
-            {(['exploration','appreciation','nourishment','survival']).map(mode => {
-              const col = C[mode]
-              const needs = cs[mode]
-              return (
-                <div key={mode}>
-                  <div className={s.canvasGroupLabel} style={{ color: col }}>
-                    <span>{mode.toUpperCase()}</span>
-                    <span className={s.canvasGroupCount}>{needs.length} of {MODE_CAPS[mode]}</span>
-                  </div>
-                  <div className={s.canvasGroupBody} style={{ borderLeftColor: col, background: col + '0d', borderColor: col + '33' }}>
-                    {needs.map(n => (
-                      <span
-                        key={n}
-                        ref={setChipRef(n)}
-                        className={s.canvasChip}
-                        style={{ background: col + '1a', borderColor: col + '55', color: col }}
-                      >
-                        {n}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          <div className={s.canvasUnassigned}>
-            <div className={s.canvasGroupLabel} style={{ color: 'rgba(26,26,26,0.45)' }}>
-              <span>UNASSIGNED</span>
-            </div>
-            <div className={s.unassignedBody}>
-              {cs.unassigned.map(n => (
-                <span key={n} ref={setChipRef(n)} className={s.unassignedChip}>{n}</span>
-              ))}
-            </div>
-            <div className={s.unassignedFooter}>tap one to place it.</div>
-          </div>
-        </div>
+    <div className={s.fullRow}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <CanvasWidget />
       </div>
     </div>
   )
