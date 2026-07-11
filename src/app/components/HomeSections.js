@@ -105,7 +105,7 @@ export function NeedsSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Needs</div>
         <h2 className={s.heading}>meet your needs, not anxiety&apos;s</h2>
-        <p className={s.subhead}>You fill your canvas by adding the needs you want to focus on. Based on the work of Abraham Maslow, and remixed for modern lives, MyMaslow gives you a library of needs to choose from, test, and customize to create a lifestyle that gives you productive energy.</p>
+        <p className={s.subhead}>You fill your canvas by adding the needs you want to focus on. MyMaslow gives you a library of needs to choose from, test, and customize to create a lifestyle that gives you productive energy.</p>
       </div>
     </div>
   )
