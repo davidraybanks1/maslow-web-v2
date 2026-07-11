@@ -204,7 +204,7 @@ export function PracticesSection() {
       <div className={s.copy}>
         <div className={s.eyebrow}>Practices</div>
         <h2 className={s.heading}>do things instead of think them</h2>
-        <p className={s.subhead}>The needs and modes in your canvas set the stage for the specific things, called practices in MyMaslow, that you will do everyday. Instead of thinking about managing anxiety, practices force you to take up real space in your day. Space that anxiety will fill otherwise.</p>
+        <p className={s.subhead}>The needs and modes in your canvas guide the practices you do everyday. Practices force you to take up real space in your day. Space that anxiety would fill otherwise.</p>
       </div>
     </div>
   )
