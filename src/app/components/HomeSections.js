@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import s from './HomeSections.module.css'
 import CanvasWidget from './CanvasWidget'
 import NeedsWidget from './NeedsWidget'
+import ModesWidget from './ModesWidget'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
 function useVisible(ref, threshold = 0.3) {
@@ -67,38 +68,11 @@ export function NeedsSection() {
 }
 
 // ── SECTION 02: MODES ─────────────────────────────────────────────────────────
-const MODES_LIST = [
-  { name: 'EXPLORATION',  color: '#1B3A2D', desc: "you're not just experiencing, you're creating.", bubbles: 3, half: false },
-  { name: 'APPRECIATION', color: '#B8C3B1', desc: 'you create space to enjoy meeting a need.',         bubbles: 2, half: false },
-  { name: 'NOURISHMENT',  color: '#E8B81F', desc: 'you meet a need in a way that gives you energy.',  bubbles: 1, half: false },
-  { name: 'SURVIVAL',     color: '#D93B1C', desc: "you're doing the bare minimum.",                    bubbles: 1, half: true  },
-]
-
 export function ModesSection() {
   return (
     <div className={s.halfRow}>
       <div className={s.visual}>
-        <div className={s.card}>
-          <div className={s.modesCard}>
-            {MODES_LIST.map(m => (
-              <div key={m.name} className={s.modeRow}>
-                <span className={s.modePip} style={{ background: m.color }} />
-                <div>
-                  <div className={s.modeName}>{m.name}</div>
-                  <div className={s.modeDesc}>{m.desc}</div>
-                </div>
-                <div />
-                <div className={s.modeBubbles}>
-                  {m.half
-                    ? <span className={s.modeBubble} style={{ background: `linear-gradient(to right, ${m.color} 50%, transparent 50%)`, border: `1px solid ${m.color}` }} />
-                    : Array.from({ length: m.bubbles }).map((_, i) => (
-                        <span key={i} className={s.modeBubble} style={{ background: m.color }} />
-                      ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ModesWidget />
       </div>
       <div className={s.copy}>
         <div className={s.eyebrow}>Modes</div>
