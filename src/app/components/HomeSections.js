@@ -6,6 +6,7 @@ import NeedsWidget from './NeedsWidget'
 import ModesWidget from './ModesWidget'
 import IllustrationFrame from './IllustrationFrame'
 import PracticesWidget from './PracticesWidget'
+import MoodsWidget from './MoodsWidget'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
 function useVisible(ref, threshold = 0.3) {
@@ -126,104 +127,13 @@ export function CanvasSection() {
 }
 
 // ── SECTION 05: MOODS ─────────────────────────────────────────────────────────
-const MOOD_COLORS = {
-  good: { bg: '#1B3A2D', text: '#F7F5F0' },
-  fine: { bg: '#B8C3B1', text: '#1A1A1A' },
-  bad:  { bg: '#D93B1C', text: '#F7F5F0' },
-}
-const EVE_POOL = ['good','fine','bad']
-
 export function MoodsSection() {
-  const ref = useRef(null)
-  const visible = useVisible(ref)
-  const reduced = useReducedMotion()
-  const [sel, setSel] = useState({ morning: null, midday: null, evening: null })
-  const [noteText, setNoteText] = useState({ morning: '', midday: '' })
-  const [noteVis, setNoteVis] = useState({ morning: false, midday: false })
-
-  useEffect(() => {
-    if (reduced) {
-      setSel({ morning: 'good', midday: 'good', evening: 'fine' })
-      setNoteText({ morning: 'Docs launch — so far so good.', midday: 'Shared docs strategy.' })
-      setNoteVis({ morning: true, midday: true })
-      return
-    }
-    if (!visible) return
-    let cancelled = false
-
-    async function cycle() {
-      if (cancelled) return
-      setSel({ morning: null, midday: null, evening: null })
-      setNoteText({ morning: '', midday: '' })
-      setNoteVis({ morning: false, midday: false })
-
-      await new Promise(r => setTimeout(r, 500))
-      if (cancelled) return
-      setSel(p => ({ ...p, morning: 'good' }))
-      await new Promise(r => setTimeout(r, 180))
-      if (cancelled) return
-      setNoteText(p => ({ ...p, morning: 'Docs launch — so far so good.' }))
-      setNoteVis(p => ({ ...p, morning: true }))
-
-      await new Promise(r => setTimeout(r, 900))
-      if (cancelled) return
-      setSel(p => ({ ...p, midday: 'good' }))
-      await new Promise(r => setTimeout(r, 180))
-      if (cancelled) return
-      setNoteText(p => ({ ...p, midday: 'Shared docs strategy.' }))
-      setNoteVis(p => ({ ...p, midday: true }))
-
-      await new Promise(r => setTimeout(r, 900))
-      if (cancelled) return
-      setSel(p => ({ ...p, evening: EVE_POOL[Math.floor(Math.random() * 3)] }))
-
-      await new Promise(r => setTimeout(r, 4100))
-      if (!cancelled) cycle()
-    }
-
-    cycle()
-    return () => { cancelled = true }
-  }, [visible, reduced])
-
   return (
-    <div className={s.halfRow} ref={ref}>
-      <div className={s.visual}>
-        <div className={s.card}>
-          <div className={s.moodsCard}>
-            <div className={s.moodLabel}>Mood</div>
-            {(['morning','midday','evening']).map(time => {
-              const chosen = sel[time]
-              const showNote = time !== 'evening' && noteVis[time]
-              return (
-                <div key={time} className={s.moodRowWrap}>
-                  <div className={s.moodRowMain}>
-                    <span className={s.moodTime}>{time}</span>
-                    <div className={s.moodChips}>
-                      {(['good','fine','bad']).map(mood => {
-                        const active = chosen === mood
-                        const mc = MOOD_COLORS[mood]
-                        return (
-                          <span
-                            key={mood}
-                            className={s.moodChip}
-                            style={active ? { background: mc.bg, color: mc.text, borderColor: mc.bg } : {}}
-                          >
-                            {mood}
-                          </span>
-                        )
-                      })}
-                    </div>
-                  </div>
-                  {time !== 'evening' && (
-                    <div className={`${s.moodNote} ${showNote ? s.moodNoteVisible : ''}`}>
-                      {noteText[time]}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
+    <div className={s.halfRow}>
+      <div className={s.visual} style={{ aspectRatio: 'auto' }}>
+        <IllustrationFrame>
+          <MoodsWidget />
+        </IllustrationFrame>
       </div>
       <div className={s.copy}>
         <div className={s.eyebrow}>Moods</div>
