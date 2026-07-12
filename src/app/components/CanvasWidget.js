@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import s from './CanvasWidget.module.css'
 
 const NEEDS_ORDER = [
@@ -32,27 +32,8 @@ const TOKEN = {
 }
 
 export default function CanvasWidget() {
-  const wrapperRef = useRef(null)
-  const [scale, setScale]     = useState(1)
   const [placed, setPlaced]   = useState(START)
   const [reduced, setReduced] = useState(false)
-
-  // Initial scale — synchronous so there's no flash of unscaled content
-  useLayoutEffect(() => {
-    const el = wrapperRef.current
-    if (el) setScale(el.getBoundingClientRect().width / 1000)
-  }, [])
-
-  // Keep scale current on resize
-  useEffect(() => {
-    const el = wrapperRef.current
-    if (!el) return
-    const ro = new ResizeObserver(entries => {
-      setScale(entries[0].contentRect.width / 1000)
-    })
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
 
   // Detect reduced motion
   useEffect(() => {
@@ -80,8 +61,7 @@ export default function CanvasWidget() {
   const unassigned  = NEEDS_ORDER.slice(placedCount)
 
   return (
-    <div className={s.wrapper} ref={wrapperRef}>
-      <div className={s.widget} style={{ transform: `scale(${scale})` }}>
+    <div className={s.widget}>
 
         {/* Space-owned bar */}
         <div className={s.barSection}>
@@ -161,7 +141,6 @@ export default function CanvasWidget() {
           </div>
 
         </div>
-      </div>
     </div>
   )
 }

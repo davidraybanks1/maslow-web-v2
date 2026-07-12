@@ -4,6 +4,7 @@ import s from './HomeSections.module.css'
 import CanvasWidget from './CanvasWidget'
 import NeedsWidget from './NeedsWidget'
 import ModesWidget from './ModesWidget'
+import IllustrationFrame from './IllustrationFrame'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
 function useVisible(ref, threshold = 0.3) {
@@ -55,8 +56,10 @@ export function Divider({ text }) {
 export function NeedsSection() {
   return (
     <div className={s.halfRow}>
-      <div className={s.visual}>
-        <NeedsWidget />
+      <div className={s.visual} style={{ aspectRatio: 'auto' }}>
+        <IllustrationFrame>
+          <NeedsWidget />
+        </IllustrationFrame>
       </div>
       <div className={s.copy}>
         <div className={s.eyebrow}>Needs</div>
@@ -71,8 +74,10 @@ export function NeedsSection() {
 export function ModesSection() {
   return (
     <div className={s.halfRow}>
-      <div className={s.visual}>
-        <ModesWidget />
+      <div className={s.visual} style={{ aspectRatio: 'auto' }}>
+        <IllustrationFrame>
+          <ModesWidget />
+        </IllustrationFrame>
       </div>
       <div className={s.copy}>
         <div className={s.eyebrow}>Modes</div>
@@ -149,7 +154,9 @@ export function CanvasSection() {
         <p className={s.subhead} style={{ margin: '0 auto 40px', maxWidth: 500 }}>MyMaslow gives you a canvas to visualize the space we&apos;re all given. Your canvas makes it clear how much space you own and how much you&apos;re giving to anxiety.</p>
       </div>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <CanvasWidget />
+        <IllustrationFrame>
+          <CanvasWidget />
+        </IllustrationFrame>
       </div>
     </div>
   )

@@ -1,0 +1,16 @@
+.frame {
+  width: 100%;
+  height: 520px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e7e2d8;
+  box-shadow: 0 2px 14px rgba(28, 26, 22, 0.04);
+}
+
+@media (max-width: 768px) {
+  .frame {
+    height: auto;
+    min-height: 320px;
+  }
+}
