@@ -47,6 +47,8 @@
 
 .lane {
   flex: 1;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 0;
   border-radius: 13px;
   padding: 0 15px;
