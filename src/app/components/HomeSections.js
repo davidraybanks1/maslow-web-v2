@@ -5,6 +5,7 @@ import CanvasWidget from './CanvasWidget'
 import NeedsWidget from './NeedsWidget'
 import ModesWidget from './ModesWidget'
 import IllustrationFrame from './IllustrationFrame'
+import PracticesWidget from './PracticesWidget'
 
 // ── Shared hooks ──────────────────────────────────────────────────────────────
 function useVisible(ref, threshold = 0.3) {
@@ -89,51 +90,13 @@ export function ModesSection() {
 }
 
 // ── SECTION 03: PRACTICES ─────────────────────────────────────────────────────
-const PRACTICE_GROUPS = [
-  {
-    name: 'Reflection', color: '#1B3A2D', count: '4/10',
-    rows: [
-      { name: 'Journal',          when: 'today' },
-      { name: 'Work on Maslow',   when: '1d ago' },
-      { name: 'Read self-help',   when: '3d ago' },
-      { name: 'Morning minutes',  when: 'today' },
-    ],
-  },
-  {
-    name: 'Movement', color: '#E8B81F', count: '5/10',
-    rows: [
-      { name: 'Bike', when: '6d ago' },
-      { name: 'Run',  when: '1d ago' },
-      { name: 'Lift', when: '3d ago' },
-    ],
-  },
-]
-
 export function PracticesSection() {
   return (
     <div className={s.halfRow}>
-      <div className={s.visual}>
-        <div className={s.card}>
-          <div className={s.practicesCard}>
-            {PRACTICE_GROUPS.map(g => (
-              <div key={g.name} className={s.practiceGroup}>
-                <div className={s.practiceGroupHeader}>
-                  <div className={s.practiceGroupLeft}>
-                    <span className={s.practiceGroupPip} style={{ background: g.color }} />
-                    <span className={s.practiceGroupName}>{g.name}</span>
-                  </div>
-                  <span className={s.practiceGroupCount}>{g.count}</span>
-                </div>
-                {g.rows.map(r => (
-                  <div key={r.name} className={s.practiceRow}>
-                    <span className={s.practiceName}>{r.name}</span>
-                    <span className={s.practiceWhen}>{r.when}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className={s.visual} style={{ aspectRatio: 'auto' }}>
+        <IllustrationFrame>
+          <PracticesWidget />
+        </IllustrationFrame>
       </div>
       <div className={s.copy}>
         <div className={s.eyebrow}>Practices</div>

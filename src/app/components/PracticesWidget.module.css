@@ -1,0 +1,189 @@
+.panel {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #fbf9f5;
+  padding: 26px 30px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .panel { height: auto; }
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────── */
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 16px;
+}
+
+.topLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.todayEyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #c3bbac;
+}
+
+.dateText {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  line-height: 1;
+  color: #1c1a16;
+}
+
+.topRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.progressLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.progressCount { color: #1c1a16; }
+.progressWord  { color: #8a8578; }
+
+.progressTrack {
+  width: 132px;
+  height: 4px;
+  border-radius: 999px;
+  background: #efeadf;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: #1c1a16;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+/* ── Groups ──────────────────────────────────────────────────────────── */
+.groups {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.group {
+  border-top: 1px solid #f0ece3;
+  padding: 14px 0 4px;
+}
+
+.groupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.groupLeft {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.groupDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.groupName {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.groupCount {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #c3bbac;
+}
+
+/* ── Practice rows ───────────────────────────────────────────────────── */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 8px;
+  margin: 0 -8px;
+  border-radius: 8px;
+}
+
+@keyframes rowflash {
+  0%   { background: rgba(232, 184, 31, 0.16); }
+  100% { background: transparent; }
+}
+
+.rowFlash {
+  animation: rowflash 0.9s ease both;
+}
+
+/* ── Check ring ──────────────────────────────────────────────────────── */
+.check {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1.5px solid #d8d2c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.checkDone {
+  border: none;
+}
+
+@keyframes checkpop {
+  0%   { transform: scale(0.2); opacity: 0; }
+  60%  { transform: scale(1.18); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.checkPop {
+  animation: checkpop 0.4s ease both;
+}
+
+.checkMark {
+  font-size: 10px;
+  color: #fff;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ── Practice name & timestamp ───────────────────────────────────────── */
+.practiceName {
+  flex: 1;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
+.timestamp {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
