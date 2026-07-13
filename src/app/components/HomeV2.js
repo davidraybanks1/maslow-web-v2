@@ -987,7 +987,6 @@ export function NotesSectionV2() {
               <div className={s.ndots}>
                 {NOTES.map((_, j) => <span key={j} data-ndot className={j === 0 ? s.ndotOn : undefined} />)}
               </div>
-              <span>manage ✎</span>
             </div>
           </div>
         </div>
