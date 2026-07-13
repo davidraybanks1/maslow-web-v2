@@ -50,8 +50,8 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--bg);
-  background: var(--exploration);
+  color: var(--ink);
+  background: var(--nourishment);
   text-decoration: none;
   padding: 7px 14px;
   border-radius: 4px;
