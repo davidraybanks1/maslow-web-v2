@@ -121,9 +121,9 @@ export function CanvasSectionV2() {
   return (
     <div className={s.wrap}>
       <section className={s.featureCenter}>
-        <div className={s.head} style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto' }}>
+        <div className={s.head} style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto' }}>
           <h2 className={s.h2}>know your space. and own it.</h2>
-          <p className={s.copy} style={{ margin: '0 auto' }}>
+          <p className={s.copy} style={{ margin: '0 auto', maxWidth: '66ch' }}>
             MyMaslow gives you a canvas to visualize the space we&apos;re all given. Your canvas
             makes it clear how much space you own and how much you&apos;re giving to anxiety.
           </p>
@@ -680,10 +680,10 @@ export function DataSectionV2() {
   return (
     <div className={s.wrap}>
       <section className={s.featureCenter} style={{ padding: '130px 0' }} ref={rootRef}>
-        <div className={s.head} style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 48px' }}>
+        <div className={s.head} style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 48px' }}>
           <Eyebrow>data</Eyebrow>
           <h2 className={s.h2}>discover what makes for good days</h2>
-          <p className={s.copy} style={{ margin: '0 auto' }}>The information from your canvas and practices turns into data that helps pinpoint what to add, subtract, or try.</p>
+          <p className={s.copy} style={{ margin: '0 auto', maxWidth: '66ch' }}>The information from your canvas and practices turns into data that helps pinpoint what to add, subtract, or try.</p>
         </div>
         <div className={s.card} style={{ padding: '34px 38px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

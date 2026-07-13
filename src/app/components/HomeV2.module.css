@@ -144,7 +144,7 @@
 }
 .optGood { background: var(--exploration); border-color: var(--exploration); color: #fff; transform: scale(1.06); }
 .optFine { background: rgba(184,195,177,0.35); border-color: var(--appreciation); color: var(--ink); transform: scale(1.06); }
-.notebox { margin-top: 14px; border: 1px solid var(--border2); border-radius: 10px; background: #fff; padding: 12px 15px; font-size: 12px; color: var(--ink2); min-height: 43px; }
+.notebox { margin-top: 14px; border: 1px solid #e9e6db; border-radius: 10px; background: #faf8f1; padding: 12px 15px; font-size: 12px; color: var(--ink2); min-height: 43px; }
 .ph { color: var(--ink4); }
 
 /* ── data tour ── */
@@ -236,7 +236,7 @@
   transition: all .35s cubic-bezier(.3,1.4,.5,1);
 }
 .dbChipSel { background: var(--nourishment); color: var(--ink); border-color: var(--nourishment); transform: scale(1.05); }
-.dbArea { background: var(--bg2); border: 1px solid var(--border2); border-radius: 12px; padding: 12px 15px; font-size: 12px; line-height: 1.7; color: var(--ink2); min-height: 44px; }
+.dbArea { background: #faf8f1; border: 1px solid #e9e6db; border-radius: 12px; padding: 12px 15px; font-size: 12px; line-height: 1.7; color: var(--ink2); min-height: 44px; }
 .dbSave {
   margin-top: 18px; border: 1px solid var(--border2); background: none; color: var(--ink3);
   font-family: var(--mono); font-size: 11px; letter-spacing: .1em; padding: 8px 24px;
@@ -245,7 +245,7 @@
 .dbSaveDone { background: var(--nourishment); color: var(--ink); border-color: var(--nourishment); }
 
 /* ── notes ── */
-.ncard { background: var(--bg2); border: 1px solid var(--border2); border-radius: 16px; padding: 26px 30px 20px; color: var(--ink); min-height: 190px; display: flex; flex-direction: column; overflow: hidden; }
+.ncard { background: #faf8f1; border: 1px solid #e9e6db; border-radius: 16px; padding: 26px 30px 20px; color: var(--ink); min-height: 190px; display: flex; flex-direction: column; overflow: hidden; }
 .ncardK { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink3); }
 .nquote { flex: 1; display: flex; align-items: center; justify-content: flex-start; text-align: left; font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.55; padding: 18px 0; transition: opacity .45s ease, transform .45s ease; }
 .nquoteOut { opacity: 0; transform: translateX(-26px); }
