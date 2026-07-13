@@ -306,7 +306,7 @@ export function ModesSectionV2() {
         <div>
           <Eyebrow>modes</Eyebrow>
           <h2 className={s.h2}>live beyond survival-mode</h2>
-          <p className={s.copy}>Move needs between modes to tailor your canvas to your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that&apos;s not the default.</p>
+          <p className={s.copy}>Move needs between modes to tailor your maslow to your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that&apos;s not the default.</p>
         </div>
         <div className={s.card}>
           <div className={s.chead} style={{ marginBottom: 16 }}>
