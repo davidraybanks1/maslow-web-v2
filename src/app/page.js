@@ -1,5 +1,4 @@
 import styles from './page.module.css'
-import HeroFountain from './components/HeroFountain'
 import {
   HeroBar,
   DividerPill,
@@ -21,7 +20,6 @@ export default function Home() {
     <div>
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        <HeroFountain />
         <div className={styles.heroContent}>
           <h1 className={styles.heroHeadline}>
             anxiety isn&apos;t who you are.<br />it&apos;s everything you <em>aren&apos;t.</em>
