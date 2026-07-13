@@ -211,7 +211,7 @@ export function NeedsSectionV2() {
         <div>
           <Eyebrow>needs</Eyebrow>
           <h2 className={s.h2}>meet your needs, not anxiety&apos;s</h2>
-          <p className={s.copy}>You fill your canvas by adding the needs you want to focus on. MyMaslow gives you a library of needs to choose from, test, and customize to create a lifestyle that gives you energy.</p>
+          <p className={s.copy}>Start by selecting the needs that fuel and calm you. MyMaslow gives you a library of needs to choose from, test, and customize to create a lifestyle that gives you energy.</p>
         </div>
         <div className={s.card}>
           <div className={s.chead} style={{ marginBottom: 14 }}>
