@@ -909,7 +909,7 @@ export function DebriefSectionV2() {
       <section className={s.feature} ref={ref}>
         <div>
           <Eyebrow>debriefs</Eyebrow>
-          <h2 className={s.h2}>turn a moment of anxiety into growth</h2>
+          <h2 className={s.h2}>turn a moment of anxiety into a moment of growth</h2>
           <p className={s.copy}>Answer simple questions in debriefs to turn an anxious episode into useful information. Similarly, deconstruct peak experiences to learn how to create more of them.</p>
         </div>
         <div className={s.card} style={{ padding: '26px 30px' }}>
