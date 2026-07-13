@@ -1,7 +1,7 @@
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Privacy Policy — Maslow',
+  title: 'Privacy Policy — MyMaslow',
 }
 
 export default function PrivacyPage() {
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <h1 className={styles.headline}>Privacy Policy</h1>
       <p className={styles.updated}>Last updated: May 2026</p>
 
-      <p className={styles.body}>Maslow ("we", "us", or "our") is committed to protecting your privacy. This policy explains how we collect, use, and protect your personal information when you use our app at app.mymaslow.com.</p>
+      <p className={styles.body}>MyMaslow LLC ("Maslow", "we", "us", or "our") is committed to protecting your privacy. This policy explains how we collect, use, and protect your personal information when you use our app at app.mymaslow.com.</p>
 
       <h2 className={styles.subhead}>Information we collect</h2>
       <p className={styles.body}>We collect information you provide directly to us, including your name, email address, phone number, and responses to onboarding questions. We also collect information about how you use the app, including which practices you check off and when.</p>

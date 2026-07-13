@@ -1,7 +1,7 @@
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Terms of Service — Maslow',
+  title: 'Terms of Service — MyMaslow',
 }
 
 export default function TermsPage() {
@@ -11,7 +11,7 @@ export default function TermsPage() {
       <h1 className={styles.headline}>Terms of Service</h1>
       <p className={styles.updated}>Last updated: May 2026</p>
 
-      <p className={styles.body}>By using Maslow ("the app") at app.mymaslow.com, you agree to these terms. Please read them carefully.</p>
+      <p className={styles.body}>Maslow is operated by MyMaslow LLC. By using Maslow ("the app") at app.mymaslow.com, you agree to these terms. Please read them carefully.</p>
 
       <h2 className={styles.subhead}>Using Maslow</h2>
       <p className={styles.body}>Maslow is a personal wellness tool designed to help you build intentional habits around your needs. You must be 18 or older to use the app. You are responsible for maintaining the confidentiality of your account.</p>

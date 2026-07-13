@@ -9,7 +9,7 @@ export default function Footer() {
         <Link href="/privacy" className={styles.link}>privacy</Link>
         <Link href="/terms" className={styles.link}>terms</Link>
       </div>
-      <div className={styles.copy}>practice becoming yourself</div>
+      <div className={styles.copy}>practice becoming yourself · © 2026 MyMaslow LLC</div>
     </footer>
   )
 }
