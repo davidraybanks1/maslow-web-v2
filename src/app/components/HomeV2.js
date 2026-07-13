@@ -388,7 +388,7 @@ export function PracticesSectionV2() {
         <div>
           <Eyebrow>practices</Eyebrow>
           <h2 className={s.h2}>do things instead of think them</h2>
-          <p className={s.copy}>The needs and modes in your canvas guide the practices you do everyday. Practices force you to take up real space in your day. Space that anxiety would fill otherwise.</p>
+          <p className={s.copy}>Needs and modes guide the practices you do every day. Practices force you to take up real space in your day. Space that anxiety would fill otherwise.</p>
         </div>
         <div className={s.card}>
           <div className={s.ctop}>
