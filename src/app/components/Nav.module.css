@@ -45,6 +45,22 @@
 .navItem:hover { color: var(--ink2); }
 .navItem.active { color: var(--ink); }
 
+.navSecondary {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: none;
+  border: 1px solid var(--border2);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: border-color 0.15s;
+}
+.navSecondary:hover { border-color: var(--ink3); }
+
 .navCta {
   font-family: var(--mono);
   font-size: 11px;
@@ -63,4 +79,5 @@
 @media (max-width: 900px) {
   .nav { padding: 0 24px; }
   .navCta { display: none; }
+  .navSecondary { display: none; }
 }

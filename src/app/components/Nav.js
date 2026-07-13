@@ -25,6 +25,9 @@ export default function Nav() {
         <Link href="/blog" className={`${styles.navItem} ${pathname.startsWith('/blog') ? styles.active : ''}`}>
           Memos
         </Link>
+        <a href="https://app.mymaslow.com/signin" className={styles.navSecondary}>
+          Sign in
+        </a>
         <a href="https://app.mymaslow.com/onboarding" className={styles.navCta}>
           Get started →
         </a>
