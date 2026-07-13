@@ -1,10 +1,15 @@
 'use client'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Nav.module.css'
 
 export default function Nav() {
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+
+  // Close the mobile menu on route change
+  useEffect(() => { setOpen(false) }, [pathname])
 
   return (
     <nav className={styles.nav}>
@@ -21,6 +26,7 @@ export default function Nav() {
         </span>
         <span style={{ fontFamily: "'DM Mono', monospace", fontWeight: 200, fontStyle: 'normal' }}>mymaslow.</span>
       </Link>
+
       <div className={styles.right}>
         <Link href="/blog" className={`${styles.navItem} ${pathname.startsWith('/blog') ? styles.active : ''}`}>
           Memos
@@ -32,6 +38,31 @@ export default function Nav() {
           Get started →
         </a>
       </div>
+
+      <button
+        className={styles.burger}
+        onClick={() => setOpen(v => !v)}
+        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-expanded={open}
+      >
+        <span className={`${styles.burgerLine} ${open ? styles.burgerLineTopOpen : ''}`} />
+        <span className={`${styles.burgerLine} ${open ? styles.burgerLineMidOpen : ''}`} />
+        <span className={`${styles.burgerLine} ${open ? styles.burgerLineBotOpen : ''}`} />
+      </button>
+
+      {open && (
+        <div className={styles.mobileMenu}>
+          <Link href="/blog" className={styles.mobileItem} onClick={() => setOpen(false)}>
+            Memos
+          </Link>
+          <a href="https://app.mymaslow.com/signin" className={styles.mobileItem}>
+            Sign in
+          </a>
+          <a href="https://app.mymaslow.com/onboarding" className={styles.mobileCta}>
+            Get started →
+          </a>
+        </div>
+      )}
     </nav>
   )
 }
