@@ -252,7 +252,7 @@ const MODE_CARDS = [
   { key: 'e', name: 'exploration', color: 'var(--exploration)', text: '#1B3A2D', tint: 'rgba(27,58,45,0.07)', desc: "you're not just experiencing, you're creating.", pips: 3 },
   { key: 'a', name: 'appreciation', color: 'var(--appreciation)', text: '#4a5e45', tint: 'rgba(184,195,177,0.22)', desc: 'you create space to enjoy meeting a need.', pips: 2 },
   { key: 'n', name: 'nourishment', color: 'var(--nourishment)', text: '#854F0B', tint: 'rgba(232,184,31,0.12)', desc: 'you meet a need in a way that gives you energy.', pips: 1 },
-  { key: 's', name: 'survival', color: 'var(--survival)', text: '#993C1D', tint: 'rgba(217,59,28,0.08)', desc: "you're doing the bare minimum.", pips: 1 },
+  { key: 's', name: 'survival', color: 'var(--survival)', text: '#993C1D', tint: 'rgba(217,59,28,0.08)', desc: "you're just checking the box.", pips: 1 },
 ]
 const PILL_TINT = {
   e: { bg: 'rgba(27,58,45,0.09)', border: 'rgba(27,58,45,0.4)' },
