@@ -5,11 +5,11 @@
 }
 
 .header {
-  /* full-bleed yellow band, content aligned to the page column */
+  /* full-bleed yellow band; alignment + spacing mirror the homepage hero */
   width: 100vw;
   margin-left: calc(50% - 50vw);
   background: var(--nourishment);
-  padding: 96px max(calc((100vw - 1440px) / 2 + 96px), 96px) 80px;
+  padding: 120px max(calc((100vw - 1440px) / 2 + 96px), 96px) 140px;
   border-bottom: 0;
   margin-bottom: 0;
 }
@@ -17,11 +17,22 @@
 .headline {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(48px, 5.5vw, 72px);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.0;
   color: var(--ink);
+  margin-bottom: 40px;
+  max-width: 900px;
+}
+
+.subcopy {
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  font-weight: 200;
+  max-width: 480px;
 }
 
 .empty {

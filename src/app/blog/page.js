@@ -17,6 +17,7 @@ export default async function BlogPage() {
     <div className={styles.wrap}>
       <div className={styles.header}>
         <h1 className={styles.headline}>memos</h1>
+        <p className={styles.subcopy}>A consolidation of messy thoughts into a few paragraphs of clarity.</p>
       </div>
 
       {posts.length === 0 ? (
