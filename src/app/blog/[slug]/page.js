@@ -31,6 +31,7 @@ const components = {
   marks: {
     strong: ({ children }) => <strong className={styles.strong}>{children}</strong>,
     em: ({ children }) => <em>{children}</em>,
+    code: ({ children }) => <code className={styles.inlineCode}>{children}</code>,
     link: ({ value, children }) => (
       <a href={value.href} className={styles.link} target="_blank" rel="noopener noreferrer">{children}</a>
     ),

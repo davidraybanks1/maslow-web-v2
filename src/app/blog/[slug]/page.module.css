@@ -141,3 +141,13 @@
 @media (max-width: 900px) {
   .wrap { padding: 48px 24px 80px; }
 }
+.inlineCode {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: #faf8f1;
+  border: 1px solid #e9e6db;
+  border-radius: 5px;
+  padding: 2px 6px;
+  color: var(--ink);
+  white-space: nowrap;
+}
