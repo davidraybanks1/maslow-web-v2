@@ -124,8 +124,9 @@ export function CanvasSectionV2() {
         <div className={s.head} style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto' }}>
           <h2 className={s.h2}>know your space. and own it.</h2>
           <p className={s.copy} style={{ margin: '0 auto', maxWidth: '66ch' }}>
-            MyMaslow gives you a canvas to visualize the space we&apos;re all given. Your canvas
-            makes it clear how much space you own and how much you&apos;re giving to anxiety.
+            MyMaslow helps you visualize the space we&apos;re all given. By giving structure to
+            your needs, daily practices, and data, you can see how much space you own and how
+            much you&apos;re giving to anxiety.
           </p>
         </div>
       </section>
