@@ -220,10 +220,19 @@
 .jbody { padding: 24px 26px 8px; min-height: 170px; font-size: 12.5px; line-height: 2.0; color: var(--ink2); }
 .jbody b { font-weight: 500; color: var(--ink); transition: opacity .3s; }
 .jentry { margin-bottom: 16px; }
-.jlinks { padding: 14px 26px 20px; font-size: 11px; color: var(--ink3); opacity: 0; transition: opacity .6s; }
-.jlinksOn { opacity: 1; }
-.jlinks span { margin-right: 20px; transition: color .4s; }
-.jlinkHl { color: var(--ink); }
+.jpills { display: flex; gap: 8px; padding: 14px 26px 20px; }
+.jpill {
+  flex: 1;
+  text-align: center;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--border2);
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--ink2);
+  transition: background .4s ease, border-color .4s ease, color .4s ease;
+}
+.jpillOn { background: var(--nourishment); border-color: var(--nourishment); color: var(--ink); }
 
 /* ── debrief form ── */
 .dbTop { font-size: 11px; letter-spacing: .08em; color: var(--ink3); border-bottom: 1px solid var(--border2); padding-bottom: 12px; margin-bottom: 18px; }

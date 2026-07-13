@@ -827,21 +827,18 @@ export function JournalSectionV2() {
     const j1 = q(el, '[data-j1]')
     const j2 = q(el, '[data-j2]')
     const j2t = q(el, '[data-j2t]')
-    const links = q(el, '[data-jlinks]')
     const jl1 = q(el, '[data-jl1]')
     j1.textContent = ''; j2.textContent = ''; j2t.style.opacity = 0
-    links.classList.remove(s.jlinksOn); jl1.classList.remove(s.jlinkHl)
+    jl1.classList.remove(s.jpillOn)
     await sleep(500)
     await typeInto(j1, 'slow start, then a long walk cleared my head. felt like myself by nine.', 44)
     await sleep(650)
     j2t.style.opacity = 1
     await typeInto(j2, 'the presentation went better than the story I had been telling myself all week. worth remembering.', 44)
-    await sleep(400)
-    links.classList.add(s.jlinksOn)
-    await sleep(800)
-    jl1.classList.add(s.jlinkHl)
-    await sleep(900)
-    jl1.classList.remove(s.jlinkHl)
+    await sleep(700)
+    jl1.classList.add(s.jpillOn)
+    await sleep(1100)
+    jl1.classList.remove(s.jpillOn)
   })
 
   return (
@@ -858,7 +855,10 @@ export function JournalSectionV2() {
             <div className={s.jentry}><b>[7:53am]</b> <span data-j1 /></div>
             <div className={s.jentry}><b data-j2t style={{ opacity: 0 }}>[1:27pm]</b> <span data-j2 /></div>
           </div>
-          <div className={s.jlinks} data-jlinks><span data-jl1>› anxiety debrief</span><span>› peak debrief</span></div>
+          <div className={s.jpills}>
+            <span className={s.jpill} data-jl1>anxiety debrief</span>
+            <span className={s.jpill}>peak debrief</span>
+          </div>
         </div>
       </section>
     </div>
