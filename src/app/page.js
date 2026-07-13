@@ -1,18 +1,20 @@
 import styles from './page.module.css'
 import HeroFountain from './components/HeroFountain'
 import {
-  NeedsSection,
-  ModesSection,
-  PracticesSection,
-  CanvasSection,
-  MoodsSection,
-  DataSection,
-  JournalSection,
-  DebriefSection,
-  NotesSection,
-  ReviewSection,
-  Divider,
-} from './components/HomeSections'
+  HeroBar,
+  DividerPill,
+  CanvasSectionV2,
+  NeedsSectionV2,
+  ModesSectionV2,
+  PracticesSectionV2,
+  MoodsSectionV2,
+  DataSectionV2,
+  JournalSectionV2,
+  DebriefSectionV2,
+  NotesSectionV2,
+  ReviewSectionV2,
+  CtaSectionV2,
+} from './components/HomeV2'
 
 export default function Home() {
   return (
@@ -29,37 +31,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── The opening statement: colors reclaim space from anxiety ── */}
+      <HeroBar />
+
       {/* ── HOW IT WORKS ── */}
-      <Divider text="HOW IT WORKS" />
+      <DividerPill text="how it works" />
+      <CanvasSectionV2 />
 
-      {/* ── Canvas ── */}
-      <CanvasSection />
-
-      {/* ── Needs / Modes / Practices ── */}
-      <NeedsSection />
-      <ModesSection />
-      <PracticesSection />
-
-      {/* ── Moods / Data ── */}
-      <MoodsSection />
-      <DataSection />
+      <NeedsSectionV2 />
+      <ModesSectionV2 />
+      <PracticesSectionV2 />
+      <MoodsSectionV2 />
+      <DataSectionV2 />
 
       {/* ── HOW YOU KEEP MOMENTUM ── */}
-      <Divider text="HOW YOU KEEP MOMENTUM" />
+      <DividerPill text="how you keep momentum" />
+      <JournalSectionV2 />
+      <DebriefSectionV2 />
+      <NotesSectionV2 />
+      <ReviewSectionV2 />
 
-      {/* ── Journal / Debriefs / Notes / Review ── */}
-      <JournalSection />
-      <DebriefSection />
-      <NotesSection />
-      <ReviewSection />
-
-      {/* ── CTA ── */}
-      <section className={styles.cta}>
-        <h2 className={styles.ctaHeadlineRitual}>let&apos;s get started.</h2>
-        <div className={styles.ctaRight}>
-          <a className={styles.ctaBtn} href="https://app.mymaslow.com/onboarding">Create your mymaslow</a>
-        </div>
-      </section>
+      {/* ── CTA + closing bar ── */}
+      <CtaSectionV2 />
     </div>
   )
 }
