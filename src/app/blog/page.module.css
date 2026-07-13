@@ -5,8 +5,12 @@
 }
 
 .header {
-  padding: 96px 0 80px;
-  border-bottom: 1px solid var(--border2);
+  /* full-bleed yellow band, content aligned to the page column */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: var(--nourishment);
+  padding: 96px max(calc((100vw - 1440px) / 2 + 96px), 96px) 80px;
+  border-bottom: 0;
   margin-bottom: 0;
 }
 
@@ -108,5 +112,5 @@
 
 @media (max-width: 900px) {
   .wrap { padding: 0 24px 80px; }
-  .header { padding: 48px 0 48px; }
+  .header { padding: 48px 24px; }
 }
