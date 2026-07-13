@@ -684,7 +684,7 @@ export function DataSectionV2() {
         <div className={s.head} style={{ textAlign: 'center', maxWidth: 780, margin: '0 auto 48px' }}>
           <Eyebrow>data</Eyebrow>
           <h2 className={s.h2}>discover what makes for good days</h2>
-          <p className={s.copy} style={{ margin: '0 auto', maxWidth: '66ch' }}>The information from your canvas and practices turns into data that helps pinpoint what to add, subtract, or try.</p>
+          <p className={s.copy} style={{ margin: '0 auto', maxWidth: '66ch' }}>The information from your modes, practices, and moods turns into data that helps pinpoint what to add, subtract, or tweak.</p>
         </div>
         <div className={s.card} style={{ padding: '34px 38px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
