@@ -22,7 +22,7 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroHeadline}>
-            anxiety isn&apos;t who you are.<br />it&apos;s everything you <em>aren&apos;t.</em>
+            anxiety isn&apos;t who you are.<br />it&apos;s who you <em>aren&apos;t.</em>
           </h1>
           <p className={styles.heroBody}>Anxiety fills the space you give it. The more space it gets, the more energy you waste meeting its needs rather than your own.</p>
           <p className={styles.heroBody}>MyMaslow helps you take back space.</p>
