@@ -841,7 +841,7 @@ export function JournalSectionV2() {
         <div>
           <Eyebrow>journal</Eyebrow>
           <h2 className={s.h2}>talk about yourself to yourself.</h2>
-          <p className={s.copy}>Every day you get a fresh journal entry. Jot down the day&apos;s events, wins and challenges, or fleeting thoughts. This is the color commentary for the trends in your data.</p>
+          <p className={s.copy}>Write as often as you like — a line at breakfast, a paragraph at midnight. Tag entries with how they felt and which need they touched, and this becomes the color commentary for the trends in your data.</p>
         </div>
         <div className={s.jcard}>
           <div className={s.jhead}><span>journal</span><span>wednesday, july 8</span></div>
@@ -1002,7 +1002,7 @@ export function ReviewSectionV2() {
         <div>
           <Eyebrow>weekly review</Eyebrow>
           <h2 className={s.h2}>review, remember, revise</h2>
-          <p className={s.copy}>At the end of each week, review your data, journal entries, and debriefs. Then revise or recommit so your next week is even better than the last.</p>
+          <p className={s.copy}>At the end of each week, look back at your data and everything you wrote. Then revise or recommit so your next week is even better than the last.</p>
         </div>
         <div className={s.card}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
