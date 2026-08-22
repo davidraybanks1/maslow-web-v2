@@ -826,12 +826,12 @@ export function JournalSectionV2() {
   const ref = useReplay(async el => {
     const j1 = q(el, '[data-j1]')
     const j2 = q(el, '[data-j2]')
-    const j2t = q(el, '[data-j2t]')
-    j1.textContent = ''; j2.textContent = ''; j2t.style.opacity = 0
+    const j2entry = q(el, '[data-j2entry]')
+    j1.textContent = ''; j2.textContent = ''; j2entry.style.opacity = 0
     await sleep(500)
     await typeInto(j1, 'slow start, then a long walk cleared my head. felt like myself by nine.', 44)
     await sleep(650)
-    j2t.style.opacity = 1
+    j2entry.style.opacity = 1
     await typeInto(j2, 'the presentation went better than the story I had been telling myself all week. worth remembering.', 44)
   })
 
@@ -846,12 +846,22 @@ export function JournalSectionV2() {
         <div className={s.jcard}>
           <div className={s.jhead}><span>journal</span><span>wednesday, july 8</span></div>
           <div className={s.jbody}>
-            <div className={s.jentry}><b>[7:53am]</b> <span data-j1 /></div>
-            <div className={s.jentry}><b data-j2t style={{ opacity: 0 }}>[1:27pm]</b> <span data-j2 /></div>
-          </div>
-          <div className={s.jpills}>
-            <span className={s.jpill}>anxiety debrief</span>
-            <span className={s.jpill}>peak debrief</span>
+            <div className={s.jentry}>
+              <div className={s.jmeta}>
+                <span className={s.jtime}>7:53 am</span>
+                <span className={s.jpill}>morning</span>
+                <span className={s.jpill}>exploration</span>
+              </div>
+              <span data-j1 />
+            </div>
+            <div className={s.jentry} data-j2entry style={{ opacity: 0 }}>
+              <div className={s.jmeta}>
+                <span className={s.jtime}>1:27 pm</span>
+                <span className={s.jpill}>midday</span>
+                <span className={s.jpill}>community</span>
+              </div>
+              <span data-j2 />
+            </div>
           </div>
         </div>
       </section>
