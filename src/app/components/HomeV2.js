@@ -427,24 +427,16 @@ export function MoodsSectionV2() {
   const ref = useReplay(async el => {
     const good = q(el, '[data-good]')
     const fine = q(el, '[data-fine]')
-    const n1 = q(el, '[data-note1]')
-    const n2 = q(el, '[data-note2]')
     const cnt = q(el, '[data-mcount]')
     const evening = q(el, '[data-evening]')
     good.classList.remove(s.optGood); fine.classList.remove(s.optFine)
     evening.classList.remove(s.moodNudge)
-    n1.innerHTML = `<span class="${s.ph}">add a note…</span>`
-    n2.innerHTML = `<span class="${s.ph}">add a note…</span>`
     cnt.textContent = '0 of 3'
     await sleep(700)
     good.classList.add(s.optGood); cnt.textContent = '1 of 3'
-    await sleep(450)
-    n1.innerHTML = ''; await typeInto(n1, 'Woke before the alarm. Quiet house, coffee, no rush.', 34)
-    await sleep(650)
+    await sleep(900)
     fine.classList.add(s.optFine); cnt.textContent = '2 of 3'
-    await sleep(450)
-    n2.innerHTML = ''; await typeInto(n2, 'Back-to-back calls. Running on adrenaline.', 34)
-    await sleep(700)
+    await sleep(900)
     evening.classList.add(s.moodNudge)
     await sleep(1100)
     evening.classList.remove(s.moodNudge)
@@ -471,21 +463,18 @@ export function MoodsSectionV2() {
               <span className={s.moodK}>morning</span>
               <span className={s.opts}><span className={s.opt} data-good>good</span><span className={s.opt}>fine</span><span className={s.opt}>bad</span></span>
             </div>
-            <div className={s.notebox}><span data-note1><span className={s.ph}>add a note…</span></span></div>
           </div>
           <div className={s.moodBlock}>
             <div className={s.moodTop}>
               <span className={s.moodK}>midday</span>
               <span className={s.opts}><span className={s.opt}>good</span><span className={s.opt} data-fine>fine</span><span className={s.opt}>bad</span></span>
             </div>
-            <div className={s.notebox}><span data-note2><span className={s.ph}>add a note…</span></span></div>
           </div>
           <div className={s.moodBlock} data-evening>
             <div className={s.moodTop}>
               <span className={s.moodK}>evening</span>
               <span className={s.opts}><span className={s.opt}>good</span><span className={s.opt}>fine</span><span className={s.opt}>bad</span></span>
             </div>
-            <div className={s.notebox}><span className={s.ph}>add a note…</span></div>
           </div>
         </div>
       </section>
