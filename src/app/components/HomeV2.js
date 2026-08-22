@@ -746,7 +746,7 @@ export function DataSectionV2() {
                 {[
                   ['good', 'var(--exploration)', 62],
                   ['fine', 'var(--appreciation)', 28],
-                  ['hard', 'var(--survival)', 10],
+                  ['bad', 'var(--survival)', 10],
                 ].map(([nm, c, w]) => (
                   <div key={nm} className={s.distRow} data-distrow>
                     <span className={s.distNm}>{nm}</span>
@@ -1032,7 +1032,7 @@ export function ReviewSectionV2() {
                 <div className={s.wmood}><b>strong</b><span>real momentum — most days felt like progress.</span></div>
                 <div className={s.wmood} data-steady><b>steady</b><span>consistent. nothing dramatic either way.</span></div>
                 <div className={s.wmood}><b>mixed</b><span>some real highs, some real lows.</span></div>
-                <div className={s.wmood}><b>hard</b><span>this week took more than it gave.</span></div>
+                <div className={s.wmood}><b>bad</b><span>this week took more than it gave.</span></div>
               </div>
             </div>
             <div className={s.wstep} data-wstep>
