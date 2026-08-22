@@ -341,18 +341,16 @@ export function ModesSectionV2() {
 /* ── practices — three slow hero checks, then the day fills in ───────────── */
 
 const PRACTICE_GROUPS = [
-  { name: 'community', color: 'var(--exploration)', count: '6 / 10', rows: [
+  { name: 'community', color: 'var(--exploration)', count: '3 / 3', rows: [
     { label: 'Family dinner', step: 0, when: 'today', ago: '3d ago', ring: 'var(--exploration)' },
-    { label: 'Thoughtful text', step: 2, when: 'just now', ago: '1d ago', ring: 'var(--exploration)', hot: true },
-    { label: 'Friend hang', step: 3, when: 'today', ago: '2d ago', ring: 'var(--exploration)' },
+    { label: 'Thoughtful text', step: 1, when: 'just now', ago: '1d ago', ring: 'var(--exploration)', hot: true },
+    { label: 'Friend hang', step: 2, when: 'today', ago: '2d ago', ring: 'var(--exploration)' },
   ]},
-  { name: 'movement', color: 'var(--nourishment)', count: '5 / 10', rows: [
-    { label: 'Bike', step: 4, when: 'today', ago: '6d ago', ring: 'var(--nourishment)' },
-    { label: 'Run', step: 1, when: 'today', ago: '4d ago', ring: 'var(--nourishment)' },
-    { label: 'Lift', step: 5, when: 'today', ago: '3d ago', ring: 'var(--nourishment)' },
+  { name: 'movement', color: 'var(--nourishment)', count: '1 / 1', rows: [
+    { label: 'Bike', step: 3, when: 'today', ago: '1d ago', ring: 'var(--nourishment)' },
   ]},
-  { name: 'dwelling', color: 'var(--survival)', count: '1 / 10', rows: [
-    { label: 'Tidy', step: 6, when: 'today', ago: '3d ago', ring: 'var(--survival)' },
+  { name: 'dwelling', color: 'var(--survival)', count: '1 / 1', rows: [
+    { label: 'Tidy', step: 4, when: 'today', ago: '3d ago', ring: 'var(--survival)' },
   ]},
 ]
 
@@ -366,7 +364,7 @@ export function PracticesSectionV2() {
       q(r, '[data-when]').textContent = r.dataset.ago
       q(r, '[data-ring]').style.background = 'transparent'
     })
-    bar.style.width = '0%'; cnt.textContent = '0 of 10'
+    bar.style.width = '0%'; cnt.textContent = '0 of 5'
     await sleep(600)
     const ordered = [...rows].sort((a, b) => (+a.dataset.step) - (+b.dataset.step))
     let done = 0
@@ -376,8 +374,8 @@ export function PracticesSectionV2() {
       q(row, '[data-ring]').style.background = row.dataset.ringcolor
       q(row, '[data-when]').textContent = row.dataset.when
       done++
-      bar.style.width = done * 10 + '%'
-      cnt.textContent = done + ' of 10'
+      bar.style.width = done * 20 + '%'
+      cnt.textContent = done + ' of 5'
       await sleep(done <= 3 ? 850 : 240)
     }
   })
@@ -397,7 +395,7 @@ export function PracticesSectionV2() {
               <div className={s.cdate}>saturday, july 11</div>
             </div>
             <div style={{ textAlign: 'right' }}>
-              <div className={s.counter}><b data-pcount>0 of 10</b> <span className={s.counterLite}>practiced</span></div>
+              <div className={s.counter}><b data-pcount>0 of 5</b> <span className={s.counterLite}>practiced</span></div>
               <div className={s.pbar}><i data-pbar /></div>
             </div>
           </div>
