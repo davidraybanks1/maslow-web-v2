@@ -417,15 +417,6 @@
 }
 
 
-/* Debriefs section body */
-.debriefBody {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-top: 48px;
-  max-width: 640px;
-}
-
 /* CTA ritual headline — serif italic to match app loading greeting */
 .ctaHeadlineRitual {
   font-family: var(--serif);
@@ -543,20 +534,6 @@
   margin-bottom: 7px;
 }
 .glyphTextLine:last-child { margin-bottom: 0; }
-/* Debriefs */
-.glyphFilterRow { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
-.glyphPill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.06em;
-  padding: 2px 7px;
-  border-radius: 20px;
-  border: 0.5px solid;
-}
-.glyphPillDot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
 .glyphFieldRow { padding-bottom: 5px; margin-bottom: 3px; border-bottom: 0.5px solid var(--border); }
 .glyphFieldRow:last-child { margin-bottom: 0; }
 .glyphFieldLabel { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; color: var(--ink4); }
