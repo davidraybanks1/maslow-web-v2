@@ -251,7 +251,7 @@ export function NeedsSectionV2() {
 const MODE_CARDS = [
   { key: 'e', name: 'exploration', color: 'var(--exploration)', text: '#1B3A2D', tint: 'rgba(27,58,45,0.07)', desc: 'the one need that feels like a passion.', pips: 3 },
   { key: 'a', name: 'appreciation', color: 'var(--appreciation)', text: '#4a5e45', tint: 'rgba(184,195,177,0.22)', desc: 'needs that bring enjoyment to your life.', pips: 2 },
-  { key: 'n', name: 'nourishment', color: 'var(--nourishment)', text: '#854F0B', tint: 'rgba(232,184,31,0.12)', desc: 'you meet a need in a way that gives you energy.', pips: 1 },
+  { key: 'n', name: 'nourishment', color: 'var(--nourishment)', text: '#C9930C', tint: 'rgba(232,184,31,0.12)', desc: 'needs that keep you from feeling drained.', pips: 1 },
   { key: 's', name: 'survival', color: 'var(--survival)', text: '#993C1D', tint: 'rgba(217,59,28,0.08)', desc: 'needs you just check the box on.', pips: 1 },
 ]
 const PILL_TINT = {
