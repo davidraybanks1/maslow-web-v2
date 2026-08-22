@@ -9,7 +9,6 @@ import {
   MoodsSectionV2,
   DataSectionV2,
   JournalSectionV2,
-  DebriefSectionV2,
   NotesSectionV2,
   ReviewSectionV2,
   CtaSectionV2,
@@ -45,7 +44,6 @@ export default function Home() {
       {/* ── HOW YOU KEEP MOMENTUM ── */}
       <DividerPill text="how you keep momentum" />
       <JournalSectionV2 />
-      <DebriefSectionV2 />
       <NotesSectionV2 />
       <ReviewSectionV2 />
 

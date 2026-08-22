@@ -234,17 +234,7 @@
 }
 .jpillOn { background: var(--nourishment); border-color: var(--nourishment); color: var(--ink); }
 
-/* ── debrief form ── */
-.dbTop { font-size: 11px; letter-spacing: .08em; color: var(--ink3); border-bottom: 1px solid var(--border2); padding-bottom: 12px; margin-bottom: 18px; }
-.dbLbl { font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink3); margin: 16px 0 8px; display: flex; align-items: center; gap: 7px; }
-.ddot { width: 6px; height: 6px; border-radius: 50%; background: var(--survival); display: inline-block; }
-.dbChips { display: flex; gap: 8px; flex-wrap: wrap; }
-.dbChip {
-  border: 1px solid var(--border2); border-radius: 999px; padding: 6px 15px;
-  font-size: 11px; color: var(--ink2); background: #fff;
-  transition: all .35s cubic-bezier(.3,1.4,.5,1);
-}
-.dbChipSel { background: var(--nourishment); color: var(--ink); border-color: var(--nourishment); transform: scale(1.05); }
+/* ── debrief form (shared with weekly review) ── */
 .dbArea { background: #faf8f1; border: 1px solid #e9e6db; border-radius: 12px; padding: 12px 15px; font-size: 12px; line-height: 1.7; color: var(--ink2); min-height: 44px; }
 .dbSave {
   margin-top: 18px; border: 1px solid var(--border2); background: none; color: var(--ink3);
@@ -326,7 +316,6 @@
   .movePill { padding: 5px 10px; font-size: 10px; margin-left: 6px; }
   .wdlWide { width: 70px; }
   .stat2 { gap: 10px; }
-  .dbChip { padding: 6px 12px; font-size: 10.5px; }
   .chead { font-size: 9.5px; letter-spacing: 0.14em; }
   .opt { padding: 6px 13px; font-size: 11px; }
 }
