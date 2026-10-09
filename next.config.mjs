@@ -6,6 +6,13 @@ const nextConfig = {
       beforeFiles: [{ source: '/', destination: '/loam-home.html' }],
     }
   },
+  // Memos used to live at /blog.
+  async redirects() {
+    return [
+      { source: '/blog', destination: '/memos', permanent: true },
+      { source: '/blog/:slug', destination: '/memos/:slug', permanent: true },
+    ]
+  },
 }
 
 export default nextConfig

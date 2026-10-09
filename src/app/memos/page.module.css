@@ -1,0 +1,117 @@
+/* Memos index — Loam: white ground, Newsreader, quiet mono details */
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+.header {
+  padding: 48px 0 56px;
+  max-width: 640px;
+}
+
+.headline {
+  font-family: var(--loam-serif);
+  font-weight: 300;
+  font-size: clamp(44px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  color: var(--ink);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+
+.subcopy {
+  font-family: var(--loam-serif);
+  font-weight: 300;
+  font-size: 23px;
+  line-height: 1.35;
+  color: var(--ink2);
+  max-width: 34ch;
+}
+
+.empty { padding: 56px 0; border-top: 0.5px solid var(--loam-hair); }
+.emptyText {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink3);
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  border-top: 0.5px solid var(--loam-hair);
+}
+
+.postItem {
+  display: block;
+  padding: 44px 0;
+  border-bottom: 0.5px solid var(--loam-hair);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.postItem:hover { opacity: 0.7; }
+
+.postImg {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 28px;
+  border-radius: 24px;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.postDate {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+.postCategory {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink3);
+  border: 0.5px solid var(--loam-hair);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.postTitle {
+  font-family: var(--loam-serif);
+  font-weight: 300;
+  font-size: clamp(30px, 3.6vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+
+.postExcerpt {
+  font-family: var(--loam-serif);
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 1.4;
+  color: var(--ink2);
+  max-width: 44ch;
+  margin-bottom: 18px;
+}
+
+.postRead {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .header { padding: 24px 0 40px; }
+  .postImg { height: 220px; border-radius: 20px; }
+}

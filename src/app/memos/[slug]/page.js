@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { PortableText } from '@portabletext/react'
 import { getPost, getPosts } from '../../../lib/sanity-client'
 import { urlFor } from '../../../sanity/lib/image'
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }) {
   const post = await getPost(slug)
   if (!post) return {}
   return {
-    title: `${post.title} — Maslow`,
+    title: `${post.title} — Loam`,
     description: post.excerpt,
   }
 }
@@ -65,6 +66,7 @@ export default async function PostPage({ params }) {
 
   return (
     <div className={styles.wrap}>
+      <Link href="/memos" className={styles.back}>← memos</Link>
       <div className={styles.header}>
         <div className={styles.meta}>
           <span className={styles.date}>

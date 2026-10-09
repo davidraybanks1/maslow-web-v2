@@ -4,30 +4,30 @@ import { urlFor } from '../../sanity/lib/image'
 import styles from './page.module.css'
 
 export const metadata = {
-  title: 'Memos — MyMaslow',
+  title: 'Memos — Loam',
   description: 'Thoughts on needs, anxiety, and living with more intention.',
 }
 
 export const revalidate = 60
 
-export default async function BlogPage() {
+export default async function MemosPage() {
   const posts = await getPosts()
 
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
-        <h1 className={styles.headline}>memos</h1>
+        <h1 className={styles.headline}>memos.</h1>
         <p className={styles.subcopy}>A consolidation of messy thoughts into a few paragraphs of clarity.</p>
       </div>
 
       {posts.length === 0 ? (
         <div className={styles.empty}>
-          <p className={styles.emptyText}>No posts yet. Check back soon.</p>
+          <p className={styles.emptyText}>No memos yet. Check back soon.</p>
         </div>
       ) : (
         <div className={styles.postList}>
           {posts.map(post => (
-            <Link key={post._id} href={`/blog/${post.slug.current}`} className={styles.postItem}>
+            <Link key={post._id} href={`/memos/${post.slug.current}`} className={styles.postItem}>
               {post.mainImage?.asset?._ref && (
                 <img
                   src={urlFor(post.mainImage).width(800).height(400).auto('format').fit('crop').url()}
@@ -45,7 +45,7 @@ export default async function BlogPage() {
               </div>
               <div className={styles.postTitle}>{post.title}</div>
               {post.excerpt && <p className={styles.postExcerpt}>{post.excerpt}</p>}
-              <span className={styles.postRead}>Read →</span>
+              <span className={styles.postRead}>read →</span>
             </Link>
           ))}
         </div>
