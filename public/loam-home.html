@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loam — anxiety isn’t who you are</title>
+<meta name="description" content="Loam helps you sort out what matters, do small things about it, and see what’s working.">
+<link rel="canonical" href="https://loamdaybook.com/">
+<meta property="og:title" content="Loam — anxiety isn’t who you are">
+<meta property="og:description" content="Loam helps you sort out what matters, do small things about it, and see what’s working.">
+<meta property="og:url" content="https://loamdaybook.com/">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="preload" href="/home/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Newsreader';src:url(/home/newsreader.woff2) format('woff2');font-weight:200 800;font-style:normal}
+@font-face{font-family:'Newsreader';src:url(/home/newsreader-italic.woff2) format('woff2');font-weight:200 800;font-style:italic}
+@font-face{font-family:'DM Mono';src:url(/home/dm-mono-400.woff2) format('woff2');font-weight:400;font-style:normal}
+:root{
+  /* page */
+  --bg:#FFFFFF; --ink:#1A1A18; --ink2:#5A5750; --ink3:rgba(0,0,0,.45); --ink4:rgba(0,0,0,.25);
+  --hair:rgba(60,45,20,.20);
+  /* the product's own tokens, used inside the app visuals */
+  --paper:#EFEADD; --card:#FFFFFF; --hairline:rgba(0,0,0,.10); --track:rgba(0,0,0,.07); --border2:rgba(0,0,0,.15);
+  --explore:#191612; --apprec:#ABBEA3; --nourish:#F5B622; --survive:#F55127;
+  --shine:linear-gradient(128deg,#FFF 0%,#FFF 36%,#FBF5E9 50%,#FFF 64%);
+  --serif:'Newsreader',Georgia,serif; --mono:'DM Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:300;line-height:1.4;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
+.card{background:#fff;border:.5px solid var(--hair);border-radius:24px;box-shadow:0 1px 2px rgba(29,27,22,.05),0 12px 32px rgba(29,27,22,.09)}
+.btn{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:400;text-decoration:none;border-radius:999px;padding:15px 28px;line-height:1}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.ghost{color:var(--ink3);padding-left:6px;padding-right:6px}
+.btn.ghost:hover,.btn.primary:hover{opacity:.82}
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+.word{font-size:30px;letter-spacing:-.02em;text-decoration:none}
+.navr{display:flex;align-items:center;gap:22px}
+.navr a.link{font-family:var(--mono);font-size:13px;color:var(--ink3);text-decoration:none}
+.navr .btn{padding:11px 20px;font-size:12px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:48px 0 72px}
+.hero h1{font-size:clamp(44px,6.4vw,76px);line-height:1.02}
+.hero h1 em{display:block;font-style:italic;color:var(--ink3)}
+.hero p.sub{font-size:23px;line-height:1.35;color:var(--ink2);max-width:34ch;margin:28px 0 36px}
+.hero .ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero .art{display:flex;justify-content:center}
+.hero .art img{width:100%;max-width:520px;height:auto;display:block}
+/* sections */
+section{padding:84px 0;border-top:.5px solid var(--hair)}
+.sechead{max-width:640px;margin-bottom:48px}
+.sechead .eyebrow{margin-bottom:16px}
+.sechead h2{font-size:clamp(36px,4.6vw,54px);line-height:1.05}
+.hyp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hyp .card{padding:44px 40px 48px}
+.hyp .l1{font-size:clamp(28px,3.2vw,38px);line-height:1.12;letter-spacing:-.015em}
+.hyp .l2{font-size:clamp(28px,3.2vw,38px);line-height:1.12;letter-spacing:-.015em;color:var(--ink3);font-style:italic;margin-top:14px}
+/* feature rows */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.feat.flip .txt{order:2}
+.feat h2{font-size:clamp(34px,4.2vw,50px);line-height:1.06}
+.feat p{font-size:21px;line-height:1.4;color:var(--ink2);margin-top:18px;max-width:34ch}
+.feat .eyebrow{margin-bottom:16px}
+/* ---------- the product, in a frame ---------- */
+.phone{background:#fff;border:.5px solid var(--hair);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;box-shadow:0 2px 4px rgba(29,27,22,.05),0 24px 60px rgba(29,27,22,.12);position:relative;overflow:hidden;color:var(--ink)}
+.phone .mono{font-family:var(--mono)}
+.lab{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:2px 2px 10px}
+/* tiers (Today > modes) */
+.tiers{display:flex;flex-direction:column;gap:6px}
+.tier{border-radius:10px;border:.5px solid rgba(0,0,0,.14);background:var(--card);overflow:hidden;transition:border-color .15s}
+.tier.open{border-color:rgba(0,0,0,.2)}
+.thead{display:flex;flex-direction:column;gap:8px;padding:12px 14px}
+.ttop{display:flex;align-items:center;gap:7px}
+.tdot{width:7px;height:7px;border-radius:50%;flex:none}
+.tname{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);flex:1}
+.tcount{font-size:15px;line-height:1;color:var(--ink)}
+.tchev{display:block;width:6px;height:6px;margin:-3px 0 0 4px;border-right:1px solid var(--ink3);border-bottom:1px solid var(--ink3);transform:rotate(45deg);transition:transform .2s,margin .2s;flex:none}
+.tier.open .tchev{transform:rotate(225deg);margin-top:3px}
+.tbar{height:10px;background:var(--track);border-radius:5px;overflow:hidden}
+.tfill{height:100%;border-radius:5px;width:0;transition:width .5s ease}
+.tbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .39s cubic-bezier(.32,.72,.28,1)}
+.tier.open .tbody{grid-template-rows:1fr}
+.tin{min-height:0;overflow:hidden;padding:0 14px}
+.ngroup{padding-top:10px}
+.ngroup:last-child{padding-bottom:12px}
+.ngroup+.ngroup{border-top:.5px solid var(--track);margin-top:6px}
+.nsub{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;font-family:var(--mono);font-size:12px;color:var(--ink4)}
+.nsub b{font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.prow{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 2px}
+.plab{font-family:var(--mono);font-size:13px;color:var(--ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pstamp{font-family:var(--mono);font-size:12px;color:var(--ink4);white-space:nowrap}
+.pchk{width:16px;height:16px;border-radius:50%;border:1.5px solid;flex:none;transition:background .12s,transform .25s}
+.pchk.done{transform:scale(1)}
+/* vibrations (Today > check-in) */
+.vibe{padding:6px 6px 8px}
+.orb{display:block;width:120px;height:120px;margin:-10px 0 4px -4px}
+.vsent{font-size:26px;line-height:1.3;letter-spacing:-.015em;margin:0 0 14px}
+.vband{display:flex;gap:8px;margin-bottom:14px}
+.vb{flex:1;min-height:52px;border-radius:14px;border:1px solid rgba(0,0,0,.18);background:var(--card);font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);display:grid;place-items:center;transition:background .12s,color .12s,border-color .12s}
+.vb.on{background:var(--ink);color:#F2F0E8;border-color:var(--ink)}
+.vwrap{overflow:hidden;max-height:0;opacity:0;transition:max-height .4s ease,opacity .25s ease}
+.vwrap.show{max-height:300px;opacity:1}
+.vwords{display:flex;flex-direction:column;gap:8px}
+.vw{display:block;font-weight:300;width:100%;text-align:left;font-family:var(--serif,inherit);color:var(--ink);padding:13px 18px;border-radius:14px;border:1px solid rgba(0,0,0,.14);background:var(--card);font-size:17px;transition:background .12s,color .12s,border-color .12s}
+.vb,.vw,.nbtn{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.vb:hover:not(.on),.vw:hover:not(.on){border-color:rgba(0,0,0,.4)}
+.vb:focus-visible,.vw:focus-visible,.nbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.vhint{font-family:var(--mono);font-size:12px;color:var(--ink3);margin:14px 4px 0;text-align:center}
+.vw.on{background:var(--ink);color:#F2F0E8;border-color:var(--ink)}
+/* data */
+.dwin{height:560px;overflow-y:auto;overflow-x:hidden;border-radius:24px;margin:-6px -4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
+.dwin::-webkit-scrollbar{display:none}
+.dimg{display:block;width:100%;height:auto;-webkit-user-drag:none;user-select:none}
+/* drafts screen */
+.dtitle{font-size:34px;letter-spacing:-.02em;line-height:1.1;margin:2px 4px 0}
+.dsub{font-family:var(--mono);font-size:12px;color:var(--ink3);line-height:1.5;margin:6px 4px 0}
+.drule{height:.5px;background:rgba(0,0,0,.18);margin:14px 4px 16px}
+.comp{background:var(--shine);border:.5px solid var(--hairline);border-radius:20px;padding:16px 18px 18px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.cchips{display:flex;gap:6px;flex-wrap:wrap;transition:opacity .25s}
+.cchip{font-family:var(--mono);font-size:12px;padding:6px 11px;border-radius:999px;border:.5px solid var(--border2);color:var(--ink2);background:rgba(0,0,0,.04);display:inline-flex;align-items:center;gap:6px}
+.cpip{width:7px;height:7px;border-radius:50%}
+.ctext{font-size:19px;line-height:1.32;margin-top:14px;min-height:128px;transition:opacity .4s}
+.ctext.out{opacity:0}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--ink);margin-left:2px;vertical-align:-.14em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.tilelab{font-family:var(--mono);font-size:12px;color:var(--ink3);margin:18px 4px 10px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:80px;gap:8px}
+.tl{border-radius:16px;background:var(--shine);border:.5px solid var(--hairline);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);font-size:12px;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.tl b{font-family:var(--serif);font-weight:300;font-size:20px;display:inline-block;transition:transform .3s}
+.tl.bump{border:1px dashed rgba(26,26,24,.4)}
+.tl.bump b{transform:scale(1.25)}
+.tl.t2{grid-row:span 2}
+/* notes */
+.nstack{position:relative;height:262px;margin:8px 0 40px}
+.nc{position:absolute;inset:0;margin:0 auto;width:316px;max-width:100%;height:262px;background:var(--card);border:.5px solid rgba(0,0,0,.07);border-radius:20px;box-shadow:0 2px 16px rgba(0,0,0,.08);padding:66px 22px 18px 22px;transition:transform .34s cubic-bezier(.32,1.4,.5,1),opacity .26s ease}
+.nc .nl{position:absolute;left:22px;top:22px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
+.nc .nt{font-size:25px;line-height:1.22;letter-spacing:-.015em}
+.nc.p0{z-index:3;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.nc.p0:active{cursor:grabbing}
+.nc.gone.r{transform:translate(120%,-24px) rotate(18deg) scale(.9)!important}
+.nc.p1{z-index:2;transform:translateY(14px) scale(.955);opacity:.9}
+.nc.p2{z-index:1;transform:translateY(28px) scale(.91);opacity:.55}
+.nc.gone{transform:translate(-120%,-24px) rotate(-18deg) scale(.9)!important;opacity:0!important;transition:transform .5s cubic-bezier(.32,.94,.6,1),opacity .5s ease-out}
+.nbtns{display:flex;gap:6px}
+.nbtn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(0,0,0,.18);background:var(--card);color:var(--ink2);font-size:16px;line-height:1;display:grid;place-items:center;padding:0}
+.nbtn:hover{border-color:rgba(0,0,0,.4)}
+.ncount{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--ink3);margin:0 4px}
+/* cta */
+.cta{text-align:center;padding:110px 0 120px}
+.cta h2{font-size:clamp(44px,6.4vw,76px);line-height:1}
+.cta p{font-size:22px;color:var(--ink2);margin:20px 0 34px}
+footer{border-top:.5px solid var(--hair);padding:30px 0 44px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink3)}
+footer a{text-decoration:none;margin-left:18px}
+footer a:first-child{margin-left:0}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:24px}
+  .hero .art{order:-1;margin-bottom:-10px}
+  .hero .art img{max-width:340px}
+  .hyp,.feat{grid-template-columns:1fr}
+  .feat{gap:40px}.feat.flip .txt{order:0}
+  section{padding:64px 0}
+  .navr a.link{display:none}
+  .sechead{margin-bottom:34px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="word" href="/">loam.</a>
+    <div class="navr"><a class="link" href="https://app.mymaslow.com/signin">sign in</a><a class="btn primary" href="https://app.mymaslow.com/onboarding">get started</a></div>
+  </nav>
+  <div class="hero">
+    <div>
+      <h1>anxiety isn’t who you are.<em>it’s who you aren’t.</em></h1>
+      <p class="sub">Loam helps you sort out what matters, do small things about it, and see what’s working.</p>
+      <div class="ctas"><a class="btn primary" href="https://app.mymaslow.com/onboarding">get started</a><a class="btn ghost" href="#modes">see how it works ↓</a></div>
+    </div>
+    <div class="art"><img src="/home/stones.png" width="692" height="524" alt="Stacked stones in black, sage, and gold"></div>
+  </div>
+</div>
+
+<section id="hyp"><div class="wrap">
+  <div class="sechead"><div class="eyebrow">What Loam is built on</div><h2>two hypotheses.</h2></div>
+  <div class="hyp">
+    <div class="card"><div class="l1">Anxiety fills the space we give it.</div><div class="l2">And we can give it less.</div></div>
+    <div class="card"><div class="l1">Our realities are defined by the stories we tell ourselves.</div><div class="l2">And we can edit them.</div></div>
+  </div>
+</div></section>
+
+<!-- MODES -->
+<section id="modes"><div class="wrap feat">
+  <div class="txt">
+    <div class="eyebrow">needs</div>
+    <h2>live beyond survival-mode</h2>
+    <p>Prioritize your needs based on your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that’s not the default.</p>
+  </div>
+  <div class="phone"><div class="lab">Modes</div><div class="tiers" id="modesTiers"></div></div>
+</div></section>
+
+<!-- VIBRATIONS -->
+<section><div class="wrap feat flip">
+  <div class="txt">
+    <div class="eyebrow">vibrations</div>
+    <h2>be honest with yourself</h2>
+    <p>Three times a day, press a button to document how you feel. Your vibrations provide a barometer to measure how well everything you are working on is working for you.</p>
+  </div>
+  <div class="phone"><div class="vibe" id="vibe">
+    <svg class="orb" viewBox="0 0 180 180" width="180" height="180" aria-hidden="true">
+      <defs>
+        <radialGradient id="og" cx="34%" cy="26%"><stop offset="0%" stop-color="#4A4A46"/><stop offset="100%" stop-color="#0A0A08"/></radialGradient>
+        <filter id="osh" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="7"/><feOffset dy="5"/><feComponentTransfer><feFuncA type="linear" slope="0.22"/></feComponentTransfer></filter>
+      </defs>
+      <g filter="url(#osh)"><path id="orbS" fill="#000"/></g>
+      <path id="orbB" fill="url(#og)"/>
+    </svg>
+    <div class="vsent">How are you this morning?</div>
+    <div class="vband" id="vband"><button type="button" class="vb" data-b="good">good</button><button type="button" class="vb" data-b="mid">fine</button><button type="button" class="vb" data-b="bad">bad</button></div>
+    <div class="vwrap" id="vwrap"><div class="vwords" id="vwords"></div></div>
+    <div class="vhint">tap to try it yourself</div>
+  </div></div>
+</div></section>
+
+<!-- DATA -->
+<section><div class="wrap feat">
+  <div class="txt">
+    <div class="eyebrow">data</div>
+    <h2>discover what makes for good days</h2>
+    <p>The information from your modes, practices, and vibrations turns into data that helps pinpoint what to add, subtract, or tweak.</p>
+  </div>
+  <div class="phone"><div class="dwin" tabindex="0" role="region" aria-label="Loam data screen, scrollable"><img class="dimg" id="dimg" alt="The Loam data screen: streaks, a week of rhythm and feels, roots, vibrations and strata" src="/home/data.jpg"></div><div class="vhint">scroll to explore</div></div>
+</div></section>
+
+<!-- DRAFTS -->
+<section><div class="wrap feat flip">
+  <div class="txt">
+    <div class="eyebrow">drafts</div>
+    <h2>talk about yourself to yourself.</h2>
+    <p>Write as often as you like — a line at breakfast, a paragraph at midnight. Tag drafts with how they felt and which need they touched, and this becomes the color commentary for the trends in your data.</p>
+  </div>
+  <div class="phone">
+    <div class="dtitle">drafts.</div>
+    <div class="dsub">Your drafts organized, ready to review and revisit</div>
+    <div class="drule"></div>
+    <div class="comp" id="draft"><div class="cchips" id="dchips"></div><div class="ctext" id="dtext"></div></div>
+    <div class="tilelab">most active threads · last 30 days</div>
+    <div class="tiles" id="tiles">
+      <div class="tl t2" data-k="evenings"><span>evenings</span><b>14</b></div>
+      <div class="tl t2" data-k="reflection"><span>reflection</span><b>9</b></div>
+      <div class="tl" data-k="mornings"><span>mornings</span><b>7</b></div>
+      <div class="tl" data-k="community"><span>community</span><b>5</b></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- NOTES TO SELF -->
+<section><div class="wrap feat">
+  <div class="txt">
+    <div class="eyebrow">notes to self</div>
+    <h2>keep your best thoughts top of mind</h2>
+    <p>A phrase, quote, or memory can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
+  </div>
+  <div class="phone"><div class="nstack" id="nstack"></div><div class="ncount"><span id="ncount">1/6</span><span>swipe or tap</span><span class="nbtns"><button type="button" class="nbtn" id="nprev" aria-label="Previous note">&#8249;</button><button type="button" class="nbtn" id="nnext" aria-label="Next note">&#8250;</button></span></div></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>welcome to loam.</h2>
+  <p>Start by sorting out what matters to you.</p>
+  <a class="btn primary" href="https://app.mymaslow.com/onboarding">get started</a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>loam.</span>
+  <span><a href="/privacy">privacy</a><a href="/terms">terms</a><a href="mailto:hello@loamdaybook.com">hello@loamdaybook.com</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  function whenVisible(el,fn,th){
+    if(!('IntersectionObserver' in window)){fn();return}
+    var s=false,io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!s){s=true;io.disconnect();fn()}})},{threshold:th||.35});io.observe(el);
+  }
+  var MODE={e:{name:'exploration',c:'#191612'},a:{name:'appreciation',c:'#ABBEA3'},n:{name:'nourishment',c:'#F5B622'},s:{name:'survival',c:'#F55127'}};
+  /* sample data: needs and practices per mode; d = done */
+  var DATA=[
+    {m:'e',needs:[{n:'reflection',p:[['morning pages',1],['sit quietly',0]]},{n:'play',p:[['guitar noodling',1],['draw something',0]]}]},
+    {m:'a',needs:[{n:'community',p:[['call a friend',1],['thoughtful text',0]]},{n:'beauty',p:[['walk past the river',0]]}]},
+    {m:'n',needs:[{n:'movement',p:[['20-minute walk',1]]},{n:'nutrition',p:[['cook one real meal',0],['drink water',1]]}]},
+    {m:'s',needs:[{n:'rest',p:[['lights out by 11',0]]},{n:'dwelling',p:[['tidy one surface',1]]}]}
+  ];
+  function tierHTML(t,id){
+    var M=MODE[t.m],tot=0,done=0;
+    t.needs.forEach(function(n){n.p.forEach(function(p){tot++;done+=p[1]})});
+    var groups=t.needs.map(function(n,ni){
+      var d=n.p.filter(function(p){return p[1]}).length;
+      return '<div class="ngroup"><div class="nsub"><b>'+n.n+'</b><span>'+d+'/'+n.p.length+'</span></div>'+n.p.map(function(p,pi){
+        return '<div class="prow" data-i="'+ni+'-'+pi+'"><span class="plab">'+p[0]+'</span><span class="pstamp">'+(p[1]?'today':'')+'</span><i class="pchk" style="border-color:'+M.c+';background:'+(p[1]?M.c:'transparent')+'"></i></div>'
+      }).join('')+'</div>'
+    }).join('');
+    return '<div class="tier" id="'+id+'"><div class="thead"><div class="ttop"><i class="tdot" style="background:'+M.c+'"></i><span class="tname">'+M.name+'</span><span class="tcount">'+done+'/'+tot+'</span><i class="tchev"></i></div><div class="tbar"><div class="tfill" style="background:'+M.c+'" data-w="'+(tot?done/tot*100:0)+'"></div></div></div><div class="tbody"><div class="tin">'+groups+'</div></div></div>'
+  }
+  function fillBars(root){root.querySelectorAll('.tfill').forEach(function(f){f.style.width=f.getAttribute('data-w')+'%'})}
+
+  /* ---- modes: tiers open one after another ---- */
+  var mt=document.getElementById('modesTiers');
+  mt.innerHTML=DATA.map(function(t,i){return tierHTML(t,'mt'+i)}).join('');
+  var mtiers=mt.querySelectorAll('.tier');
+  if(RM){fillBars(mt);mtiers[0].classList.add('open')}
+  else whenVisible(mt,async function(){
+    fillBars(mt);var i=0;
+    for(;;){
+      mtiers.forEach(function(t,k){t.classList.toggle('open',k===i%4)});
+      i++;await sleep(3200);
+    }
+  });
+
+  /* ---- vibrations: orb + bands + words ---- */
+  var FEEL={good:['calm','curious','creative','confident'],mid:['steady','flat','restless','braced'],bad:['overwhelmed','apathetic','frenetic','small']};
+  var PICK={good:0,mid:0,bad:0};
+  var vibe=document.getElementById('vibe'),vb=vibe.querySelectorAll('.vb'),vband=document.getElementById('vband'),vwrap=document.getElementById('vwrap'),vwords=document.getElementById('vwords');
+  var P={good:{a3:2.5,a5:0,a7:0,speed:.6},mid:{a3:2,a5:3,a7:.6,speed:1.2},bad:{a3:2.5,a5:4,a7:6,speed:2.6}};
+  var cur={a3:2,a5:3,a7:.6,speed:1.2},band='mid',phi=.6,S=document.getElementById('orbS'),B=document.getElementById('orbB');
+  function rad(t,R,p,f){return R+p.a3*Math.sin(3*t+f)+p.a5*Math.sin(5*t-1.3*f)+p.a7*Math.sin(7*t+1.9*f)*(.7+.3*Math.sin(2*f+t))}
+  function pathD(R,p,f){var d='';for(var i=0;i<=96;i++){var t=i/96*Math.PI*2,r=rad(t,R,p,f);d+=(i?'L':'M')+(90+r*Math.cos(t)).toFixed(2)+','+(90+r*Math.sin(t)).toFixed(2)}return d+'Z'}
+  function drawOrb(){var d=pathD(60,cur,phi);S.setAttribute('d',d);B.setAttribute('d',d)}
+  function words(b,sel){vwords.innerHTML=FEEL[b].map(function(w,i){return '<button type="button" class="vw'+(i===sel?' on':'')+'" data-i="'+i+'">'+w+'</button>'}).join('')}
+  var vUser=false;
+  vband.addEventListener('click',function(e){var x=e.target.closest('.vb');if(!x)return;var b=x.getAttribute('data-b');vUser=true;setBand(b);words(b,-1);vwrap.classList.add('show');if(RM){Object.assign(cur,P[b]);drawOrb()}});
+  vwords.addEventListener('click',function(e){var x=e.target.closest('.vw');if(!x)return;vUser=true;[].forEach.call(vwords.children,function(c){c.classList.toggle('on',c===x)})});
+  function setBand(b){if(b)band=b;vb.forEach(function(x){x.classList.toggle('on',x.getAttribute('data-b')===b)})}
+  drawOrb();
+  if(RM){Object.assign(cur,P.good);band='good';drawOrb();setBand('good');words('good',0);vwrap.classList.add('show')}
+  else{
+    var last=null;
+    (function frame(t){if(last===null)last=t;var dt=Math.min((t-last)/1000,.05);last=t;var tg=P[band],e=1-Math.exp(-dt/.5);
+      cur.a3+=(tg.a3-cur.a3)*e;cur.a5+=(tg.a5-cur.a5)*e;cur.a7+=(tg.a7-cur.a7)*e;cur.speed+=(tg.speed-cur.speed)*e;phi+=cur.speed*dt;drawOrb();requestAnimationFrame(frame)})(performance.now());
+    whenVisible(vibe,async function(){
+      var order=['good','mid','bad'],i=0;
+      for(;;){
+        var b=order[i%3];i++;
+        if(vUser)return;
+        vwrap.classList.remove('show');setBand(null);await sleep(700);if(vUser)return;
+        setBand(b);await sleep(500);if(vUser)return;
+        words(b,-1);vwrap.classList.add('show');await sleep(900);if(vUser)return;
+        words(b,0);await sleep(2600);
+      }
+    });
+  }
+
+  /* ---- data: the real data screen scrolls itself ---- */
+  var img=document.getElementById('dimg'),win=img.parentNode;
+  function pan(){
+    if(RM)return;
+    var max=img.offsetHeight-win.offsetHeight;if(max<=0)return;
+    var dur=Math.max(24000,max/0.045),t0=null,stop=false;
+    /* any touch, wheel, drag or key press hands control to the visitor */
+    ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){win.addEventListener(ev,function(){stop=true},{passive:true,once:true})});
+    (function step(ts){
+      if(stop)return;
+      if(t0===null)t0=ts;var k=((ts-t0)%(dur*2))/dur;var u=k<1?k:2-k;
+      var e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+      win.scrollTop=max*e;requestAnimationFrame(step)
+    })(performance.now());
+  }
+  if(img.complete)whenVisible(win,pan,.2);else img.addEventListener('load',function(){whenVisible(win,pan,.2)});
+
+  /* ---- drafts: type a draft, a tile counts up ---- */
+  var SLOT={good:'morning',mid:'midday',bad:'evening'},TAG={good:'calm',mid:'steady',bad:'overwhelmed'},PIP={good:'#191612',mid:'#ABBEA3',bad:'#F55127'};
+  var TEXT={
+    good:'Woke up early and actually had time to sit with my coffee. Feeling like I have room today.',
+    mid:'Not bad, not great. Got through the morning on autopilot. I think I skipped lunch again.',
+    bad:'Woke up already behind. My chest has been tight all morning over a meeting that is probably fine.'
+  };
+  var TILE={good:'mornings',mid:'community',bad:'evenings'};
+  var dchips=document.getElementById('dchips'),dtext=document.getElementById('dtext'),tiles=document.getElementById('tiles');
+  function setChips(b){dchips.innerHTML='<span class="cchip">'+SLOT[b]+'</span><span class="cchip"><i class="cpip" style="background:'+PIP[b]+'"></i>'+TAG[b]+'</span>'}
+  function bumpTile(k){
+    var el=tiles.querySelector('[data-k="'+k+'"]');if(!el)return;var b=el.querySelector('b');
+    b.textContent=(+b.textContent)+1;el.classList.add('bump');setTimeout(function(){el.classList.remove('bump')},1200)
+  }
+  setChips('good');
+  if(RM){dtext.textContent=TEXT.good}
+  else{
+    dtext.innerHTML='<span class="caret"></span>';
+    whenVisible(document.getElementById('draft'),async function(){
+      var order=['good','mid','bad'],i=0;
+      for(;;){
+        var b=order[i%3];i++;
+        dchips.style.opacity=0;await sleep(250);setChips(b);dchips.style.opacity=1;
+        dtext.classList.remove('out');dtext.innerHTML='<span class="t"></span><span class="caret"></span>';
+        var te=dtext.querySelector('.t'),tx=TEXT[b];await sleep(500);
+        for(var k=1;k<=tx.length;k++){te.textContent=tx.slice(0,k);await sleep(28)}
+        await sleep(500);bumpTile(TILE[b]);await sleep(2400);
+        dtext.classList.add('out');await sleep(450);
+      }
+    });
+  }
+
+  /* ---- notes to self: swipe, tap or step through the deck ---- */
+  var NOTES=["Take up space. Don’t play it safe.","Everything you want is on the other side of discomfort.","If it feels like you’re doing too much, you’re not doing enough of what matters.","Anxiety is just meaning before you understand it.","Small steps are still steps.","You don’t have to feel ready."];
+  var N=NOTES.length,ns=document.getElementById('nstack'),nc=document.getElementById('ncount'),at=0,busy=false,nUser=false;
+  function mod(i){return ((i%N)+N)%N}
+  function card(i,cls){var d=document.createElement('div');d.className='nc '+cls;d.innerHTML='<div class="nl">Note<br>to self</div><div class="nt">'+NOTES[mod(i)]+'</div>';return d}
+  function count(){nc.textContent=(mod(at)+1)+'/'+N}
+  function render(){ns.innerHTML='';[2,1,0].forEach(function(k){ns.appendChild(card(at+k,'p'+k))});count()}
+  render();
+  function next(dir){
+    if(busy)return;busy=true;
+    var top=ns.querySelector('.p0');top.style.transition='';top.style.transform='';
+    if(dir>0)top.classList.add('r');top.classList.add('gone');
+    ns.querySelector('.p1').className='nc p0';ns.querySelector('.p2').className='nc p1';
+    ns.insertBefore(card(at+3,'p2'),ns.firstChild);
+    at++;count();
+    setTimeout(function(){top.remove();busy=false},RM?0:520);
+  }
+  function prev(){
+    if(busy)return;busy=true;
+    ns.querySelector('.p2').remove();
+    ns.querySelector('.p1').className='nc p2';ns.querySelector('.p0').className='nc p1';
+    at--;var nw=card(at,'p0 gone');ns.appendChild(nw);count();
+    void nw.offsetWidth;nw.classList.remove('gone');
+    setTimeout(function(){busy=false},RM?0:380);
+  }
+  function user(fn){return function(){nUser=true;fn()}}
+  document.getElementById('nnext').addEventListener('click',user(function(){next(-1)}));
+  document.getElementById('nprev').addEventListener('click',user(prev));
+  /* drag the top card (either direction), or tap it, to move on */
+  var drag=null;
+  ns.addEventListener('pointerdown',function(e){
+    var top=ns.querySelector('.p0');if(busy||!top||!top.contains(e.target))return;
+    drag={x:e.clientX,y:e.clientY,dx:0,el:top,moved:false};top.style.transition='none';
+    try{ns.setPointerCapture(e.pointerId)}catch(_){}
+  });
+  ns.addEventListener('pointermove',function(e){
+    if(!drag)return;drag.dx=e.clientX-drag.x;
+    if(Math.abs(drag.dx)>6)drag.moved=true;
+    drag.el.style.transform='translate('+drag.dx+'px,'+(Math.abs(drag.dx)*-.06)+'px) rotate('+(drag.dx*.05)+'deg)';
+  });
+  function endDrag(e){
+    if(!drag)return;var d=drag;drag=null;nUser=true;
+    try{ns.releasePointerCapture(e.pointerId)}catch(_){}
+    d.el.style.transition='';
+    if(!d.moved||Math.abs(d.dx)>70){d.el.style.transform='';next(d.dx>0?1:-1)}
+    else d.el.style.transform='';
+  }
+  ns.addEventListener('pointerup',endDrag);
+  ns.addEventListener('pointercancel',endDrag);
+  if(!RM)whenVisible(ns,async function(){
+    for(;;){
+      await sleep(2600);
+      if(nUser)return;
+      next(-1);
+      await sleep(600);
+    }
+  });
+})();
+</script>
+</body>
+</html>
