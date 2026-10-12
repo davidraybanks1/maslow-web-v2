@@ -54,6 +54,46 @@
 .link:hover {
   border-color: var(--ink);
 }
+.list {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink2);
+  font-weight: 200;
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+.list li {
+  margin-bottom: 8px;
+}
+.list strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.tableWrap {
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink2);
+  font-weight: 200;
+}
+.table th,
+.table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.table th {
+  font-weight: 500;
+  color: var(--ink);
+}
 @media (max-width: 900px) {
   .wrap { padding: 48px 24px 80px; }
 }

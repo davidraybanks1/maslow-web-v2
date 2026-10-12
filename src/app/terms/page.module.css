@@ -54,6 +54,22 @@
 .link:hover {
   border-color: var(--ink);
 }
+.list {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ink2);
+  font-weight: 200;
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+.list li {
+  margin-bottom: 8px;
+}
+.list strong {
+  font-weight: 500;
+  color: var(--ink);
+}
 @media (max-width: 900px) {
   .wrap { padding: 48px 24px 80px; }
 }
