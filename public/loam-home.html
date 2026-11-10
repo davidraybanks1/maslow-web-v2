@@ -12,8 +12,17 @@
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="preload" href="/home/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/home/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/home/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/home/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/home/dm-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/home/instrument-serif-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/home/instrument-serif-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(/home/instrument-serif-italic-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(/home/instrument-serif-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(/home/bricolage-grotesque-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(/home/bricolage-grotesque-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Newsreader';src:url(/home/newsreader.woff2) format('woff2');font-weight:200 800;font-style:normal}
 @font-face{font-family:'Newsreader';src:url(/home/newsreader-italic.woff2) format('woff2');font-weight:200 800;font-style:italic}
 @font-face{font-family:'DM Mono';src:url(/home/dm-mono-400.woff2) format('woff2');font-weight:400;font-style:normal}
@@ -26,6 +35,10 @@
   --explore:#191612; --apprec:#ABBEA3; --nourish:#F5B622; --survive:#F55127;
   --shine:linear-gradient(128deg,#FFF 0%,#FFF 36%,#FBF5E9 50%,#FFF 64%);
   --serif:'Newsreader',Georgia,serif; --mono:'DM Mono',ui-monospace,Menlo,monospace;
+  /* redesign tokens (2c Spine), used by the hero only */
+  --loam-paper:#EFEAE0; --loam-ink:#171512; --loam-muted:#6b665c; --loam-leader:#8a8478;
+  --loam-rule:rgba(23,21,18,.15); --loam-exploration-text:#1E3B2E; --loam-spine-text:#b8b0a1;
+  --loam-display:'Instrument Serif',Georgia,serif; --loam-wordmark:'Bricolage Grotesque',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -39,20 +52,72 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .btn.primary{background:var(--ink);color:#fff}
 .btn.ghost{color:var(--ink3);padding-left:6px;padding-right:6px}
 .btn.ghost:hover,.btn.primary:hover{opacity:.82}
-/* nav */
-nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
-.word{font-size:30px;letter-spacing:-.02em;text-decoration:none}
-.navr{display:flex;align-items:center;gap:22px}
-.navr a.link{font-family:var(--mono);font-size:13px;color:var(--ink3);text-decoration:none}
-.navr .btn{padding:11px 20px;font-size:12px}
-/* hero */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:48px 0 72px}
-.hero h1{font-size:clamp(44px,6.4vw,76px);line-height:1.02}
-.hero h1 em{display:block;font-style:italic;color:var(--ink3)}
-.hero p.sub{font-size:23px;line-height:1.35;color:var(--ink2);max-width:34ch;margin:28px 0 36px}
-.hero .ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.hero .art{display:flex;justify-content:center}
-.hero .art img{width:100%;max-width:520px;height:auto;display:block}
+/* hero: 2c "Spine" */
+.sp{--spine:250px;--pad-x:56px;--stones:300px;--gap:32px;display:grid;grid-template-columns:var(--spine) minmax(0,1fr);background:var(--loam-paper);color:var(--loam-ink)}
+.sp a{color:inherit}
+.sp a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
+.sp-spine{background:var(--loam-ink);color:var(--loam-paper);position:relative;overflow:hidden}
+.sp-vol{position:absolute;left:30px;top:30px;font:400 12px/1.6 var(--mono);letter-spacing:.1em;color:var(--loam-spine-text)}
+.sp-mark{position:absolute;left:-2px;bottom:28px;transform-origin:left bottom;transform:rotate(-90deg) translateY(100%);font:800 calc(var(--spine) * 1.2)/.8 var(--loam-wordmark);letter-spacing:-.078em;white-space:nowrap;text-decoration:none}
+.sp .sp-mark{color:var(--loam-paper)}
+.sp .sp-mark:focus-visible{outline-color:var(--loam-paper);outline-offset:-6px}
+.sp-main{padding:28px var(--pad-x) 56px;display:flex;flex-direction:column;min-width:0}
+.sp-top{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.sp-tag{font:400 12px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--loam-muted);min-width:0}
+.sp-tag span{white-space:nowrap}
+.sp-nav{display:flex;gap:28px;align-items:center;flex:none;white-space:nowrap;font:400 13px/1 var(--mono)}
+.sp-nav .u{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;padding:6px 0}
+.sp-nav .u:hover{text-decoration-thickness:2px}
+.sp-pill{padding:10px 18px;border:1.5px solid var(--loam-ink);border-radius:40px;text-decoration:none}
+.sp-pill:hover{background:var(--loam-ink);color:var(--loam-paper)}
+.sp-mast{margin-top:22px;border-top:1.5px solid var(--loam-ink);border-bottom:1.5px solid var(--loam-ink);padding:8px 0;display:flex;justify-content:space-between;gap:16px;font:400 12px/1.25 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.sp-date{min-height:1.25em;text-align:right}
+.sp-lead{display:grid;grid-template-columns:minmax(0,1fr) var(--stones);gap:var(--gap);align-items:end;margin-top:44px}
+.sp-hcell{container-type:inline-size;min-width:0}
+.sp h1{font-family:var(--loam-display);font-weight:400;font-size:clamp(56px,7.2vw,116px);font-size:clamp(56px,16cqi,116px);line-height:.86;letter-spacing:-.035em}
+.sp h1 span,.sp h1 em{display:block;text-wrap:balance}
+.sp h1 em{font-style:italic;color:var(--loam-exploration-text)}
+.sp-stones{display:block;width:100%;height:auto}
+.sp-toc{margin-top:48px}
+.sp-toch{display:flex;justify-content:space-between;font:400 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding-bottom:10px;border-bottom:1.5px solid var(--loam-ink)}
+.sp-toc ol{list-style:none}
+.sp-row{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--loam-rule);text-decoration:none}
+.sp-num{font:400 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;width:136px;flex:none;white-space:nowrap}
+.sp-title{font:400 30px/1.05 var(--loam-display);min-width:0}
+.sp-row:hover .sp-title{color:var(--loam-exploration-text);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.sp-ldr{flex:1;min-width:24px;border-bottom:1px dotted var(--loam-leader);transform:translateY(-5px)}
+.sp-pg{font:400 13px/1 var(--mono);flex:none}
+@media (max-width:1199px){
+  .sp{--spine:200px;--pad-x:40px;--stones:220px;--gap:24px}
+  .sp-title{font-size:26px}
+}
+@media (max-width:899px){
+  .sp{--spine:160px;--pad-x:28px;--stones:150px;--gap:20px}
+  .sp-vol{left:20px;top:24px}
+  .sp-top{flex-direction:column;align-items:flex-start;gap:12px}
+  .sp-num{width:112px}
+  .sp-title{font-size:24px}
+}
+@media (max-width:699px){
+  .sp{grid-template-columns:minmax(0,1fr)}
+  .sp-spine{height:88px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px}
+  .sp-mark{position:static;transform:none;font-size:56px;margin-left:-3px}
+  .sp .sp-mark:focus-visible{outline-offset:4px}
+  .sp-vol{position:static;text-align:right}
+  .sp-main{padding:20px 20px 40px}
+  .sp-mast{flex-direction:column;gap:4px}
+  .sp-date{text-align:left}
+  .sp-lead{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:32px}
+  .sp h1{font-size:clamp(44px,13vw,60px);font-size:clamp(44px,16cqi,60px)}
+  .sp-stones{width:min(240px,70%);margin:0 auto}
+  .sp-toc{margin-top:36px}
+  .sp-row{flex-wrap:wrap;gap:8px 12px}
+  .sp-num{width:100%}
+}
+@media (max-width:519px){
+  .sp-ldr,.sp-pg,.sp-toch span:last-child{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 /* sections */
 section{padding:84px 0;border-top:.5px solid var(--hair)}
 .sechead{max-width:640px;margin-bottom:48px}
@@ -161,34 +226,53 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 footer a{text-decoration:none;margin-left:18px}
 footer a:first-child{margin-left:0}
 @media (max-width:860px){
-  .hero{grid-template-columns:1fr;padding-top:24px}
-  .hero .art{order:-1;margin-bottom:-10px}
-  .hero .art img{max-width:340px}
   .hyp,.feat{grid-template-columns:1fr}
   .feat{gap:40px}.feat.flip .txt{order:0}
   section{padding:64px 0}
-  .navr a.link{display:none}
-  .navr a.link.keep{display:inline}
   .sechead{margin-bottom:34px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <a class="word" href="/">loam.</a>
-    <div class="navr"><a class="link keep" href="/memos">memos</a><a class="link" href="https://app.mymaslow.com/signin">sign in</a><a class="btn primary" href="https://app.mymaslow.com/onboarding">get started</a></div>
-  </nav>
-  <div class="hero">
-    <div>
-      <h1>anxiety isn’t who you are.<em>it’s who you aren’t.</em></h1>
-      <p class="sub">Loam helps you sort out what matters, do small things about it, and see what’s working.</p>
-      <div class="ctas"><a class="btn primary" href="https://app.mymaslow.com/onboarding">get started</a><a class="btn ghost" href="#modes">see how it works ↓</a></div>
-    </div>
-    <div class="art"><img src="/home/stones.png" width="692" height="524" alt="Stacked stones in black, sage, and gold"></div>
+<header class="sp">
+  <div class="sp-spine">
+    <a class="sp-mark" href="/" aria-label="loam, home">loam.</a>
+    <p class="sp-vol">VOL. 01<br>FALL 2026</p>
   </div>
-</div>
+  <div class="sp-main">
+    <div class="sp-top">
+      <p class="sp-tag"><span>sort out what matters</span> · <span>do small things</span> · <span>see what’s working</span></p>
+      <nav class="sp-nav" aria-label="Main"><a class="u" href="/memos">memos</a><a class="u" href="https://app.mymaslow.com/signin">sign in</a><a class="sp-pill" href="https://app.mymaslow.com/onboarding">get started</a></nav>
+    </div>
+    <div class="sp-mast"><span>a daybook for fuller living</span><span class="sp-date" id="spDate"></span></div>
+    <div class="sp-lead">
+      <div class="sp-hcell"><h1><span>anxiety isn’t who you are.</span> <em>it’s who you aren’t.</em></h1></div>
+      <img class="sp-stones" src="/home/stones.png" width="705" height="530" alt="Stacked stones in black, sage, and gold">
+    </div>
+    <nav class="sp-toc" aria-label="Contents">
+      <div class="sp-toch"><span>contents</span><span aria-hidden="true">page</span></div>
+      <ol>
+        <li><a class="sp-row" href="#modes"><span class="sp-num">01 — needs</span><span class="sp-title">live beyond survival-mode</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 4</span></a></li>
+        <li><a class="sp-row" href="#feelings"><span class="sp-num">02 — feelings</span><span class="sp-title">be honest with yourself</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 12</span></a></li>
+        <li><a class="sp-row" href="#data"><span class="sp-num">03 — data</span><span class="sp-title">discover what makes for good days</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 20</span></a></li>
+        <li><a class="sp-row" href="#drafts"><span class="sp-num">04 — drafts</span><span class="sp-title">talk about yourself to yourself</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 31</span></a></li>
+        <li><a class="sp-row" href="#notes"><span class="sp-num">05 — notes</span><span class="sp-title">keep your best thoughts top of mind</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 40</span></a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+<script>
+/* masthead: day of the year and the date, from the visitor's local clock */
+(function(){
+  var el=document.getElementById('spDate');if(!el)return;
+  var d=new Date(),y=d.getFullYear(),m=d.getMonth(),day=d.getDate();
+  var n=Math.round((Date.UTC(y,m,day)-Date.UTC(y,0,1))/864e5)+1;
+  var W=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  var M=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  el.textContent='no. '+String(n).padStart(3,'0')+' — '+W[d.getDay()]+', '+M[m]+' '+day;
+})();
+</script>
 
 <section id="hyp"><div class="wrap">
   <div class="sechead"><div class="eyebrow">What Loam is built on</div><h2>two hypotheses.</h2></div>
@@ -209,7 +293,7 @@ footer a:first-child{margin-left:0}
 </div></section>
 
 <!-- VIBRATIONS -->
-<section><div class="wrap feat flip">
+<section id="feelings"><div class="wrap feat flip">
   <div class="txt">
     <div class="eyebrow">vibrations</div>
     <h2>be honest with yourself</h2>
@@ -232,7 +316,7 @@ footer a:first-child{margin-left:0}
 </div></section>
 
 <!-- DATA -->
-<section><div class="wrap feat">
+<section id="data"><div class="wrap feat">
   <div class="txt">
     <div class="eyebrow">data</div>
     <h2>discover what makes for good days</h2>
@@ -242,7 +326,7 @@ footer a:first-child{margin-left:0}
 </div></section>
 
 <!-- DRAFTS -->
-<section><div class="wrap feat flip">
+<section id="drafts"><div class="wrap feat flip">
   <div class="txt">
     <div class="eyebrow">drafts</div>
     <h2>talk about yourself to yourself.</h2>
@@ -264,7 +348,7 @@ footer a:first-child{margin-left:0}
 </div></section>
 
 <!-- NOTES TO SELF -->
-<section><div class="wrap feat">
+<section id="notes"><div class="wrap feat">
   <div class="txt">
     <div class="eyebrow">notes to self</div>
     <h2>keep your best thoughts top of mind</h2>
