@@ -186,12 +186,14 @@ h2{font-family:var(--loam-display);font-weight:400}
 .prow{display:flex;align-items:center;gap:10px;min-height:40px;border-top:1px solid rgba(23,21,18,.18);position:relative;transition:transform 140ms ease}
 /* hold to check, as the app does it (useHold): the mode's colour sweeps across the row for 1000ms while it is held, the row gives a little, then the fill fades over 360ms */
 .prow>*:not(.pfill){position:relative}
-.pfill{position:absolute;inset:0;background:color-mix(in srgb,var(--mc) 40%,transparent);transform:scaleX(0);transform-origin:left center;pointer-events:none;opacity:1;transition:opacity 360ms ease-out}
+.pfill{position:absolute;inset:0;background:color-mix(in srgb,var(--loam-gold) 40%,transparent);transform:scaleX(0);transform-origin:left center;pointer-events:none;opacity:1;transition:opacity 360ms ease-out}
 .prow[data-holding]{transform:scale(.985)}
 /* the HOLD hint is ink while it shows, so it reads against the fill as it passes under */
 .prow[data-holding] .pstamp{color:var(--loam-ink)}
 .prow[data-flash] .pfill{opacity:0}
 .pdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none}
+/* an unmet practice's dot is hollow paper, so it stays hollow while the hold fill sweeps under it */
+.pdot:not(.done){background:var(--loam-paper)}
 .pdot.done{background:var(--loam-gold);border-color:var(--loam-gold)}
 .plab{font:400 17px/1.2 var(--serif);color:var(--loam-ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pstamp{font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted);white-space:nowrap}
@@ -476,38 +478,54 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   }
 
   /* ---- needs: chapters open one after another ---- */
-  /* the practice the demo holds: the first unmet one in the first chapter (exploration → reflection → sit quietly) */
-  var HOLD={t:0,n:0,p:DATA[0].needs[0].p.findIndex(function(p){return !p[1]})};
-  if(RM&&HOLD.p>=0)DATA[0].needs[0].p[HOLD.p][1]=1;
+  /* one hold per need view, each on a practice that starts unmet */
+  function find(t,label){for(var n=0;n<DATA[t].needs.length;n++){var ps=DATA[t].needs[n].p;for(var q=0;q<ps.length;q++)if(ps[q][0]===label)return {t:t,n:n,p:q}}return null}
+  var HOLDS=[find(0,'sit quietly'),find(1,'thoughtful text'),find(2,'cook one real meal'),find(3,'lights out by 11')];
+  var START=DATA.map(function(t){return t.needs.map(function(n){return n.p.map(function(p){return p[1]})})});
+  /* reduced motion: every held practice is already met */
+  if(RM)HOLDS.forEach(function(h){if(h)DATA[h.t].needs[h.n].p[h.p][1]=1});
   var mt=document.getElementById('modesTiers');
   mt.innerHTML=DATA.map(function(t,i){return tierHTML(t,'mt'+i)}).join('');
   var allNeeds=[].concat.apply([],DATA.map(function(t){return t.needs}));
-  document.getElementById('ndMet').textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
+  var ndMet=document.getElementById('ndMet');
+  ndMet.textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
   var mtiers=mt.querySelectorAll('.tier');
-  /* the hold, once, the first time exploration's practices are on screen */
-  function counts(){
-    var t=DATA[HOLD.t],tier=mtiers[HOLD.t],n=t.needs[HOLD.n];
-    tier.querySelectorAll('.nsub')[HOLD.n].lastChild.textContent=n.p.filter(function(p){return p[1]}).length+'/'+n.p.length;
-    tier.querySelector('.ccount').textContent=t.needs.filter(met).length+'/'+t.needs.length;
-    document.getElementById('ndMet').textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
+  function counts(t){
+    var T=DATA[t],tier=mtiers[t],subs=tier.querySelectorAll('.nsub');
+    T.needs.forEach(function(n,ni){subs[ni].lastChild.textContent=n.p.filter(function(p){return p[1]}).length+'/'+n.p.length});
+    tier.querySelector('.ccount').textContent=T.needs.filter(met).length+'/'+T.needs.length;
+    ndMet.textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
   }
-  function holdOnce(){
+  /* paint one practice row from the data */
+  function paintRow(h){
+    var row=mtiers[h.t].querySelector('.prow[data-i="'+h.n+'-'+h.p+'"]'),on=DATA[h.t].needs[h.n].p[h.p][1];
+    var dot=row.querySelector('.pdot');dot.classList.toggle('done',!!on);dot.style.borderColor=on?'':MODE[DATA[h.t].m].t;
+    row.querySelector('.pstamp').textContent=on?'today':'';
+  }
+  /* back to the starting state for the next cycle: called as the cycle wraps, before exploration opens */
+  function resetDemo(){
+    DATA.forEach(function(t,ti){t.needs.forEach(function(n,ni){n.p.forEach(function(p,pi){p[1]=START[ti][ni][pi]})})});
+    HOLDS.forEach(function(h){if(h)paintRow(h)});
+    DATA.forEach(function(_,t){counts(t)});
+  }
+  /* the hold, as the app does it: 1000ms of fill, then it lands met (dot, TODAY and the counts together) */
+  function holdOnce(h){
     return new Promise(function(done){
-      var row=mtiers[HOLD.t].querySelector('.prow[data-i="'+HOLD.n+'-'+HOLD.p+'"]');
-      if(!row){done();return}
-      row.style.setProperty('--mc',MODE[DATA[HOLD.t].m].t);
+      if(!h){done();return}
+      var row=mtiers[h.t].querySelector('.prow[data-i="'+h.n+'-'+h.p+'"]');
       row.insertAdjacentHTML('afterbegin','<i class="pfill" aria-hidden="true"></i>');
-      var fill=row.firstChild,stamp=row.querySelector('.pstamp'),dot=row.querySelector('.pdot'),t0=null,MS=1000;
+      var fill=row.firstChild,stamp=row.querySelector('.pstamp'),t0=null,MS=1000;
       row.dataset.holding='';stamp.textContent='hold';
       requestAnimationFrame(function step(ts){
         if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/MS);
         fill.style.transform='scaleX('+k+')';
         if(k<1){requestAnimationFrame(step);return}
-        /* landed: met, like every other done practice */
         delete row.dataset.holding;row.dataset.flash='';
-        DATA[HOLD.t].needs[HOLD.n].p[HOLD.p][1]=1;
-        dot.classList.add('done');dot.style.borderColor='';stamp.textContent='today';counts();
-        setTimeout(function(){fill.remove();delete row.dataset.flash;done()},360);
+        DATA[h.t].needs[h.n].p[h.p][1]=1;
+        paintRow(h);counts(h.t);
+        /* the fill fades on its own; the timeline carries on from the landing */
+        setTimeout(function(){fill.remove();delete row.dataset.flash},360);
+        done();
       });
     });
   }
@@ -523,13 +541,15 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   layoutTiers();
   if(RM){mtiers[0].classList.add('open');layoutTiers()}
   else whenVisible(mt,async function(){
-    var i=0,held=HOLD.p<0;
+    var i=0;
     for(;;){
-      mtiers.forEach(function(t,k){t.classList.toggle('open',k===i%4)});
+      var k4=i%4;
+      /* a new cycle: everything goes back to how it started, as survival closes and before exploration's first hold */
+      if(k4===0&&i>0)resetDemo();
+      mtiers.forEach(function(t,k){t.classList.toggle('open',k===k4)});
       layoutTiers();
-      /* first time round: a beat once exploration has opened, the hold, then the rest of its 3.2s */
-      if(!held&&i%4===HOLD.t){held=true;await sleep(700);await holdOnce();await sleep(2500)}
-      else await sleep(3200);
+      /* each need: a beat once it has opened, its hold, then the rest of its 3.2s */
+      await sleep(700);await holdOnce(HOLDS[k4]);await sleep(2500);
       i++;
     }
   });
