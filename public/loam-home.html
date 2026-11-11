@@ -53,7 +53,7 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .btn.ghost{color:var(--ink3);padding-left:6px;padding-right:6px}
 .btn.ghost:hover,.btn.primary:hover{opacity:.82}
 /* hero: 2c "Spine" */
-.sp{--spine:250px;--pad-x:56px;--stones:300px;--gap:32px;display:grid;grid-template-columns:var(--spine) minmax(0,1fr);background:var(--loam-paper);color:var(--loam-ink)}
+.sp{--hero-turn:#F2AE1A;--spine:250px;--pad-x:56px;--stones:300px;--gap:32px;display:grid;grid-template-columns:var(--spine) minmax(0,1fr);background:var(--loam-paper);color:var(--loam-ink)}
 .sp a{color:inherit}
 .sp a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
 .sp-spine{background:var(--loam-ink);color:var(--loam-paper);position:relative;overflow:hidden}
@@ -76,29 +76,25 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .sp-hcell{container-type:inline-size;min-width:0}
 .sp h1{font-family:var(--loam-display);font-weight:400;font-size:clamp(56px,7.2vw,116px);font-size:clamp(56px,16cqi,116px);line-height:.86;letter-spacing:-.035em}
 .sp h1 span,.sp h1 em{display:block;text-wrap:balance}
-.sp h1 em{font-style:italic;color:var(--loam-exploration-text)}
+.sp h1 em{font-style:italic;color:var(--hero-turn)}
 .sp-stones{display:block;width:100%;height:auto}
-.sp-toc{margin-top:48px}
-.sp-toch{display:flex;justify-content:space-between;font:400 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding-bottom:10px;border-bottom:1.5px solid var(--loam-ink)}
-.sp-toc ol{list-style:none}
-.sp-row{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--loam-rule);text-decoration:none}
-.sp-num{font:400 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;width:136px;flex:none;white-space:nowrap}
-.sp-title{font:400 30px/1.05 var(--loam-display);min-width:0}
-.sp-row:hover .sp-title{color:var(--loam-exploration-text);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
-.sp-ldr{flex:1;min-width:24px;border-bottom:1px dotted var(--loam-leader);transform:translateY(-5px)}
-.sp-pg{font:400 13px/1 var(--mono);flex:none}
 .sp{border-bottom:1.5px solid var(--loam-ink)}
-#hyp{border-top:0}
+/* the two hypotheses, in the hero */
+.sp-hyp{margin-top:48px}
+.sp-hyph{display:flex;justify-content:space-between;gap:16px;font:400 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding-bottom:10px;border-bottom:1.5px solid var(--loam-ink)}
+.sp-hyp ol{list-style:none}
+.sp-hrow{display:grid;grid-template-columns:136px minmax(0,1fr);gap:16px;align-items:baseline;padding:14px 0 16px;border-bottom:1px solid rgba(23,21,18,.18)}
+.sp-hnum{font:italic 400 28px/1 var(--loam-display);color:var(--loam-exploration-text)}
+.sp-l1{font:400 clamp(26px,2.6vw,36px)/1.1 var(--loam-display);letter-spacing:-.015em;color:var(--loam-ink);text-wrap:balance}
+.sp-l2{font:italic 400 20px/1.3 var(--serif);color:var(--loam-muted);margin-top:4px}
 @media (max-width:1199px){
   .sp{--spine:200px;--pad-x:40px;--stones:220px;--gap:24px}
-  .sp-title{font-size:26px}
 }
 @media (max-width:899px){
   .sp{--spine:160px;--pad-x:28px;--stones:150px;--gap:20px}
   .sp-vol{left:20px;top:24px}
+  .sp-hrow{grid-template-columns:112px minmax(0,1fr)}
   .sp-top{flex-direction:column;align-items:flex-start;gap:12px}
-  .sp-num{width:112px}
-  .sp-title{font-size:24px}
 }
 @media (max-width:699px){
   .sp{grid-template-columns:minmax(0,1fr)}
@@ -112,28 +108,19 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
   .sp-lead{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:32px}
   .sp h1{font-size:clamp(44px,13vw,60px);font-size:clamp(44px,16cqi,60px)}
   .sp-stones{width:min(240px,70%);margin:0 auto}
-  .sp-toc{margin-top:36px}
-  .sp-row{flex-wrap:wrap;gap:8px 12px}
-  .sp-num{width:100%}
-}
-@media (max-width:519px){
-  .sp-ldr,.sp-pg,.sp-toch span:last-child{display:none}
+  .sp-hyp{margin-top:36px}
+  .sp-hyph{flex-wrap:wrap;gap:4px 16px}
+  .sp-hrow{grid-template-columns:36px minmax(0,1fr);gap:8px}
+  .sp-hnum{font-size:22px}
+  .sp-l2{font-size:18px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 /* sections */
 section{padding:84px 0;border-top:1px solid rgba(23,21,18,.18)}
-#modes,.cta{border-top:1.5px solid var(--loam-ink)}
+#modes{border-top:0}
+.cta{border-top:1.5px solid var(--loam-ink)}
 section a:focus-visible,footer a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
 h2{font-family:var(--loam-display);font-weight:400}
-.sechead{max-width:640px;margin-bottom:48px}
-.sechead .eyebrow{margin-bottom:16px}
-.sechead h2{font-size:clamp(36px,4.6vw,54px);line-height:1.05}
-.hyp{list-style:none;border-top:1.5px solid var(--loam-ink)}
-.hrow{display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;padding:32px 0 36px}
-.hrow+.hrow{border-top:1px solid rgba(23,21,18,.18)}
-.hnum{font:italic 400 clamp(32px,3.6vw,46px)/1.05 var(--loam-display);color:var(--loam-exploration-text)}
-.hyp .l1{font:400 clamp(32px,3.6vw,46px)/1.05 var(--loam-display);letter-spacing:-.02em;color:var(--loam-ink);text-wrap:balance}
-.hyp .l2{font:italic 300 clamp(22px,2.3vw,28px)/1.25 var(--serif);color:var(--loam-muted);margin-top:12px}
 /* feature rows */
 .feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .feat.flip .txt{order:2}
@@ -230,11 +217,8 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
 footer a:first-child{margin-left:0}
 @media (max-width:860px){
   .feat{grid-template-columns:1fr}
-  .hrow{grid-template-columns:40px minmax(0,1fr);gap:10px;padding:24px 0 28px}
-  .hnum{font-size:28px;line-height:1.15}
   .feat{gap:40px}.feat.flip .txt{order:0}
   section{padding:64px 0}
-  .sechead{margin-bottom:34px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -255,16 +239,13 @@ footer a:first-child{margin-left:0}
       <div class="sp-hcell"><h1><span>anxiety isn’t who you are.</span> <em>it’s who you aren’t.</em></h1></div>
       <img class="sp-stones" src="/home/stones.png" width="705" height="530" alt="Stacked stones in black, sage, and gold">
     </div>
-    <nav class="sp-toc" aria-label="Contents">
-      <div class="sp-toch"><span>contents</span><span aria-hidden="true">page</span></div>
+    <div class="sp-hyp">
+      <h2 class="sp-hyph"><span>what loam is built on</span> <span>two hypotheses</span></h2>
       <ol>
-        <li><a class="sp-row" href="#modes"><span class="sp-num">01 — needs</span><span class="sp-title">live beyond survival-mode</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 4</span></a></li>
-        <li><a class="sp-row" href="#feelings"><span class="sp-num">02 — feelings</span><span class="sp-title">be honest with yourself</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 12</span></a></li>
-        <li><a class="sp-row" href="#data"><span class="sp-num">03 — data</span><span class="sp-title">discover what makes for good days</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 20</span></a></li>
-        <li><a class="sp-row" href="#drafts"><span class="sp-num">04 — drafts</span><span class="sp-title">talk about yourself to yourself</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 31</span></a></li>
-        <li><a class="sp-row" href="#notes"><span class="sp-num">05 — notes</span><span class="sp-title">keep your best thoughts top of mind</span><span class="sp-ldr" aria-hidden="true"></span><span class="sp-pg" aria-hidden="true">p. 40</span></a></li>
+        <li class="sp-hrow"><span class="sp-hnum" aria-hidden="true">i.</span><div><div class="sp-l1">Anxiety fills the space we give it.</div><div class="sp-l2">And we can give it less.</div></div></li>
+        <li class="sp-hrow"><span class="sp-hnum" aria-hidden="true">ii.</span><div><div class="sp-l1">Our realities are defined by the stories we tell ourselves.</div><div class="sp-l2">And we can edit them.</div></div></li>
       </ol>
-    </nav>
+    </div>
   </div>
 </header>
 <script>
@@ -279,13 +260,6 @@ footer a:first-child{margin-left:0}
 })();
 </script>
 
-<section id="hyp"><div class="wrap">
-  <div class="sechead"><div class="eyebrow">What Loam is built on</div><h2>two hypotheses.</h2></div>
-  <ol class="hyp">
-    <li class="hrow"><span class="hnum" aria-hidden="true">i.</span><div><div class="l1">Anxiety fills the space we give it.</div><div class="l2">And we can give it less.</div></div></li>
-    <li class="hrow"><span class="hnum" aria-hidden="true">ii.</span><div><div class="l1">Our realities are defined by the stories we tell ourselves.</div><div class="l2">And we can edit them.</div></div></li>
-  </ol>
-</div></section>
 
 <!-- MODES -->
 <section id="modes"><div class="wrap feat">
