@@ -188,6 +188,8 @@ h2{font-family:var(--loam-display);font-weight:400}
 .prow>*:not(.pfill){position:relative}
 .pfill{position:absolute;inset:0;background:color-mix(in srgb,var(--mc) 40%,transparent);transform:scaleX(0);transform-origin:left center;pointer-events:none;opacity:1;transition:opacity 360ms ease-out}
 .prow[data-holding]{transform:scale(.985)}
+/* the HOLD hint is ink while it shows, so it reads against the fill as it passes under */
+.prow[data-holding] .pstamp{color:var(--loam-ink)}
 .prow[data-flash] .pfill{opacity:0}
 .pdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none}
 .pdot.done{background:var(--loam-gold);border-color:var(--loam-gold)}
