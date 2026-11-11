@@ -48,7 +48,7 @@ a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted)}
 h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
-.btn{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:400;text-decoration:none;border-radius:999px;padding:15px 28px;line-height:1}
+.btn{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:400;text-decoration:none;border-radius:999px;padding:16px 28px;line-height:1}
 .btn.primary{background:var(--loam-ink);color:var(--loam-paper)}
 .btn.ghost{color:var(--ink3);padding-left:6px;padding-right:6px}
 .btn.ghost:hover,.btn.primary:hover{opacity:.82}
@@ -115,18 +115,39 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
   .sp-l2{font-size:18px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* page frame: below the hero the spine runs on beside the sections, on the hero's breakpoints */
+.pg{--spine:250px;--pad-x:56px}
+@media (max-width:1199px){.pg{--spine:200px;--pad-x:40px}}
+@media (max-width:899px){.pg{--spine:160px;--pad-x:28px}}
+@media (max-width:699px){.pg{--pad-x:20px}}
+.pg-spine{display:none}
+@media (min-width:700px){
+  .pg{display:grid;grid-template-columns:var(--spine) minmax(0,1fr)}
+  .pg-spine{display:block;background:var(--loam-ink)}
+}
+.pg-col{min-width:0}
+.pg .wrap{max-width:none;padding:0 var(--pad-x)}
+.pg-tick{position:sticky;top:0;padding:30px 30px 0;transition:opacity .2s ease}
+.pg-tick.out{opacity:0}
+.pg-num{display:block;font:italic 400 64px/1 var(--loam-display);letter-spacing:-.02em;color:var(--loam-gold);min-height:1em}
+.pg-lab{display:block;margin-top:10px;font:400 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-spine-text);min-height:1.3em}
+@media (max-width:899px){.pg-tick{padding:24px 20px 0}.pg-num{font-size:48px}}
 /* sections */
-section{padding:84px 0;border-top:1px solid rgba(23,21,18,.18)}
-#modes{border-top:0}
-.cta{border-top:1.5px solid var(--loam-ink)}
+section{padding:72px 0 96px}
 section a:focus-visible,footer a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
 h2{font-family:var(--loam-display);font-weight:400}
-/* feature rows */
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.feat.flip .txt{order:2}
-.feat h2{font-size:clamp(34px,4.2vw,50px);line-height:1.06}
-.feat p{font-size:21px;line-height:1.4;color:var(--ink2);margin-top:18px;max-width:34ch}
-.feat .eyebrow{margin-bottom:16px}
+.bar{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--loam-ink);border-bottom:1px solid var(--loam-ink);padding:9px 0 8px;margin-bottom:48px}
+.bar .eyebrow{color:var(--loam-ink);line-height:1.3}
+/* feature rows: copy, then the figure; side by side from 1024px */
+.feat{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+.feat h2{font-size:clamp(40px,5vw,64px);line-height:1.02;letter-spacing:-.025em;color:var(--loam-ink)}
+.feat h2 em{font-style:italic;color:var(--loam-exploration-text)}
+.feat p{font-size:21px;line-height:1.45;color:var(--ink2);margin-top:22px;max-width:34ch}
+.fig{border-top:1.5px solid var(--loam-ink);padding-top:28px;min-width:0}
+.cap{border-top:1px solid var(--loam-ink);margin-top:28px;padding-top:10px;font:400 12px/1.5 var(--mono);color:var(--loam-muted)}
+@media (min-width:1024px){.feat{grid-template-columns:minmax(0,1fr) 372px;gap:56px;align-items:start}}
+@media (min-width:1200px){.feat{gap:80px}}
+@media (max-width:699px){section{padding:56px 0 72px}.bar{margin-bottom:32px}}
 /* ---------- the product, in a frame ---------- */
 .phone{background:transparent;border:1.5px solid var(--loam-ink);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;position:relative;overflow:hidden;color:var(--ink)}
 .phone .mono{font-family:var(--mono)}
@@ -169,7 +190,6 @@ h2{font-family:var(--loam-display);font-weight:400}
 .vwords{display:flex;flex-wrap:wrap;gap:20px 12px;padding:10px 5px}
 .nbtn{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .nbtn:focus-visible{outline:2px solid var(--loam-ink);outline-offset:-4px}
-.vhint{font-family:var(--mono);font-size:12px;color:var(--loam-muted);margin:14px 4px 0;text-align:center}
 /* data */
 .dwin{height:560px;overflow-y:auto;overflow-x:hidden;border-radius:24px;margin:-6px -4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
 .dwin::-webkit-scrollbar{display:none}
@@ -206,20 +226,41 @@ h2{font-family:var(--loam-display);font-weight:400}
 .ncnt{color:var(--loam-ink);min-width:3ch;text-align:center}
 .nbtn{width:44px;height:44px;border:0;border-radius:0;background:none;color:var(--loam-ink);font:400 16px/1 var(--mono);display:grid;place-items:center;padding:0}
 .nbtn:hover{text-decoration:underline;text-underline-offset:4px}
-/* cta */
-.cta{text-align:center;padding:110px 0 120px}
-.cta h2{font-size:clamp(44px,6.4vw,76px);line-height:1;letter-spacing:-.025em}
-.cta p{font-size:22px;color:var(--ink2);margin:20px 0 34px}
-footer{border-top:1.5px solid var(--loam-ink);padding:30px 0 44px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--loam-muted)}
-footer a{text-decoration:none;margin-left:18px}
-footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-offset:3px}
-footer a:first-child{margin-left:0}
-@media (max-width:860px){
-  .feat{grid-template-columns:1fr}
-  .feat{gap:40px}.feat.flip .txt{order:0}
-  section{padding:64px 0}
+/* notes: the one dark band, ink across the content column, merging with the spine */
+#notes{background:var(--loam-ink);color:var(--loam-paper)}
+#notes .bar{border-color:rgba(239,234,224,.55)}
+#notes .bar .eyebrow,#notes .cap{color:rgba(239,234,224,.72)}
+#notes .fig{border-top-color:var(--loam-paper)}
+#notes .cap{border-top-color:rgba(239,234,224,.55)}
+#notes .feat h2{color:var(--loam-paper)}
+#notes .feat h2 em{color:var(--loam-gold)}
+#notes .feat p{color:rgba(239,234,224,.8)}
+#notes .phone{border-color:var(--loam-paper);color:var(--loam-paper)}
+#notes .nt,#notes .ncnt,#notes .nbtn{color:var(--loam-paper)}
+#notes .nbtn:focus-visible{outline-color:var(--loam-paper)}
+@media (min-width:1024px){
+  #notes .feat{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+  #notes .fig{order:-1;border-top:0;padding-top:0}
+  #notes .txt{border-top:1.5px solid var(--loam-paper);padding-top:24px}
+  #notes .phone{border:0;border-radius:0;padding:0;max-width:none;overflow:visible}
+  #notes .nq{grid-template-columns:64px minmax(0,1fr);gap:6px;padding:0}
+  #notes .nmark{font-size:150px;margin-left:-6px}
+  #notes .nt{font:italic 400 clamp(38px,3.8vw,54px)/1.1 var(--loam-display);letter-spacing:-.015em;min-height:calc(1.1em * 4)}
+  #notes .nrow{margin:18px 0 0 56px}
 }
+/* closing */
+.cta{padding:72px 0 56px}
+.ctarow{border-top:1.5px solid var(--loam-ink);padding-top:40px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:28px 40px}
+.cta h2{font-size:clamp(44px,6vw,76px);line-height:1;letter-spacing:-.025em}
+.cta p{font-size:22px;color:var(--ink2);margin-top:14px}
+footer{padding:0 0 28px}
+.ft-big{container-type:inline-size;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1.5px solid var(--loam-ink)}
+.ft-mark{display:block;font:800 clamp(88px,20vw,300px)/.8 var(--loam-wordmark);font-size:26cqi;letter-spacing:-.078em;color:var(--loam-ink);white-space:nowrap;margin-bottom:-.055em}
+.ft-stones{display:block;flex:none;width:22cqi;max-width:260px;height:auto;margin-bottom:14px}
+.ft-row{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:0 20px;font:400 12px/1 var(--mono);color:var(--loam-muted);padding-top:4px}
+footer a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:699px){.ft-row{justify-content:flex-start}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -261,49 +302,69 @@ footer a:first-child{margin-left:0}
 </script>
 
 
+<div class="pg">
+<aside class="pg-spine" aria-hidden="true"><div class="pg-tick" id="pgTick"><span class="pg-num" id="pgNum"></span><span class="pg-lab" id="pgLab"></span></div></aside>
+<div class="pg-col">
+<main>
 <!-- MODES -->
-<section id="modes"><div class="wrap feat">
+<section id="modes" class="chap-s"><div class="wrap">
+  <div class="bar"><span class="eyebrow">01 — needs</span></div>
+  <div class="feat">
   <div class="txt">
-    <div class="eyebrow">01 — needs</div>
-    <h2>live beyond survival-mode</h2>
+    <h2>live beyond <em>survival-mode</em></h2>
     <p>Prioritize your needs based on your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that’s not the default.</p>
   </div>
+  <div class="fig">
   <div class="phone"><div class="ndhead"><span>needs</span><span id="ndMet"></span></div><div class="tiers" id="modesTiers"></div></div>
+  <div class="cap"></div>
+  </div>
+  </div>
 </div></section>
 
 <!-- FEELINGS -->
-<section id="feelings"><div class="wrap feat flip">
+<section id="feelings" class="chap-s"><div class="wrap">
+  <div class="bar"><span class="eyebrow">02 — feelings</span></div>
+  <div class="feat">
   <div class="txt">
-    <div class="eyebrow">02 — feelings</div>
-    <h2>be honest with yourself</h2>
+    <h2>be honest <em>with yourself</em></h2>
     <p>Three times a day, press a button to document how you feel. Your feelings provide a barometer to measure how well everything you are working on is working for you.</p>
   </div>
+  <div class="fig">
   <div class="phone"><div class="vibe" id="vibe">
     <div class="fmeta">9:15am · morning</div>
     <p class="fsent">i’m feeling <em id="fmood" hidden></em> <span class="fslot" id="fslot"></span></p>
     <div class="vband" id="vband" role="group" aria-label="mood"><button type="button" class="vb" data-b="good" aria-pressed="false">good</button><button type="button" class="vb" data-b="mid" aria-pressed="false">fine</button><button type="button" class="vb" data-b="bad" aria-pressed="false">bad</button></div>
     <div class="vwrap" id="vwrap"><div class="fask" id="fask">what kind of good?</div><div class="vwords" id="vwords" role="group" aria-label="feeling"></div></div>
-    <div class="vhint">tap to try it yourself</div>
   </div></div>
+  <div class="cap">tap to try it yourself</div>
+  </div>
+  </div>
 </div></section>
 
 <!-- DATA -->
-<section id="data"><div class="wrap feat">
+<section id="data" class="chap-s"><div class="wrap">
+  <div class="bar"><span class="eyebrow">03 — data</span></div>
+  <div class="feat">
   <div class="txt">
-    <div class="eyebrow">03 — data</div>
-    <h2>discover what makes for good days</h2>
+    <h2>discover what makes for <em>good days</em></h2>
     <p>The information from your modes, practices, and feelings turns into data that helps pinpoint what to add, subtract, or tweak.</p>
   </div>
-  <div class="phone pdata"><div class="dwin" tabindex="0" role="region" aria-label="Loam data screen, scrollable"><img class="dimg" id="dimg" width="720" height="6838" loading="lazy" decoding="async" alt="The Loam data screen: streaks, a week of rhythm and feelings, what changed, roots, how you’ve felt and strata" src="/home/data-v2.jpg"></div><div class="vhint">scroll to explore</div></div>
+  <div class="fig">
+  <div class="phone pdata"><div class="dwin" tabindex="0" role="region" aria-label="Loam data screen, scrollable"><img class="dimg" id="dimg" width="720" height="6838" loading="lazy" decoding="async" alt="The Loam data screen: streaks, a week of rhythm and feelings, what changed, roots, how you’ve felt and strata" src="/home/data-v2.jpg"></div></div>
+  <div class="cap">scroll to explore</div>
+  </div>
+  </div>
 </div></section>
 
 <!-- DRAFTS -->
-<section id="drafts"><div class="wrap feat flip">
+<section id="drafts" class="chap-s"><div class="wrap">
+  <div class="bar"><span class="eyebrow">04 — drafts</span></div>
+  <div class="feat">
   <div class="txt">
-    <div class="eyebrow">04 — drafts</div>
-    <h2>talk about yourself to yourself.</h2>
+    <h2>talk about yourself <em>to yourself.</em></h2>
     <p>Write as often as you like — a line at breakfast, a paragraph at midnight. Tag drafts with how they felt and which need they touched, and this becomes the color commentary for the trends in your data.</p>
   </div>
+  <div class="fig">
   <div class="phone">
     <div class="dtitle">drafts.</div>
     <div class="dsub">Your drafts organized, ready to review and revisit</div>
@@ -316,32 +377,42 @@ footer a:first-child{margin-left:0}
       <div class="tl" data-k="community"><span>community</span><i aria-hidden="true"></i><b>5</b></div>
     </div>
   </div>
+  <div class="cap"></div>
+  </div>
+  </div>
 </div></section>
 
 <!-- NOTES TO SELF -->
-<section id="notes"><div class="wrap feat">
+<section id="notes" class="chap-s"><div class="wrap">
+  <div class="bar"><span class="eyebrow">05 — notes</span></div>
+  <div class="feat">
   <div class="txt">
-    <div class="eyebrow">05 — notes</div>
-    <h2>keep your best thoughts top of mind</h2>
+    <h2>keep your best thoughts top of <em>mind</em></h2>
     <p>A phrase, quote, or memory can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
   </div>
+  <div class="fig">
   <div class="phone" role="region" aria-label="note to self">
     <div class="nq" id="nq"><span class="nmark" aria-hidden="true">“</span><div class="nt" id="nt"></div></div>
     <div class="nrow"><button type="button" class="nbtn" id="nprev" aria-label="Previous note">←</button><span class="ncnt" id="ncount">1/6</span><button type="button" class="nbtn" id="nnext" aria-label="Next note">→</button></div>
-    <div class="vhint">swipe or tap</div>
+  </div>
+  <div class="cap">swipe or tap</div>
+  </div>
   </div>
 </div></section>
 
-<section class="cta"><div class="wrap">
-  <h2>welcome to loam.</h2>
-  <p>Start by sorting out what matters to you.</p>
+<section class="cta" id="close"><div class="wrap"><div class="ctarow">
+  <div><h2>welcome to loam.</h2>
+  <p>Start by sorting out what matters to you.</p></div>
   <a class="btn primary" href="https://app.mymaslow.com/onboarding">get started</a>
-</div></section>
+</div></div></section>
+</main>
 
 <footer><div class="wrap">
-  <span>loam.</span>
-  <span><a href="/privacy">privacy</a><a href="/terms">terms</a><a href="mailto:hello@loamdaybook.com">hello@loamdaybook.com</a></span>
+  <div class="ft-big"><span class="ft-mark">loam.</span><img class="ft-stones" src="/home/stones.png" width="705" height="530" alt="" loading="lazy" decoding="async"></div>
+  <div class="ft-row"><a href="/privacy">privacy</a><a href="/terms">terms</a><a href="mailto:hello@loamdaybook.com">hello@loamdaybook.com</a></div>
 </div></footer>
+</div>
+</div>
 
 <script>
 (function(){
@@ -512,6 +583,26 @@ footer a:first-child{margin-left:0}
       await sleep(600);
     }
   });
+})();
+</script>
+<script>
+/* the spine below the hero: the number and label of the section in view */
+(function(){
+  var tick=document.getElementById('pgTick'),num=document.getElementById('pgNum'),lab=document.getElementById('pgLab');
+  if(!tick||!('IntersectionObserver' in window))return;
+  var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches,cur=null,t=0;
+  function show(el){
+    if(el===cur)return;cur=el;
+    var e=el&&el.querySelector('.bar .eyebrow'),parts=e?e.textContent.split(' — '):['',''];
+    function set(){num.textContent=parts[0]||'';lab.textContent=parts[1]||'';tick.classList.remove('out')}
+    clearTimeout(t);
+    if(RM)set();else{tick.classList.add('out');t=setTimeout(set,180)}
+  }
+  var els=[].slice.call(document.querySelectorAll('.chap-s, #close'));
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(x){if(x.isIntersecting)show(x.target.id==='close'?null:x.target)});
+  },{rootMargin:'-50% 0px -50% 0px'});
+  els.forEach(function(el){io.observe(el)});
 })();
 </script>
 </body>
