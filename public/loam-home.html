@@ -143,18 +143,20 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
   .pg{display:grid;grid-template-columns:var(--spine) minmax(0,1fr)}
   .pg-spine{display:block;background:var(--loam-ink)}
 }
-.pg-col{min-width:0}
+/* the page sits above the spine, so a numeral that crosses the seam goes under it */
+.pg-col{min-width:0;position:relative;z-index:1}
 .pg .wrap{max-width:none;padding:0 var(--pad-x)}
-/* the tick is the clip: nothing in it can cross the seam into the page */
-.pg-tick{position:sticky;top:0;height:100vh;height:100dvh;background:var(--loam-ink);padding:24px 0 0;overflow:hidden;transition:opacity .2s ease}
+.pg-tick{position:sticky;top:0;height:100vh;height:100dvh;background:var(--loam-ink);padding:24px 0 0;transition:opacity .2s ease}
 .pg-tick.out{opacity:0}
 /* spine numerals: the wordmark's face, upright, in paper; tracking loosened from the wordmark's -.078em until no two digits touch */
 /* spine numerals: paper digits set against the seam, so the page's colour runs into the spine.
    Sized from the spine: the widest (04, 1.13em of ink) keeps 20px+ clear of the spine's left edge.
    The script sets a per-numeral right margin so the last digit's ink, not its box, meets the seam. */
-.pg-num{display:block;text-align:right;font:800 190px/.8 var(--loam-wordmark);letter-spacing:-.02em;color:var(--loam-paper);white-space:nowrap;min-height:.8em}
+/* --bleed: how far the ink runs past the seam into the page, where paper meets paper and the strokes grow out of it.
+   Kept under the page's left padding minus 16px, so it never reaches a bar, headline or rule. */
+.pg-num{--bleed:.12em;display:block;text-align:right;font:800 190px/.8 var(--loam-wordmark);letter-spacing:-.02em;color:var(--loam-paper);white-space:nowrap;min-height:.8em}
 @media (max-width:1199px){.pg-tick{padding-top:26px}.pg-num{font-size:150px}}
-@media (max-width:899px){.pg-tick{padding-top:20px}.pg-num{font-size:120px}}
+@media (max-width:899px){.pg-tick{padding-top:20px}.pg-num{font-size:120px;--bleed:11px}}
 /* sections */
 section{padding:72px 0 96px}
 section a:focus-visible,footer a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
@@ -751,14 +753,14 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
 (function(){
   var tick=document.getElementById('pgTick'),num=document.getElementById('pgNum');
   /* how far each numeral's text box runs past its ink on the right, in em (Bricolage 800, -.02em tracking, measured);
-     the extra .5px pushes the ink into the seam, where the tick clips it */
+     --bleed then carries the ink past the seam into the page */
   var INK_RIGHT={'01':.0205,'02':.0005,'03':-.015,'04':.0035,'05':.0045};
   if(!tick||!('IntersectionObserver' in window))return;
   var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches,cur=null,t=0;
   function show(el){
     if(el===cur)return;cur=el;
     var i=el?els.indexOf(el):-1,n=i>=0?'0'+(i+1):'';
-    function set(){num.textContent=n;num.style.marginRight=n?'calc('+(-INK_RIGHT[n])+'em - .5px)':'';tick.classList.remove('out')}
+    function set(){num.textContent=n;num.style.marginRight=n?'calc('+(-INK_RIGHT[n])+'em - var(--bleed))':'';tick.classList.remove('out')}
     clearTimeout(t);
     if(RM)set();else{tick.classList.add('out');t=setTimeout(set,180)}
   }
