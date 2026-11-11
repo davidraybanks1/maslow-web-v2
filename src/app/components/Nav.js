@@ -5,25 +5,29 @@ import styles from './Nav.module.css'
 
 export default function Nav() {
   const pathname = usePathname()
+  const onMemos = pathname.startsWith('/memos')
 
   return (
-    <nav className={styles.nav}>
-      <Link href="/" className={styles.logo}>loam.</Link>
+    <header className={styles.bar}>
+      <nav className={styles.nav} aria-label="Main">
+        <Link href="/" className={styles.logo} aria-label="loam, home">loam.</Link>
 
-      <div className={styles.right}>
-        <Link
-          href="/memos"
-          className={`${styles.navItem} ${pathname.startsWith('/memos') ? styles.active : ''}`}
-        >
-          memos
-        </Link>
-        <a href="https://app.mymaslow.com/signin" className={`${styles.navItem} ${styles.hideSmall}`}>
-          sign in
-        </a>
-        <a href="https://app.mymaslow.com/onboarding" className={styles.navCta}>
-          get started
-        </a>
-      </div>
-    </nav>
+        <div className={styles.right}>
+          <Link
+            href="/memos"
+            className={`${styles.navItem} ${onMemos ? styles.active : ''}`}
+            aria-current={onMemos ? 'page' : undefined}
+          >
+            memos
+          </Link>
+          <a href="https://app.mymaslow.com/signin" className={`${styles.navItem} ${styles.hideSmall}`}>
+            sign in
+          </a>
+          <a href="https://app.mymaslow.com/onboarding" className={styles.navCta}>
+            get started
+          </a>
+        </div>
+      </nav>
+    </header>
   )
 }
