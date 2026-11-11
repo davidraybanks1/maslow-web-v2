@@ -16,6 +16,7 @@
 <link rel="preload" href="/home/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/home/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/home/dm-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/home/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/home/instrument-serif-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/home/instrument-serif-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -23,9 +24,15 @@
 @font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(/home/instrument-serif-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(/home/bricolage-grotesque-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(/home/bricolage-grotesque-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Newsreader';src:url(/home/newsreader.woff2) format('woff2');font-weight:200 800;font-style:normal}
-@font-face{font-family:'Newsreader';src:url(/home/newsreader-italic.woff2) format('woff2');font-weight:200 800;font-style:italic}
-@font-face{font-family:'DM Mono';src:url(/home/dm-mono-400.woff2) format('woff2');font-weight:400;font-style:normal}
+@font-face{font-family:'Newsreader';src:url(/home/newsreader.woff2) format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:'Newsreader';src:url(/home/newsreader-italic.woff2) format('woff2');font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:'DM Mono';src:url(/home/dm-mono-400.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+/* fallbacks sized to each face's measured width, so text set before the fonts arrive wraps the same and nothing moves when they swap in */
+@font-face{font-family:'Instrument Serif Fallback';src:local('Georgia');font-style:normal;size-adjust:76%}
+@font-face{font-family:'Instrument Serif Fallback';src:local('Georgia Italic'),local('Georgia-Italic');font-style:italic;size-adjust:78.9%}
+@font-face{font-family:'Newsreader Fallback';src:local('Georgia');font-style:normal;size-adjust:93%}
+@font-face{font-family:'Newsreader Fallback';src:local('Georgia Italic'),local('Georgia-Italic');font-style:italic;size-adjust:87.8%}
+@font-face{font-family:'Bricolage Fallback';src:local('Arial Bold'),local('Arial-BoldMT');font-weight:800;size-adjust:92.5%}
 :root{
   /* page */
   --bg:#FFFFFF; --ink:#1A1A18; --ink2:#5A5750; --ink3:rgba(0,0,0,.45); --ink4:rgba(0,0,0,.25);
@@ -34,12 +41,12 @@
   --paper:#EFEADD; --card:#FFFFFF; --hairline:rgba(0,0,0,.10); --track:rgba(0,0,0,.07); --border2:rgba(0,0,0,.15);
   --explore:#191612; --apprec:#ABBEA3; --nourish:#F5B622; --survive:#F55127;
   --shine:linear-gradient(128deg,#FFF 0%,#FFF 36%,#FBF5E9 50%,#FFF 64%);
-  --serif:'Newsreader',Georgia,serif; --mono:'DM Mono',ui-monospace,Menlo,monospace;
+  --serif:'Newsreader','Newsreader Fallback',Georgia,serif; --mono:'DM Mono',ui-monospace,Menlo,monospace;
   /* redesign tokens (2c Spine), used by the hero only */
   --loam-paper:#EFEAE0; --loam-ink:#171512; --loam-muted:#6b665c; --loam-leader:#8a8478;
   --loam-rule:rgba(23,21,18,.15); --loam-exploration-text:#1E3B2E; --loam-spine-text:#b8b0a1;
   --loam-gold:#F2AE1A;
-  --loam-display:'Instrument Serif',Georgia,serif; --loam-wordmark:'Bricolage Grotesque',system-ui,sans-serif;
+  --loam-display:'Instrument Serif','Instrument Serif Fallback',Georgia,serif; --loam-wordmark:'Bricolage Grotesque','Bricolage Fallback',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -148,17 +155,24 @@ h2{font-family:var(--loam-display);font-weight:400}
 .feat h2{font-size:clamp(40px,5vw,64px);line-height:1.02;letter-spacing:-.025em;color:var(--loam-ink)}
 .feat h2 em{font-style:italic;color:var(--loam-exploration-text)}
 .feat p{font-size:21px;line-height:1.45;color:var(--ink2);margin-top:22px;max-width:34ch}
-.fig{border-top:1.5px solid var(--loam-ink);padding-top:28px;min-width:0}
-.cap{border-top:1px solid var(--loam-ink);margin-top:28px;padding-top:10px;font:400 12px/1.5 var(--mono);color:var(--loam-muted)}
+.fig{min-width:0}
+.cap{max-width:372px;margin:28px auto 0;padding-top:10px;font:400 12px/1.5 var(--mono);color:var(--loam-muted)}
+.cap:empty{display:none}
 @media (min-width:1024px){.feat{grid-template-columns:minmax(0,1fr) 372px;gap:56px;align-items:start}}
 @media (min-width:1200px){.feat{gap:80px}}
 @media (max-width:699px){section{padding:56px 0 72px}.bar{margin-bottom:32px}}
 /* ---------- the product, in a frame ---------- */
-.phone{background:transparent;border:1.5px solid var(--loam-ink);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;position:relative;overflow:hidden;color:var(--ink)}
+.phone{background:transparent;border:1.5px solid var(--loam-ink);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;position:relative;overflow:hidden;color:var(--ink);overflow-anchor:none}
+/* a hidden copy of a frame, used once to measure its tallest state */
+.phone.measure{position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;z-index:-1;min-height:0!important}
+.phone.measure *{transition:none!important;animation:none!important}
 .phone .mono{font-family:var(--mono)}
 /* needs: the app's chapters i.-iv. (Today > contents) */
 .ndhead{display:flex;justify-content:space-between;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-ink);padding:4px 2px 10px;border-bottom:1.5px solid var(--loam-ink)}
 .tier+.tier{border-top:1px solid rgba(23,21,18,.18)}
+/* the chapters stack by transform, not by flow: opening one slides the ones below it without moving anything in layout */
+.tiers{position:relative}
+.tiers .tier{position:absolute;left:0;right:0;top:0;transition:transform .39s cubic-bezier(.32,.72,.28,1)}
 .chap{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:baseline;padding:14px 2px 12px}
 .cnum{font:italic 400 24px/1 var(--loam-display)}
 .cname{font:400 26px/1.05 var(--loam-display);letter-spacing:-.01em;color:var(--loam-ink)}
@@ -235,8 +249,6 @@ h2{font-family:var(--loam-display);font-weight:400}
 #notes{background:var(--loam-ink);color:var(--loam-paper)}
 #notes .bar{border-color:rgba(239,234,224,.55)}
 #notes .bar .eyebrow,#notes .cap{color:rgba(239,234,224,.72)}
-#notes .fig{border-top-color:var(--loam-paper)}
-#notes .cap{border-top-color:rgba(239,234,224,.55)}
 #notes .feat h2{color:var(--loam-paper)}
 #notes .feat h2 em{color:var(--loam-gold)}
 #notes .feat p{color:rgba(239,234,224,.8)}
@@ -246,6 +258,8 @@ h2{font-family:var(--loam-display);font-weight:400}
 @media (min-width:1024px){
   #notes .feat{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   #notes .fig{order:-1;border-top:0;padding-top:0}
+  /* the frameless notes band at desktop keeps its caption rule */
+  #notes .cap{max-width:none;margin:28px 0 0;border-top:1px solid rgba(239,234,224,.55)}
   #notes .txt{border-top:1.5px solid var(--loam-paper);padding-top:24px}
   #notes .phone{border:0;border-radius:0;padding:0;max-width:none;overflow:visible}
   /* the box is sized for the longest note; each note rests on its floor, so the arrows never move */
@@ -460,11 +474,22 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   var allNeeds=[].concat.apply([],DATA.map(function(t){return t.needs}));
   document.getElementById('ndMet').textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
   var mtiers=mt.querySelectorAll('.tier');
-  if(RM){mtiers[0].classList.add('open')}
+  /* place each chapter under the ones above it, as they will be once the open
+     one has finished opening; the list itself is as tall as its tallest arrangement */
+  function layoutTiers(){
+    var heads=[],bodies=[];
+    mtiers.forEach(function(t){var b=t.querySelector('.tbody');heads.push(t.offsetHeight-b.offsetHeight);bodies.push(t.querySelector('.tin').scrollHeight)});
+    var y=0,sumHeads=heads.reduce(function(a,b){return a+b},0);
+    mtiers.forEach(function(t,k){t.style.transform='translateY('+y+'px)';y+=heads[k]+(t.classList.contains('open')?bodies[k]:0)});
+    mt.style.height=(sumHeads+Math.max.apply(null,bodies))+'px';
+  }
+  layoutTiers();
+  if(RM){mtiers[0].classList.add('open');layoutTiers()}
   else whenVisible(mt,async function(){
     var i=0;
     for(;;){
       mtiers.forEach(function(t,k){t.classList.toggle('open',k===i%4)});
+      layoutTiers();
       i++;await sleep(3200);
     }
   });
@@ -586,6 +611,57 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   }
   nq.addEventListener('pointerup',endDrag);
   nq.addEventListener('pointercancel',endDrag);
+
+  /* ---- every frame holds the height of its tallest state ----
+     A hidden copy of each frame is put through all of its states (every
+     chapter open, every mood row and word, every draft, every note) and the
+     tallest becomes the live frame's min-height, so nothing the demos do can
+     move the page. Measured again when the fonts arrive and on resize. Notes
+     at desktop is frameless and sized by its own rules, so it is left alone. */
+  function tallest(frame,states){
+    var c=frame.cloneNode(true);c.classList.add('measure');c.removeAttribute('id');
+    [].forEach.call(c.querySelectorAll('[id]'),function(e){e.setAttribute('data-mid',e.id);e.removeAttribute('id')});
+    c.style.width=frame.offsetWidth+'px';frame.parentNode.appendChild(c);
+    var q=function(id){return c.querySelector('[data-mid="'+id+'"]')},h=0;
+    states.forEach(function(apply){apply(c,q);h=Math.max(h,c.offsetHeight)});
+    c.remove();return Math.ceil(h);
+  }
+  var FR={needs:mt.closest('.phone'),feel:vibe.closest('.phone'),drafts:document.getElementById('draft').closest('.phone'),notes:nq.closest('.phone')};
+  var S={needs:[],feel:[],drafts:[],notes:[]};
+  [-1,0,1,2,3].forEach(function(k){S.needs.push(function(c){[].forEach.call(c.querySelectorAll('.tier'),function(t,i){t.classList.toggle('open',i===k)})})});
+  ['good','mid','bad'].forEach(function(b){
+    [false,true].forEach(function(open){
+      [-1,0,1,2,3].forEach(function(sel){
+        if(!open&&sel>=0)return;
+        S.feel.push(function(c,q){
+          q('vwrap').classList.toggle('show',open);
+          q('fask').textContent='what kind of '+LABEL[b]+'?';
+          q('vwords').innerHTML=FEEL[b].map(function(w,i){return '<button type="button" class="vw'+(i===sel?' on':'')+'">'+w+'</button>'}).join('');
+          q('fmood').textContent=LABEL[b];q('fmood').hidden=false;
+          q('fslot').textContent=sel>=0?FEEL[b][sel]:'';q('fslot').classList.toggle('on',sel>=0);
+        });
+      });
+    });
+  });
+  S.drafts.push(function(c,q){q('dtext').innerHTML='<span class="caret"></span>'});
+  ['good','mid','bad'].forEach(function(b){S.drafts.push(function(c,q){
+    q('dchips').innerHTML='<span>'+TIME[b]+' · '+SLOT[b]+'</span><span class="stamp">'+TAG[b]+'</span>';
+    q('dtext').innerHTML='<span class="t">'+TEXT[b]+'</span><span class="caret"></span>';
+  })});
+  NOTES.forEach(function(t){S.notes.push(function(c,q){q('nt').textContent=t})});
+  var desk=window.matchMedia('(min-width:1024px)');
+  function reserve(){
+    layoutTiers();
+    Object.keys(FR).forEach(function(k){
+      var f=FR[k];if(!f)return;
+      if(k==='notes'&&desk.matches){f.style.minHeight='';return}
+      f.style.minHeight=tallest(f,S[k])+'px';
+    });
+  }
+  reserve();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(reserve);
+  var rz=0,lastW=innerWidth;
+  window.addEventListener('resize',function(){if(innerWidth===lastW)return;lastW=innerWidth;clearTimeout(rz);rz=setTimeout(reserve,120)});
   if(!RM)whenVisible(nq,async function(){
     for(;;){
       await sleep(2600);
