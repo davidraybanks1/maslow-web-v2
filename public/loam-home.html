@@ -183,7 +183,12 @@ h2{font-family:var(--loam-display);font-weight:400}
 .ngroup{padding-bottom:6px}
 .ngroup:last-child{padding-bottom:14px}
 .nsub{display:flex;justify-content:space-between;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted);padding:8px 0 6px}
-.prow{display:flex;align-items:center;gap:10px;min-height:40px;border-top:1px solid rgba(23,21,18,.18)}
+.prow{display:flex;align-items:center;gap:10px;min-height:40px;border-top:1px solid rgba(23,21,18,.18);position:relative;transition:transform 140ms ease}
+/* hold to check, as the app does it (useHold): the mode's colour sweeps across the row for 1000ms while it is held, the row gives a little, then the fill fades over 360ms */
+.prow>*:not(.pfill){position:relative}
+.pfill{position:absolute;inset:0;background:color-mix(in srgb,var(--mc) 40%,transparent);transform:scaleX(0);transform-origin:left center;pointer-events:none;opacity:1;transition:opacity 360ms ease-out}
+.prow[data-holding]{transform:scale(.985)}
+.prow[data-flash] .pfill{opacity:0}
 .pdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none}
 .pdot.done{background:var(--loam-gold);border-color:var(--loam-gold)}
 .plab{font:400 17px/1.2 var(--serif);color:var(--loam-ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -469,11 +474,41 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   }
 
   /* ---- needs: chapters open one after another ---- */
+  /* the practice the demo holds: the first unmet one in the first chapter (exploration → reflection → sit quietly) */
+  var HOLD={t:0,n:0,p:DATA[0].needs[0].p.findIndex(function(p){return !p[1]})};
+  if(RM&&HOLD.p>=0)DATA[0].needs[0].p[HOLD.p][1]=1;
   var mt=document.getElementById('modesTiers');
   mt.innerHTML=DATA.map(function(t,i){return tierHTML(t,'mt'+i)}).join('');
   var allNeeds=[].concat.apply([],DATA.map(function(t){return t.needs}));
   document.getElementById('ndMet').textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
   var mtiers=mt.querySelectorAll('.tier');
+  /* the hold, once, the first time exploration's practices are on screen */
+  function counts(){
+    var t=DATA[HOLD.t],tier=mtiers[HOLD.t],n=t.needs[HOLD.n];
+    tier.querySelectorAll('.nsub')[HOLD.n].lastChild.textContent=n.p.filter(function(p){return p[1]}).length+'/'+n.p.length;
+    tier.querySelector('.ccount').textContent=t.needs.filter(met).length+'/'+t.needs.length;
+    document.getElementById('ndMet').textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
+  }
+  function holdOnce(){
+    return new Promise(function(done){
+      var row=mtiers[HOLD.t].querySelector('.prow[data-i="'+HOLD.n+'-'+HOLD.p+'"]');
+      if(!row){done();return}
+      row.style.setProperty('--mc',MODE[DATA[HOLD.t].m].t);
+      row.insertAdjacentHTML('afterbegin','<i class="pfill" aria-hidden="true"></i>');
+      var fill=row.firstChild,stamp=row.querySelector('.pstamp'),dot=row.querySelector('.pdot'),t0=null,MS=1000;
+      row.dataset.holding='';stamp.textContent='hold';
+      requestAnimationFrame(function step(ts){
+        if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/MS);
+        fill.style.transform='scaleX('+k+')';
+        if(k<1){requestAnimationFrame(step);return}
+        /* landed: met, like every other done practice */
+        delete row.dataset.holding;row.dataset.flash='';
+        DATA[HOLD.t].needs[HOLD.n].p[HOLD.p][1]=1;
+        dot.classList.add('done');dot.style.borderColor='';stamp.textContent='today';counts();
+        setTimeout(function(){fill.remove();delete row.dataset.flash;done()},360);
+      });
+    });
+  }
   /* place each chapter under the ones above it, as they will be once the open
      one has finished opening; the list itself is as tall as its tallest arrangement */
   function layoutTiers(){
@@ -486,11 +521,14 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   layoutTiers();
   if(RM){mtiers[0].classList.add('open');layoutTiers()}
   else whenVisible(mt,async function(){
-    var i=0;
+    var i=0,held=HOLD.p<0;
     for(;;){
       mtiers.forEach(function(t,k){t.classList.toggle('open',k===i%4)});
       layoutTiers();
-      i++;await sleep(3200);
+      /* first time round: a beat once exploration has opened, the hold, then the rest of its 3.2s */
+      if(!held&&i%4===HOLD.t){held=true;await sleep(700);await holdOnce();await sleep(2500)}
+      else await sleep(3200);
+      i++;
     }
   });
 
