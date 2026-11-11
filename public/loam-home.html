@@ -38,6 +38,7 @@
   /* redesign tokens (2c Spine), used by the hero only */
   --loam-paper:#EFEAE0; --loam-ink:#171512; --loam-muted:#6b665c; --loam-leader:#8a8478;
   --loam-rule:rgba(23,21,18,.15); --loam-exploration-text:#1E3B2E; --loam-spine-text:#b8b0a1;
+  --loam-gold:#F2AE1A;
   --loam-display:'Instrument Serif',Georgia,serif; --loam-wordmark:'Bricolage Grotesque',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -187,7 +188,7 @@ h2{font-family:var(--loam-display);font-weight:400}
 .fask{font:400 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted);margin:0 5px 10px}
 .vwords{display:flex;flex-wrap:wrap;gap:12px;padding:5px}
 .nbtn{cursor:pointer;-webkit-tap-highlight-color:transparent}
-.nbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.nbtn:focus-visible{outline:2px solid var(--loam-ink);outline-offset:-4px}
 .vhint{font-family:var(--mono);font-size:12px;color:var(--loam-muted);margin:14px 4px 0;text-align:center}
 /* data */
 .dwin{height:560px;overflow-y:auto;overflow-x:hidden;border-radius:24px;margin:-6px -4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
@@ -216,21 +217,18 @@ h2{font-family:var(--loam-display);font-weight:400}
 .tl.bump{border:1px dashed rgba(26,26,24,.4)}
 .tl.bump b{transform:scale(1.25)}
 .tl.t2{grid-row:span 2}
-/* notes */
-.nstack{position:relative;height:262px;margin:8px 0 40px}
-.nc{position:absolute;inset:0;margin:0 auto;width:316px;max-width:100%;height:262px;background:var(--card);border:.5px solid rgba(0,0,0,.07);border-radius:20px;box-shadow:0 2px 16px rgba(0,0,0,.08);padding:66px 22px 18px 22px;transition:transform .34s cubic-bezier(.32,1.4,.5,1),opacity .26s ease}
-.nc .nl{position:absolute;left:22px;top:22px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);line-height:1.5}
-.nc .nt{font-size:25px;line-height:1.22;letter-spacing:-.015em}
-.nc.p0{z-index:3;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.nc.p0:active{cursor:grabbing}
-.nc.gone.r{transform:translate(120%,-24px) rotate(18deg) scale(.9)!important}
-.nc.p1{z-index:2;transform:translateY(14px) scale(.955);opacity:.9}
-.nc.p2{z-index:1;transform:translateY(28px) scale(.91);opacity:.55}
-.nc.gone{transform:translate(-120%,-24px) rotate(-18deg) scale(.9)!important;opacity:0!important;transition:transform .5s cubic-bezier(.32,.94,.6,1),opacity .5s ease-out}
-.nbtns{display:flex;gap:6px}
-.nbtn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(0,0,0,.18);background:var(--card);color:var(--ink2);font-size:16px;line-height:1;display:grid;place-items:center;padding:0}
-.nbtn:hover{border-color:rgba(0,0,0,.4)}
-.ncount{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--ink3);margin:0 4px}
+/* notes: the note-to-self pull quote */
+.nq{display:grid;grid-template-columns:40px minmax(0,1fr);gap:6px;padding:14px 4px 0;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.nq:active{cursor:grabbing}
+.nmark{font:400 112px/.7 var(--loam-display);color:var(--loam-gold);margin-left:-4px}
+.nt{font:italic 400 26px/1.22 var(--serif);color:var(--loam-ink);min-height:calc(1.22em * 3)}
+@media (max-width:520px){.nt{min-height:calc(1.22em * 4)}}
+@media (max-width:359px){.nt{min-height:calc(1.22em * 5)}}
+.nrow{display:flex;align-items:center;gap:2px;margin:10px 0 0 46px;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.nlab{color:var(--loam-muted);margin-right:6px}
+.ncnt{color:var(--loam-ink);min-width:3ch;text-align:center}
+.nbtn{width:44px;height:44px;border:0;border-radius:0;background:none;color:var(--loam-ink);font:400 16px/1 var(--mono);display:grid;place-items:center;padding:0}
+.nbtn:hover{text-decoration:underline;text-underline-offset:4px}
 /* cta */
 .cta{text-align:center;padding:110px 0 120px}
 .cta h2{font-size:clamp(44px,6.4vw,76px);line-height:1;letter-spacing:-.025em}
@@ -364,7 +362,11 @@ footer a:first-child{margin-left:0}
     <h2>keep your best thoughts top of mind</h2>
     <p>A phrase, quote, or memory can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
   </div>
-  <div class="phone"><div class="nstack" id="nstack"></div><div class="ncount"><span id="ncount">1/6</span><span>swipe or tap</span><span class="nbtns"><button type="button" class="nbtn" id="nprev" aria-label="Previous note">&#8249;</button><button type="button" class="nbtn" id="nnext" aria-label="Next note">&#8250;</button></span></div></div>
+  <div class="phone">
+    <div class="nq" id="nq"><span class="nmark" aria-hidden="true">“</span><div class="nt" id="nt"></div></div>
+    <div class="nrow"><span class="nlab">note to self ·</span><button type="button" class="nbtn" id="nprev" aria-label="Previous note">←</button><span class="ncnt" id="ncount">1/6</span><button type="button" class="nbtn" id="nnext" aria-label="Next note">→</button></div>
+    <div class="vhint">swipe or tap</div>
+  </div>
 </div></section>
 
 <section class="cta"><div class="wrap">
@@ -495,56 +497,49 @@ footer a:first-child{margin-left:0}
     });
   }
 
-  /* ---- notes to self: swipe, tap or step through the deck ---- */
+  /* ---- notes to self: swipe, tap or step through the notes ---- */
   var NOTES=["Take up space. Don’t play it safe.","Everything you want is on the other side of discomfort.","If it feels like you’re doing too much, you’re not doing enough of what matters.","Anxiety is just meaning before you understand it.","Small steps are still steps.","You don’t have to feel ready."];
-  var N=NOTES.length,ns=document.getElementById('nstack'),nc=document.getElementById('ncount'),at=0,busy=false,nUser=false;
+  var N=NOTES.length,nq=document.getElementById('nq'),nt=document.getElementById('nt'),nc=document.getElementById('ncount'),at=0,busy=false,nUser=false;
   function mod(i){return ((i%N)+N)%N}
-  function card(i,cls){var d=document.createElement('div');d.className='nc '+cls;d.innerHTML='<div class="nl">Note<br>to self</div><div class="nt">'+NOTES[mod(i)]+'</div>';return d}
-  function count(){nc.textContent=(mod(at)+1)+'/'+N}
-  function render(){ns.innerHTML='';[2,1,0].forEach(function(k){ns.appendChild(card(at+k,'p'+k))});count()}
-  render();
-  function next(dir){
-    if(busy)return;busy=true;
-    var top=ns.querySelector('.p0');top.style.transition='';top.style.transform='';
-    if(dir>0)top.classList.add('r');top.classList.add('gone');
-    ns.querySelector('.p1').className='nc p0';ns.querySelector('.p2').className='nc p1';
-    ns.insertBefore(card(at+3,'p2'),ns.firstChild);
-    at++;count();
-    setTimeout(function(){top.remove();busy=false},RM?0:520);
+  function paint(){nt.textContent=NOTES[mod(at)];nc.textContent=(mod(at)+1)+'/'+N}
+  paint();
+  /* a short horizontal slide: out one way, in from the other (about 320ms) */
+  function go(step,dir){
+    if(busy)return;busy=true;at+=step;
+    if(RM){nt.style.transform='';paint();busy=false;return}
+    nt.style.transition='transform .16s ease-in,opacity .16s ease-in';nt.style.transform='translateX('+(dir*40)+'px)';nt.style.opacity=0;
+    setTimeout(function(){
+      paint();nt.style.transition='none';nt.style.transform='translateX('+(-dir*40)+'px)';void nt.offsetWidth;
+      nt.style.transition='transform .16s ease-out,opacity .16s ease-out';nt.style.transform='';nt.style.opacity=1;
+      setTimeout(function(){busy=false},160);
+    },160);
   }
-  function prev(){
-    if(busy)return;busy=true;
-    ns.querySelector('.p2').remove();
-    ns.querySelector('.p1').className='nc p2';ns.querySelector('.p0').className='nc p1';
-    at--;var nw=card(at,'p0 gone');ns.appendChild(nw);count();
-    void nw.offsetWidth;nw.classList.remove('gone');
-    setTimeout(function(){busy=false},RM?0:380);
-  }
+  function next(dir){go(1,dir)}
+  function prev(){go(-1,1)}
   function user(fn){return function(){nUser=true;fn()}}
   document.getElementById('nnext').addEventListener('click',user(function(){next(-1)}));
   document.getElementById('nprev').addEventListener('click',user(prev));
-  /* drag the top card (either direction), or tap it, to move on */
+  /* drag the note (either direction), or tap it, to move on */
   var drag=null;
-  ns.addEventListener('pointerdown',function(e){
-    var top=ns.querySelector('.p0');if(busy||!top||!top.contains(e.target))return;
-    drag={x:e.clientX,y:e.clientY,dx:0,el:top,moved:false};top.style.transition='none';
-    try{ns.setPointerCapture(e.pointerId)}catch(_){}
+  nq.addEventListener('pointerdown',function(e){
+    if(busy)return;
+    drag={x:e.clientX,dx:0,moved:false};nt.style.transition='none';
+    try{nq.setPointerCapture(e.pointerId)}catch(_){}
   });
-  ns.addEventListener('pointermove',function(e){
+  nq.addEventListener('pointermove',function(e){
     if(!drag)return;drag.dx=e.clientX-drag.x;
     if(Math.abs(drag.dx)>6)drag.moved=true;
-    drag.el.style.transform='translate('+drag.dx+'px,'+(Math.abs(drag.dx)*-.06)+'px) rotate('+(drag.dx*.05)+'deg)';
+    nt.style.transform='translateX('+drag.dx+'px)';
   });
   function endDrag(e){
     if(!drag)return;var d=drag;drag=null;nUser=true;
-    try{ns.releasePointerCapture(e.pointerId)}catch(_){}
-    d.el.style.transition='';
-    if(!d.moved||Math.abs(d.dx)>70){d.el.style.transform='';next(d.dx>0?1:-1)}
-    else d.el.style.transform='';
+    try{nq.releasePointerCapture(e.pointerId)}catch(_){}
+    if(!d.moved||Math.abs(d.dx)>70){next(d.dx>0?1:-1)}
+    else{nt.style.transition='transform .16s ease-out';nt.style.transform=''}
   }
-  ns.addEventListener('pointerup',endDrag);
-  ns.addEventListener('pointercancel',endDrag);
-  if(!RM)whenVisible(ns,async function(){
+  nq.addEventListener('pointerup',endDrag);
+  nq.addEventListener('pointercancel',endDrag);
+  if(!RM)whenVisible(nq,async function(){
     for(;;){
       await sleep(2600);
       if(nUser)return;
