@@ -35,17 +35,19 @@ export default async function MemosPage() {
                   className={styles.postImg}
                 />
               )}
-              <div className={styles.postMeta}>
-                <span className={styles.postDate}>
-                  {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </span>
-                {post.categories?.length > 0 && (
-                  <span className={styles.postCategory}>{post.categories[0]}</span>
-                )}
+              <div className={styles.postText}>
+                <div className={styles.postMeta}>
+                  <span className={styles.postDate}>
+                    {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </span>
+                  {post.categories?.length > 0 && (
+                    <span className={styles.postCategory}>{post.categories[0]}</span>
+                  )}
+                </div>
+                <div className={styles.postTitle}>{post.title}</div>
+                {post.excerpt && <p className={styles.postExcerpt}>{post.excerpt}</p>}
+                <span className={styles.postRead}>read →</span>
               </div>
-              <div className={styles.postTitle}>{post.title}</div>
-              {post.excerpt && <p className={styles.postExcerpt}>{post.excerpt}</p>}
-              <span className={styles.postRead}>read →</span>
             </Link>
           ))}
         </div>

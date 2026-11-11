@@ -1,4 +1,4 @@
-/* Memos index — Loam: white ground, Newsreader, quiet mono details */
+/* Memos index: paper, a big Instrument Serif title, posts as ledger rows */
 .wrap {
   max-width: 1120px;
   margin: 0 auto;
@@ -6,112 +6,112 @@
 }
 
 .header {
-  padding: 48px 0 56px;
-  max-width: 640px;
+  padding: 56px 0 40px;
+  max-width: 720px;
 }
 
 .headline {
-  font-family: var(--loam-serif);
-  font-weight: 300;
-  font-size: clamp(44px, 6vw, 72px);
-  letter-spacing: -0.02em;
-  line-height: 1.02;
-  color: var(--ink);
-  margin-bottom: 20px;
-  text-wrap: balance;
+  font-family: var(--loam-display);
+  font-weight: 400;
+  font-size: clamp(64px, 9vw, 96px);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--loam-ink);
+  margin-bottom: 18px;
 }
 
 .subcopy {
   font-family: var(--loam-serif);
-  font-weight: 300;
+  font-style: italic;
+  font-weight: 400;
   font-size: 23px;
   line-height: 1.35;
-  color: var(--ink2);
+  color: var(--loam-muted);
   max-width: 34ch;
 }
 
-.empty { padding: 56px 0; border-top: 0.5px solid var(--loam-hair); }
+.empty { padding: 40px 0; border-top: 1.5px solid var(--loam-ink); }
 .emptyText {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--ink3);
+  font-family: var(--loam-serif);
+  font-style: italic;
+  font-size: 21px;
+  color: var(--loam-muted);
 }
 
 .postList {
   display: flex;
   flex-direction: column;
-  max-width: 760px;
-  border-top: 0.5px solid var(--loam-hair);
+  max-width: 960px;
+  border-top: 1.5px solid var(--loam-ink);
 }
 
+/* each row is one link: text on the left, the image (if any) on the right */
 .postItem {
-  display: block;
-  padding: 44px 0;
-  border-bottom: 0.5px solid var(--loam-hair);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-areas: 'text img';
+  gap: 40px;
+  align-items: start;
+  padding: 36px 0 40px;
+  border-bottom: 1px solid var(--loam-hair);
+  color: var(--loam-ink);
   text-decoration: none;
-  transition: opacity 0.15s;
 }
-.postItem:hover { opacity: 0.7; }
+.postItem:not(:has(.postImg)) { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'text'; }
+.postItem:focus-visible { outline: 2px solid var(--loam-ink); outline-offset: 6px; }
+.postItem:hover .postTitle { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+
+.postText { grid-area: text; min-width: 0; }
 
 .postImg {
+  grid-area: img;
   width: 100%;
-  height: 360px;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   display: block;
-  margin-bottom: 28px;
-  border-radius: 24px;
 }
 
 .postMeta {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  font-family: var(--loam-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--loam-muted);
   margin-bottom: 14px;
 }
-
-.postDate {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink3);
-}
-
-.postCategory {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink3);
-  border: 0.5px solid var(--loam-hair);
-  padding: 3px 10px;
-  border-radius: 999px;
-}
+.postCategory::before { content: ' · '; }
 
 .postTitle {
-  font-family: var(--loam-serif);
-  font-weight: 300;
-  font-size: clamp(30px, 3.6vw, 44px);
+  font-family: var(--loam-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 40px);
   letter-spacing: -0.02em;
-  line-height: 1.08;
-  color: var(--ink);
-  margin-bottom: 14px;
+  line-height: 1.05;
+  color: var(--loam-ink);
+  margin-bottom: 12px;
   text-wrap: balance;
 }
 
 .postExcerpt {
   font-family: var(--loam-serif);
-  font-weight: 300;
-  font-size: 21px;
-  line-height: 1.4;
-  color: var(--ink2);
-  max-width: 44ch;
-  margin-bottom: 18px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: var(--loam-ink-2);
+  max-width: 52ch;
+  margin-bottom: 16px;
 }
 
 .postRead {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink);
+  font-family: var(--loam-mono);
+  font-size: 13px;
+  color: var(--loam-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
-@media (max-width: 860px) {
-  .header { padding: 24px 0 40px; }
-  .postImg { height: 220px; border-radius: 20px; }
+@media (max-width: 720px) {
+  .header { padding: 36px 0 28px; }
+  .postItem,
+  .postItem:not(:has(.postImg)) { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'img' 'text'; gap: 20px; padding: 28px 0 32px; }
 }
