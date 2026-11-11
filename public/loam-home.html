@@ -53,7 +53,7 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .btn.ghost{color:var(--ink3);padding-left:6px;padding-right:6px}
 .btn.ghost:hover,.btn.primary:hover{opacity:.82}
 /* hero: 2c "Spine" */
-.sp{--hero-turn:#F2AE1A;--spine:250px;--pad-x:56px;--stones:300px;--gap:32px;display:grid;grid-template-columns:var(--spine) minmax(0,1fr);background:var(--loam-paper);color:var(--loam-ink)}
+.sp{--hero-turn:#F2AE1A;--spine:250px;--pad-x:56px;--lead-trim:332px;display:grid;grid-template-columns:var(--spine) minmax(0,1fr);background:var(--loam-paper);color:var(--loam-ink)}
 .sp a{color:inherit}
 .sp a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
 .sp-spine{background:var(--loam-ink);color:var(--loam-paper);position:relative;overflow:hidden}
@@ -74,12 +74,13 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .sp-pill:hover{background:var(--loam-ink);color:var(--loam-paper)}
 .sp-mast{margin-top:22px;border-top:1.5px solid var(--loam-ink);border-bottom:1.5px solid var(--loam-ink);padding:8px 0;display:flex;justify-content:space-between;gap:16px;font:400 12px/1.25 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .sp-date{min-height:1.25em;text-align:right}
-.sp-lead{display:grid;grid-template-columns:minmax(0,1fr) var(--stones);gap:var(--gap);align-items:end;margin-top:44px}
+.sp-lead{margin-top:44px}
+/* the headline keeps the measure it had beside the stones, so its size (16cqi) and its line breaks are unchanged; the right side is simply empty */
+.sp-hcell{max-width:calc(100% - var(--lead-trim))}
 .sp-hcell{container-type:inline-size;min-width:0}
 .sp h1{font-family:var(--loam-display);font-weight:400;font-size:clamp(56px,7.2vw,116px);font-size:clamp(56px,16cqi,116px);line-height:.86;letter-spacing:-.035em}
 .sp h1 span,.sp h1 em{display:block;text-wrap:balance}
 .sp h1 em{font-style:italic;color:var(--hero-turn)}
-.sp-stones{display:block;width:100%;height:auto}
 .sp{border-bottom:1.5px solid var(--loam-ink)}
 /* the two hypotheses, in the hero */
 .sp-hyp{margin-top:48px}
@@ -90,10 +91,10 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .sp-l1{font:400 clamp(26px,2.6vw,36px)/1.1 var(--loam-display);letter-spacing:-.015em;color:var(--loam-ink);text-wrap:balance}
 .sp-l2{font:italic 400 20px/1.3 var(--serif);color:var(--loam-muted);margin-top:4px}
 @media (max-width:1199px){
-  .sp{--spine:200px;--pad-x:40px;--stones:220px;--gap:24px}
+  .sp{--spine:200px;--pad-x:40px;--lead-trim:244px}
 }
 @media (max-width:899px){
-  .sp{--spine:160px;--pad-x:28px;--stones:150px;--gap:20px}
+  .sp{--spine:160px;--pad-x:28px;--lead-trim:170px}
   .sp-vol{left:20px;top:24px}
   .sp-hrow{grid-template-columns:112px minmax(0,1fr)}
   .sp-top{flex-direction:column;align-items:flex-start;gap:12px}
@@ -107,9 +108,9 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
   .sp-main{padding:20px 20px 40px}
   .sp-mast{flex-direction:column;gap:4px}
   .sp-date{text-align:left}
-  .sp-lead{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:32px}
+  .sp{--lead-trim:0px}
+  .sp-lead{margin-top:32px}
   .sp h1{font-size:clamp(44px,13vw,60px);font-size:clamp(44px,16cqi,60px)}
-  .sp-stones{width:min(240px,70%);margin:0 auto}
   .sp-hyp{margin-top:36px}
   .sp-hyph{flex-wrap:wrap;gap:4px 16px}
   .sp-hrow{grid-template-columns:36px minmax(0,1fr);gap:8px}
@@ -265,9 +266,9 @@ h2{font-family:var(--loam-display);font-weight:400}
 .cta h2 em{font-style:italic;color:var(--loam-exploration-text)}
 .cta p{font-size:22px;color:var(--ink2);margin-top:14px}
 footer{padding:0 0 28px}
-.ft-big{container-type:inline-size;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1.5px solid var(--loam-ink)}
-.ft-mark{display:block;font:800 clamp(88px,20vw,300px)/.8 var(--loam-wordmark);font-size:26cqi;letter-spacing:-.078em;color:var(--loam-ink);white-space:nowrap;margin-bottom:-.055em}
-.ft-stones{display:block;flex:none;width:22cqi;max-width:260px;height:auto;margin-bottom:14px}
+.ft-big{container-type:inline-size;border-bottom:1.5px solid var(--loam-ink)}
+/* the wordmark spans the rule: its ink is 2.075em wide and starts .0375em into its box, so 100cqi/2.075 (48.1cqi, a hair under) runs edge to edge */
+.ft-mark{display:block;font:800 30vw/.8 var(--loam-wordmark);font-size:48.1cqi;letter-spacing:-.078em;color:var(--loam-ink);white-space:nowrap;margin:0 0 -.055em -.0375em}
 .ft-row{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:0 20px;font:400 12px/1 var(--mono);color:var(--loam-muted);padding-top:4px}
 footer a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
 footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-offset:3px}
@@ -289,7 +290,6 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
     <div class="sp-mast"><span>a daybook for fuller living</span><span class="sp-date" id="spDate"></span></div>
     <div class="sp-lead">
       <div class="sp-hcell"><h1><span>anxiety isn’t who you are.</span> <em>it’s who you aren’t.</em></h1></div>
-      <img class="sp-stones" src="/home/stones.png" width="705" height="530" alt="Stacked stones in black, sage, and gold">
     </div>
     <div class="sp-hyp">
       <h2 class="sp-hyph"><span>Loam is built on two hypotheses</span></h2>
@@ -419,7 +419,7 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
 </main>
 
 <footer><div class="wrap">
-  <div class="ft-big"><span class="ft-mark">loam.</span><img class="ft-stones" src="/home/stones.png" width="705" height="530" alt="" loading="lazy" decoding="async"></div>
+  <div class="ft-big"><span class="ft-mark">loam.</span></div>
   <div class="ft-row"><a href="/privacy">privacy</a><a href="/terms">terms</a><a href="mailto:hello@loamdaybook.com">hello@loamdaybook.com</a></div>
 </div></footer>
 </div>
