@@ -143,33 +143,25 @@ h2{font-family:var(--loam-display);font-weight:400}
 /* ---------- the product, in a frame ---------- */
 .phone{background:transparent;border:1.5px solid var(--loam-ink);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;position:relative;overflow:hidden;color:var(--ink)}
 .phone .mono{font-family:var(--mono)}
-.lab{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:2px 2px 10px}
-/* tiers (Today > modes) */
-.tiers{display:flex;flex-direction:column;gap:6px}
-.tier{border-radius:10px;border:.5px solid rgba(0,0,0,.14);background:var(--card);overflow:hidden;transition:border-color .15s}
-.tier.open{border-color:rgba(0,0,0,.2)}
-.thead{display:flex;flex-direction:column;gap:8px;padding:12px 14px}
-.ttop{display:flex;align-items:center;gap:7px}
-.tdot{width:7px;height:7px;border-radius:50%;flex:none}
-.tname{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);flex:1}
-.tcount{font-size:15px;line-height:1;color:var(--ink)}
-.tchev{display:block;width:6px;height:6px;margin:-3px 0 0 4px;border-right:1px solid var(--ink3);border-bottom:1px solid var(--ink3);transform:rotate(45deg);transition:transform .2s,margin .2s;flex:none}
-.tier.open .tchev{transform:rotate(225deg);margin-top:3px}
-.tbar{height:10px;background:var(--track);border-radius:5px;overflow:hidden}
-.tfill{height:100%;border-radius:5px;width:0;transition:width .5s ease}
+/* needs: the app's chapters i.-iv. (Today > contents) */
+.ndhead{display:flex;justify-content:space-between;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-ink);padding:4px 2px 10px;border-bottom:1.5px solid var(--loam-ink)}
+.tier+.tier{border-top:1px solid rgba(23,21,18,.18)}
+.chap{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:baseline;padding:14px 2px 12px}
+.cnum{font:italic 400 24px/1 var(--loam-display)}
+.cname{font:400 26px/1.05 var(--loam-display);letter-spacing:-.01em;color:var(--loam-ink)}
+.ccount{font:400 13px/1 var(--mono);letter-spacing:.06em;color:var(--loam-ink)}
 .tbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .39s cubic-bezier(.32,.72,.28,1)}
 .tier.open .tbody{grid-template-rows:1fr}
-.tin{min-height:0;overflow:hidden;padding:0 14px}
-.ngroup{padding-top:10px}
-.ngroup:last-child{padding-bottom:12px}
-.ngroup+.ngroup{border-top:.5px solid var(--track);margin-top:6px}
-.nsub{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;font-family:var(--mono);font-size:12px;color:var(--ink4)}
-.nsub b{font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
-.prow{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 2px}
-.plab{font-family:var(--mono);font-size:13px;color:var(--ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pstamp{font-family:var(--mono);font-size:12px;color:var(--ink4);white-space:nowrap}
-.pchk{width:16px;height:16px;border-radius:50%;border:1.5px solid;flex:none;transition:background .12s,transform .25s}
-.pchk.done{transform:scale(1)}
+.tin{min-height:0;overflow:hidden;padding:0 2px 0 42px}
+.ngroup{padding-bottom:6px}
+.ngroup:last-child{padding-bottom:14px}
+.nsub{display:flex;justify-content:space-between;font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted);padding:8px 0 6px}
+.prow{display:flex;align-items:center;gap:10px;min-height:40px;border-top:1px solid rgba(23,21,18,.18)}
+.pdot{width:10px;height:10px;border-radius:50%;border:1.5px solid;flex:none}
+.pdot.done{background:var(--loam-gold);border-color:var(--loam-gold)}
+.plab{font:400 17px/1.2 var(--serif);color:var(--loam-ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pstamp{font:400 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted);white-space:nowrap}
+.parr{font:400 13px/1 var(--mono);color:var(--loam-ink)}
 /* feelings (Today > check-in) */
 .vibe{padding:4px 4px 6px}
 .fmeta{font:400 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted);padding-bottom:8px;border-bottom:1px solid var(--loam-ink)}
@@ -304,7 +296,7 @@ footer a:first-child{margin-left:0}
     <h2>live beyond survival-mode</h2>
     <p>Prioritize your needs based on your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that’s not the default.</p>
   </div>
-  <div class="phone"><div class="lab">Modes</div><div class="tiers" id="modesTiers"></div></div>
+  <div class="phone"><div class="ndhead"><span>needs</span><span id="ndMet"></span></div><div class="tiers" id="modesTiers"></div></div>
 </div></section>
 
 <!-- FEELINGS -->
@@ -388,7 +380,7 @@ footer a:first-child{margin-left:0}
     if(!('IntersectionObserver' in window)){fn();return}
     var s=false,io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!s){s=true;io.disconnect();fn()}})},{threshold:th||.35});io.observe(el);
   }
-  var MODE={e:{name:'exploration',c:'#191612'},a:{name:'appreciation',c:'#ABBEA3'},n:{name:'nourishment',c:'#F5B622'},s:{name:'survival',c:'#F55127'}};
+  var MODE={e:{name:'exploration',num:'i.',t:'#1E3B2E'},a:{name:'appreciation',num:'ii.',t:'#4f6648'},n:{name:'nourishment',num:'iii.',t:'#8a6000'},s:{name:'survival',num:'iv.',t:'#b5401f'}};
   /* sample data: needs and practices per mode; d = done */
   var DATA=[
     {m:'e',needs:[{n:'reflection',p:[['morning pages',1],['sit quietly',0]]},{n:'play',p:[['guitar noodling',1],['draw something',0]]}]},
@@ -396,26 +388,28 @@ footer a:first-child{margin-left:0}
     {m:'n',needs:[{n:'movement',p:[['20-minute walk',1]]},{n:'nutrition',p:[['cook one real meal',0],['drink water',1]]}]},
     {m:'s',needs:[{n:'rest',p:[['lights out by 11',0]]},{n:'dwelling',p:[['tidy one surface',1]]}]}
   ];
+  /* a need is met when every practice under it is done */
+  function met(n){return n.p.every(function(p){return p[1]})}
   function tierHTML(t,id){
-    var M=MODE[t.m],tot=0,done=0;
-    t.needs.forEach(function(n){n.p.forEach(function(p){tot++;done+=p[1]})});
+    var M=MODE[t.m],m=t.needs.filter(met).length;
     var groups=t.needs.map(function(n,ni){
       var d=n.p.filter(function(p){return p[1]}).length;
-      return '<div class="ngroup"><div class="nsub"><b>'+n.n+'</b><span>'+d+'/'+n.p.length+'</span></div>'+n.p.map(function(p,pi){
-        return '<div class="prow" data-i="'+ni+'-'+pi+'"><span class="plab">'+p[0]+'</span><span class="pstamp">'+(p[1]?'today':'')+'</span><i class="pchk" style="border-color:'+M.c+';background:'+(p[1]?M.c:'transparent')+'"></i></div>'
+      return '<div class="ngroup"><div class="nsub"><span>'+n.n+'</span><span>'+d+'/'+n.p.length+'</span></div>'+n.p.map(function(p,pi){
+        return '<div class="prow" data-i="'+ni+'-'+pi+'"><i class="pdot'+(p[1]?' done':'')+'"'+(p[1]?'':' style="border-color:'+M.t+'"')+' aria-hidden="true"></i><span class="plab">'+p[0]+'</span><span class="pstamp">'+(p[1]?'today':'')+'</span><span class="parr" aria-hidden="true">→</span></div>'
       }).join('')+'</div>'
     }).join('');
-    return '<div class="tier" id="'+id+'"><div class="thead"><div class="ttop"><i class="tdot" style="background:'+M.c+'"></i><span class="tname">'+M.name+'</span><span class="tcount">'+done+'/'+tot+'</span><i class="tchev"></i></div><div class="tbar"><div class="tfill" style="background:'+M.c+'" data-w="'+(tot?done/tot*100:0)+'"></div></div></div><div class="tbody"><div class="tin">'+groups+'</div></div></div>'
+    return '<div class="tier" id="'+id+'"><div class="chap"><span class="cnum" style="color:'+M.t+'">'+M.num+'</span><span class="cname">'+M.name+'</span><span class="ccount">'+m+'/'+t.needs.length+'</span></div><div class="tbody"><div class="tin">'+groups+'</div></div></div>'
   }
-  function fillBars(root){root.querySelectorAll('.tfill').forEach(function(f){f.style.width=f.getAttribute('data-w')+'%'})}
 
-  /* ---- modes: tiers open one after another ---- */
+  /* ---- needs: chapters open one after another ---- */
   var mt=document.getElementById('modesTiers');
   mt.innerHTML=DATA.map(function(t,i){return tierHTML(t,'mt'+i)}).join('');
+  var allNeeds=[].concat.apply([],DATA.map(function(t){return t.needs}));
+  document.getElementById('ndMet').textContent=allNeeds.filter(met).length+'/'+allNeeds.length+' met';
   var mtiers=mt.querySelectorAll('.tier');
-  if(RM){fillBars(mt);mtiers[0].classList.add('open')}
+  if(RM){mtiers[0].classList.add('open')}
   else whenVisible(mt,async function(){
-    fillBars(mt);var i=0;
+    var i=0;
     for(;;){
       mtiers.forEach(function(t,k){t.classList.toggle('open',k===i%4)});
       i++;await sleep(3200);
