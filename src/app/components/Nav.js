@@ -10,7 +10,8 @@ export default function Nav() {
   return (
     <header className={styles.bar}>
       <nav className={styles.nav} aria-label="Main">
-        <Link href="/" className={styles.logo} aria-label="loam, home">loam.</Link>
+        {/* a plain link: / is the static homepage, so a Next prefetch of it 404s */}
+        <a href="/" className={styles.logo} aria-label="loam, home">loam.</a>
 
         <div className={styles.right}>
           <Link
