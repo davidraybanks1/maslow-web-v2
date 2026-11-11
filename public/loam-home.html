@@ -131,9 +131,11 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 .pg .wrap{max-width:none;padding:0 var(--pad-x)}
 .pg-tick{position:sticky;top:0;height:100vh;height:100dvh;background:var(--loam-ink);padding:30px 30px 0;transition:opacity .2s ease}
 .pg-tick.out{opacity:0}
-.pg-num{display:block;font:italic 400 64px/1 var(--loam-display);letter-spacing:-.02em;color:var(--loam-gold);min-height:1em}
+/* spine numerals: the wordmark's face, upright, in paper; tracking loosened from the wordmark's -.078em until no two digits touch */
+.pg-num{display:block;font:800 112px/.8 var(--loam-wordmark);letter-spacing:-.02em;color:var(--loam-paper);min-height:.8em}
+@media (max-width:1199px){.pg-num{font-size:92px}}
 .pg-lab{display:block;margin-top:10px;font:400 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--loam-spine-text);min-height:1.3em}
-@media (max-width:899px){.pg-tick{padding:24px 20px 0}.pg-num{font-size:48px}}
+@media (max-width:899px){.pg-tick{padding:24px 20px 0}.pg-num{font-size:72px}}
 /* sections */
 section{padding:72px 0 96px}
 section a:focus-visible,footer a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
