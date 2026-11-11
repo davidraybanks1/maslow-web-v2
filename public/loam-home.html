@@ -42,14 +42,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:300;line-height:1.4;-webkit-font-smoothing:antialiased}
+body{background:var(--loam-paper);color:var(--loam-ink);font-family:var(--serif);font-weight:300;line-height:1.4;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--loam-muted)}
 h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
-.card{background:#fff;border:.5px solid var(--hair);border-radius:24px;box-shadow:0 1px 2px rgba(29,27,22,.05),0 12px 32px rgba(29,27,22,.09)}
 .btn{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:400;text-decoration:none;border-radius:999px;padding:15px 28px;line-height:1}
-.btn.primary{background:var(--ink);color:#fff}
+.btn.primary{background:var(--loam-ink);color:var(--loam-paper)}
 .btn.ghost{color:var(--ink3);padding-left:6px;padding-right:6px}
 .btn.ghost:hover,.btn.primary:hover{opacity:.82}
 /* hero: 2c "Spine" */
@@ -121,14 +120,19 @@ h1,h2,h3{font-weight:300;letter-spacing:-.02em;text-wrap:balance}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 /* sections */
-section{padding:84px 0;border-top:.5px solid var(--hair)}
+section{padding:84px 0;border-top:1px solid rgba(23,21,18,.18)}
+#modes,.cta{border-top:1.5px solid var(--loam-ink)}
+section a:focus-visible,footer a:focus-visible{outline:2px solid var(--loam-ink);outline-offset:3px;border-radius:2px}
+h2{font-family:var(--loam-display);font-weight:400}
 .sechead{max-width:640px;margin-bottom:48px}
 .sechead .eyebrow{margin-bottom:16px}
 .sechead h2{font-size:clamp(36px,4.6vw,54px);line-height:1.05}
-.hyp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.hyp .card{padding:44px 40px 48px}
-.hyp .l1{font-size:clamp(28px,3.2vw,38px);line-height:1.12;letter-spacing:-.015em}
-.hyp .l2{font-size:clamp(28px,3.2vw,38px);line-height:1.12;letter-spacing:-.015em;color:var(--ink3);font-style:italic;margin-top:14px}
+.hyp{list-style:none;border-top:1.5px solid var(--loam-ink)}
+.hrow{display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;padding:32px 0 36px}
+.hrow+.hrow{border-top:1px solid rgba(23,21,18,.18)}
+.hnum{font:italic 400 clamp(32px,3.6vw,46px)/1.05 var(--loam-display);color:var(--loam-exploration-text)}
+.hyp .l1{font:400 clamp(32px,3.6vw,46px)/1.05 var(--loam-display);letter-spacing:-.02em;color:var(--loam-ink);text-wrap:balance}
+.hyp .l2{font:italic 300 clamp(22px,2.3vw,28px)/1.25 var(--serif);color:var(--loam-muted);margin-top:12px}
 /* feature rows */
 .feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .feat.flip .txt{order:2}
@@ -136,7 +140,7 @@ section{padding:84px 0;border-top:.5px solid var(--hair)}
 .feat p{font-size:21px;line-height:1.4;color:var(--ink2);margin-top:18px;max-width:34ch}
 .feat .eyebrow{margin-bottom:16px}
 /* ---------- the product, in a frame ---------- */
-.phone{background:#fff;border:.5px solid var(--hair);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;box-shadow:0 2px 4px rgba(29,27,22,.05),0 24px 60px rgba(29,27,22,.12);position:relative;overflow:hidden;color:var(--ink)}
+.phone{background:transparent;border:1.5px solid var(--loam-ink);border-radius:40px;padding:22px 16px;width:100%;max-width:372px;margin:0 auto;position:relative;overflow:hidden;color:var(--ink)}
 .phone .mono{font-family:var(--mono)}
 .lab{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:2px 2px 10px}
 /* tiers (Today > modes) */
@@ -165,7 +169,7 @@ section{padding:84px 0;border-top:.5px solid var(--hair)}
 .pstamp{font-family:var(--mono);font-size:12px;color:var(--ink4);white-space:nowrap}
 .pchk{width:16px;height:16px;border-radius:50%;border:1.5px solid;flex:none;transition:background .12s,transform .25s}
 .pchk.done{transform:scale(1)}
-/* vibrations (Today > check-in) */
+/* feelings (Today > check-in) */
 .vibe{padding:6px 6px 8px}
 .orb{display:block;width:120px;height:120px;margin:-10px 0 4px -4px}
 .vsent{font-size:26px;line-height:1.3;letter-spacing:-.015em;margin:0 0 14px}
@@ -179,12 +183,16 @@ section{padding:84px 0;border-top:.5px solid var(--hair)}
 .vb,.vw,.nbtn{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .vb:hover:not(.on),.vw:hover:not(.on){border-color:rgba(0,0,0,.4)}
 .vb:focus-visible,.vw:focus-visible,.nbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.vhint{font-family:var(--mono);font-size:12px;color:var(--ink3);margin:14px 4px 0;text-align:center}
+.vhint{font-family:var(--mono);font-size:12px;color:var(--loam-muted);margin:14px 4px 0;text-align:center}
 .vw.on{background:var(--ink);color:#F2F0E8;border-color:var(--ink)}
 /* data */
 .dwin{height:560px;overflow-y:auto;overflow-x:hidden;border-radius:24px;margin:-6px -4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
 .dwin::-webkit-scrollbar{display:none}
 .dimg{display:block;width:100%;height:auto;-webkit-user-drag:none;user-select:none}
+/* the data screen sits flush inside the frame */
+.phone.pdata{padding:0 0 16px}
+.pdata .dwin{margin:0;border-radius:0}
+.dwin:focus-visible{outline:2px solid var(--loam-ink);outline-offset:-3px}
 /* drafts screen */
 .dtitle{font-size:34px;letter-spacing:-.02em;line-height:1.1;margin:2px 4px 0}
 .dsub{font-family:var(--mono);font-size:12px;color:var(--ink3);line-height:1.5;margin:6px 4px 0}
@@ -221,14 +229,17 @@ section{padding:84px 0;border-top:.5px solid var(--hair)}
 .ncount{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--ink3);margin:0 4px}
 /* cta */
 .cta{text-align:center;padding:110px 0 120px}
-.cta h2{font-size:clamp(44px,6.4vw,76px);line-height:1}
+.cta h2{font-size:clamp(44px,6.4vw,76px);line-height:1;letter-spacing:-.025em}
 .cta p{font-size:22px;color:var(--ink2);margin:20px 0 34px}
-footer{border-top:.5px solid var(--hair);padding:30px 0 44px}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink3)}
+footer{border-top:1.5px solid var(--loam-ink);padding:30px 0 44px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--loam-muted)}
 footer a{text-decoration:none;margin-left:18px}
+footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-offset:3px}
 footer a:first-child{margin-left:0}
 @media (max-width:860px){
-  .hyp,.feat{grid-template-columns:1fr}
+  .feat{grid-template-columns:1fr}
+  .hrow{grid-template-columns:40px minmax(0,1fr);gap:10px;padding:24px 0 28px}
+  .hnum{font-size:28px;line-height:1.15}
   .feat{gap:40px}.feat.flip .txt{order:0}
   section{padding:64px 0}
   .sechead{margin-bottom:34px}
@@ -278,26 +289,26 @@ footer a:first-child{margin-left:0}
 
 <section id="hyp"><div class="wrap">
   <div class="sechead"><div class="eyebrow">What Loam is built on</div><h2>two hypotheses.</h2></div>
-  <div class="hyp">
-    <div class="card"><div class="l1">Anxiety fills the space we give it.</div><div class="l2">And we can give it less.</div></div>
-    <div class="card"><div class="l1">Our realities are defined by the stories we tell ourselves.</div><div class="l2">And we can edit them.</div></div>
-  </div>
+  <ol class="hyp">
+    <li class="hrow"><span class="hnum" aria-hidden="true">i.</span><div><div class="l1">Anxiety fills the space we give it.</div><div class="l2">And we can give it less.</div></div></li>
+    <li class="hrow"><span class="hnum" aria-hidden="true">ii.</span><div><div class="l1">Our realities are defined by the stories we tell ourselves.</div><div class="l2">And we can edit them.</div></div></li>
+  </ol>
 </div></section>
 
 <!-- MODES -->
 <section id="modes"><div class="wrap feat">
   <div class="txt">
-    <div class="eyebrow">needs</div>
+    <div class="eyebrow">01 — needs</div>
     <h2>live beyond survival-mode</h2>
     <p>Prioritize your needs based on your unique experience with anxiety, goals, and season of life. Some needs will be in survival-mode, but that’s not the default.</p>
   </div>
   <div class="phone"><div class="lab">Modes</div><div class="tiers" id="modesTiers"></div></div>
 </div></section>
 
-<!-- VIBRATIONS -->
+<!-- FEELINGS -->
 <section id="feelings"><div class="wrap feat flip">
   <div class="txt">
-    <div class="eyebrow">feelings</div>
+    <div class="eyebrow">02 — feelings</div>
     <h2>be honest with yourself</h2>
     <p>Three times a day, press a button to document how you feel. Your feelings provide a barometer to measure how well everything you are working on is working for you.</p>
   </div>
@@ -320,17 +331,17 @@ footer a:first-child{margin-left:0}
 <!-- DATA -->
 <section id="data"><div class="wrap feat">
   <div class="txt">
-    <div class="eyebrow">data</div>
+    <div class="eyebrow">03 — data</div>
     <h2>discover what makes for good days</h2>
     <p>The information from your modes, practices, and feelings turns into data that helps pinpoint what to add, subtract, or tweak.</p>
   </div>
-  <div class="phone"><div class="dwin" tabindex="0" role="region" aria-label="Loam data screen, scrollable"><img class="dimg" id="dimg" alt="The Loam data screen: streaks, a week of rhythm and feelings, what changed, roots, how you’ve felt and strata" src="/home/data-v2.jpg"></div><div class="vhint">scroll to explore</div></div>
+  <div class="phone pdata"><div class="dwin" tabindex="0" role="region" aria-label="Loam data screen, scrollable"><img class="dimg" id="dimg" width="720" height="6838" loading="lazy" decoding="async" alt="The Loam data screen: streaks, a week of rhythm and feelings, what changed, roots, how you’ve felt and strata" src="/home/data-v2.jpg"></div><div class="vhint">scroll to explore</div></div>
 </div></section>
 
 <!-- DRAFTS -->
 <section id="drafts"><div class="wrap feat flip">
   <div class="txt">
-    <div class="eyebrow">drafts</div>
+    <div class="eyebrow">04 — drafts</div>
     <h2>talk about yourself to yourself.</h2>
     <p>Write as often as you like — a line at breakfast, a paragraph at midnight. Tag drafts with how they felt and which need they touched, and this becomes the color commentary for the trends in your data.</p>
   </div>
@@ -352,7 +363,7 @@ footer a:first-child{margin-left:0}
 <!-- NOTES TO SELF -->
 <section id="notes"><div class="wrap feat">
   <div class="txt">
-    <div class="eyebrow">notes to self</div>
+    <div class="eyebrow">05 — notes</div>
     <h2>keep your best thoughts top of mind</h2>
     <p>A phrase, quote, or memory can transport you to a better state of mind. Notes to self give you a series of custom messages and photos that keep you centered throughout the day.</p>
   </div>
@@ -412,7 +423,7 @@ footer a:first-child{margin-left:0}
     }
   });
 
-  /* ---- vibrations: orb + bands + words ---- */
+  /* ---- feelings: orb + bands + words ---- */
   var FEEL={good:['calm','curious','creative','confident'],mid:['steady','flat','restless','braced'],bad:['overwhelmed','apathetic','frenetic','small']};
   var PICK={good:0,mid:0,bad:0};
   var vibe=document.getElementById('vibe'),vb=vibe.querySelectorAll('.vb'),vband=document.getElementById('vband'),vwrap=document.getElementById('vwrap'),vwords=document.getElementById('vwords');
