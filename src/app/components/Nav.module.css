@@ -36,7 +36,9 @@
 .navItem {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 44px;
+  min-width: 44px;
   font-family: var(--loam-mono);
   font-size: 13px;
   color: var(--loam-muted);
