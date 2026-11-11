@@ -297,7 +297,7 @@ h2{font-family:var(--loam-display);font-weight:400}
 @media (min-width:2304px){#notes .nq{min-height:calc(1.1em * 2)}}
 /* closing */
 .cta{padding:72px 0 56px}
-.ctarow{border-top:1.5px solid var(--loam-ink);padding-top:40px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:28px 40px}
+.ctarow{position:relative;z-index:2;border-top:1.5px solid var(--loam-ink);padding-top:40px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:28px 40px}
 .cta h2{font-size:clamp(44px,6vw,76px);line-height:1;letter-spacing:-.025em}
 .cta h2 em{font-style:italic;color:var(--loam-exploration-text)}
 .cta p{font-size:22px;color:var(--ink2);margin-top:14px}
@@ -305,7 +305,9 @@ h2{font-family:var(--loam-display);font-weight:400}
 .ctaweb{font:400 13px/16px var(--mono);color:var(--loam-ink);text-decoration:underline;text-underline-offset:3px;padding:14px 0}
 .ctaweb:hover{text-decoration-thickness:2px}
 footer{padding:0 0 28px}
-.ft-big{container-type:inline-size;border-bottom:1.5px solid var(--loam-ink)}
+/* the wordmark's glyphs rise above its box and over the buttons; it never takes a click */
+.ft-big{container-type:inline-size;border-bottom:1.5px solid var(--loam-ink);pointer-events:none}
+.ft-mark{pointer-events:none}
 /* the wordmark spans the rule: its ink is 2.075em wide and starts .0375em into its box, so 100cqi/2.075 (48.1cqi, a hair under) runs edge to edge */
 .ft-mark{display:block;font:800 30vw/.8 var(--loam-wordmark);font-size:48.1cqi;letter-spacing:-.078em;color:var(--loam-ink);white-space:nowrap;margin:0 0 -.055em -.0375em}
 .ft-row{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:0 20px;font:400 12px/1 var(--mono);color:var(--loam-muted);padding-top:4px}
@@ -324,7 +326,7 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
   <div class="sp-main">
     <div class="sp-top">
       <p class="sp-tag"><span>an app to help meet your needs,</span> <span>not anxiety’s</span></p>
-      <nav class="sp-nav" aria-label="Main"><a class="u" href="/memos">memos</a><a class="u" href="https://app.mymaslow.com/signin">sign in</a><a class="sp-pill" href="https://apps.apple.com/us/app/loam-daybook/id6804509233">get the app</a></nav>
+      <nav class="sp-nav" aria-label="Main"><a class="u" href="/memos">memos</a><a class="u" href="https://app.loamdaybook.com/signin">sign in</a><a class="sp-pill" href="https://apps.apple.com/us/app/loam-daybook/id6804509233">get the app</a></nav>
     </div>
     <div class="sp-mast"><span class="sp-mline"><span>sort out what matters</span> · <span>do small things</span> · <span>see what’s working</span></span><span class="sp-date" id="spDate"></span></div>
     <div class="sp-lead">
@@ -453,7 +455,7 @@ footer a:hover{color:var(--loam-ink);text-decoration:underline;text-underline-of
 <section class="cta" id="close"><div class="wrap"><div class="ctarow">
   <div><h2>welcome to <em>loam.</em></h2>
   <p>Start by sorting out what matters to you.</p></div>
-  <div class="ctaacts"><a class="ctaweb" href="https://app.mymaslow.com/onboarding">or start on the web</a><a class="btn primary" href="https://apps.apple.com/us/app/loam-daybook/id6804509233">get the app</a></div>
+  <div class="ctaacts"><a class="btn primary" href="https://apps.apple.com/us/app/loam-daybook/id6804509233">get the app</a><a class="ctaweb" href="https://app.loamdaybook.com/onboarding">or start on desktop</a></div>
 </div></div></section>
 </main>
 
