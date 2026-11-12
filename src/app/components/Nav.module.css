@@ -21,8 +21,13 @@
   font-family: var(--loam-wordmark);
   font-weight: 800;
   font-size: 40px;
+  /* the display cut, as the homepage's huge wordmark draws it (the face has an
+     optical-size axis the browser would set from 40px); at 40px that cut needs
+     -0.05em, not -0.078em, or the letters touch (the app's Wordmark rule) */
+  font-optical-sizing: none;
+  font-variation-settings: 'opsz' 96;
   line-height: 0.8;
-  letter-spacing: -0.078em;
+  letter-spacing: -0.05em;
   color: var(--loam-ink);
   text-decoration: none;
 }
